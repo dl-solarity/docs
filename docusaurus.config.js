@@ -42,7 +42,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/dl-solarity/docs/',
+            'https://github.com/dl-solarity/docs/tree/dev/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
