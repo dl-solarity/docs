@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "install": "npx husky install",
+    "lint-fix": "npm run lint-js-fix && npm run lint-json-fix",
+    "lint-json-fix": "prettier --write \"./**/*.json\"",
+    "lint-js-fix": "prettier --write \"./**/*.js\"",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
@@ -23,7 +27,8 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.4.1"
+    "@docusaurus/module-type-aliases": "2.4.1",
+    "prettier": "^2.7.1"
   },
   "browserslist": {
     "production": [
