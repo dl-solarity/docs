@@ -11,15 +11,10 @@ const config = {
   favicon: 'img/favicon1.ico',
 
   // Set the production url of your site here
-  url: 'https://docs.solarity.io/', // TODO: paste actual url
+  url: 'https://docs.solarity.dev/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'dl-solarity', // Usually your GitHub org/user name.
-  projectName: 'solarity-doc', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -112,7 +107,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Distributed Lab. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Solarity. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
