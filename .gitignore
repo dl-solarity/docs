@@ -8,6 +8,16 @@
 .docusaurus
 .cache-loader
 
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.local
+stats.html
+
 # Misc
 .DS_Store
 .env.local
