@@ -6,6 +6,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  plugins: ["docusaurus-plugin-sass"],
+
   title: "Solarity",
   tagline: "The solidity lib",
   favicon: "img/favicon1.ico",
@@ -39,7 +41,7 @@ const config = {
           editUrl: "https://github.com/dl-solarity/docs/tree/dev/",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve("./src/styles/app.scss"),
         },
       }),
     ],
