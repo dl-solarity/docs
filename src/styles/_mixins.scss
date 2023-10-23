@@ -33,3 +33,59 @@ $media-breakpoints: (
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+@mixin p-16-semi-bold {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(16);
+  font-weight: 600;
+  line-height: toRem(24);
+  letter-spacing: 0;
+}
+
+@mixin p-16-medium {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(16);
+  font-weight: 500;
+  line-height: toRem(24);
+  letter-spacing: 0;
+}
+
+@mixin p-16-regular {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(16);
+  font-weight: 400;
+  line-height: toRem(24);
+  letter-spacing: 0;
+}
+
+@mixin p-14-semi-bold {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(14);
+  font-weight: 600;
+  line-height: toRem(22);
+  letter-spacing: 0;
+}
+
+@mixin p-14-medium {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(14);
+  font-weight: 500;
+  line-height: toRem(22);
+  letter-spacing: 0;
+}
+
+@mixin p-14-regular {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(14);
+  font-weight: 400;
+  line-height: toRem(22);
+  letter-spacing: 0;
+}
+
+@mixin p-12-light {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(12);
+  font-weight: 300;
+  line-height: toRem(20);
+  letter-spacing: 0;
+}

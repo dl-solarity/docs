@@ -1,9 +1,21 @@
 @import 'app-colors';
 
-/* You can override the default Infima variables here. */
+/**
+ * The classic template bundles Infima by default.
+ * Infima is a CSS framework designed to work well for content-centric websites.
+ */
+
 :root,
 :before,
 :after {
+  --vh: 1vh;
+
+  --white: #{$white};
+  --white-rgb: #{$white-rgb};
+  --black: #{$black};
+  --black-rgb: #{$black-rgb};
+
+  /* Infima variables */
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -13,6 +25,59 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* status colors */
+  --success-light: #{$success-light};
+  --success-main: #{$success-main};
+  --success-dark: #{$success-dark};
+
+  --error-light: #{$error-light};
+  --error-main: #{$error-main};
+  --error-dark: #{$error-dark};
+
+  --warning-light: #{$warning-light};
+  --warning-main: #{$warning-main};
+  --warning-dark: #{$warning-dark};
+
+  --info-light: #{$info-light};
+  --info-main: #{$info-main};
+  --info-dark: #{$info-dark};
+
+  --disable-primary-main: #{$disable-primary-main};
+  --disable-primary-dark: #{$disable-primary-dark};
+
+  /* brand colors */
+  --primary-light: #{$primary-light};
+  --primary-main: #{$primary-main};
+  --primary-dark: #{$primary-dark};
+  --primary-light-rgb: #{$primary-light-rgb};
+  --primary-main-rgb: #{$primary-main-rgb};
+  --primary-dark-rgb: #{$primary-dark-rgb};
+
+  /* typography colors */
+  --text-primary-light: #{$text-primary-light};
+  --text-primary-main: #{$text-primary-main};
+  --text-primary-dark: #{$text-primary-dark};
+
+  --text-primary-invert-light: #{$text-primary-invert-light};
+  --text-primary-invert-main: #{$text-primary-invert-main};
+  --text-primary-invert-dark: #{$text-primary-invert-dark};
+
+  /* background colors */
+  --background-primary-light: #{$background-primary-light};
+  --background-primary-main: #{$background-primary-main};
+  --background-primary-dark: #{$background-primary-dark};
+
+  /* border colors */
+  --border-primary-light: #{$border-primary-light};
+  --border-primary-main: #{$border-primary-main};
+  --border-primary-dark: #{$border-primary-dark};
+
+  /* common colors */
+  --backdrop-modal: #{$backdrop-modal};
+
+  /* border radii */
+  --border-radius-main: #{toRem(8)};
 
   /* App variables */
   --app-font-family-main: 'Inter', 'Arial', sans-serif;

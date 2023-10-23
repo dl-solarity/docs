@@ -1,5 +1,14 @@
 @import "mixins";
 
+body,
+span,
+p,
+a {
+  color: var(--text-primary-light);
+
+  @include p-16-regular;
+}
+
 h1 {
   font-family: var(--app-font-family-secondary);
   font-size: toRem(56);
