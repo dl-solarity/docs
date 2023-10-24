@@ -1,4 +1,6 @@
 @import 'app-colors';
+@import 'functions';
+@import 'mixins';
 
 /**
  * The classic template bundles Infima by default.
@@ -24,6 +26,10 @@
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
+  --ifm-navbar-background-color: var(--background-primary-main);
+  --ifm-navbar-height: var(--app-height-header);
+  --ifm-navbar-link-color: var(--text-primary-light);
+  --ifm-navbar-link-hover-color: var(--primary-main);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
   /* status colors */
@@ -82,6 +88,26 @@
   /* App variables */
   --app-font-family-main: 'Inter', 'Arial', sans-serif;
   --app-font-family-secondary: 'Righteous', 'Arial', sans-serif;
+
+  --app-padding-right: #{toRem(32)};
+  --app-padding-left: #{toRem(32)};
+  --app-padding-top: #{toRem(48)};
+  --app-padding-bottom: #{toRem(48)};
+  --app-height-header: #{toRem(80)};
+
+  @include respond-to(medium) {
+    --app-padding-right: #{toRem(16)};
+    --app-padding-left: #{toRem(16)};
+    --app-padding-top: #{toRem(24)};
+    --app-padding-bottom: #{toRem(24)};
+    --app-height-header: #{toRem(70)};
+  }
+
+  --app-padding:
+    var(--app-padding-top)
+    var(--app-padding-right)
+    var(--app-padding-bottom)
+    var(--app-padding-left);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */

@@ -1,4 +1,5 @@
 @import "mixins";
+@import "navbar";
 
 body,
 span,
@@ -10,35 +11,13 @@ a {
 }
 
 h1 {
-  font-family: var(--app-font-family-secondary);
-  font-size: toRem(56);
-  font-weight: 400;
-  line-height: toRem(72);
-  letter-spacing: 0;
+  @include h1;
 }
 
 h2 {
-  font-family: var(--app-font-family-secondary);
-  font-size: toRem(40);
-  font-weight: 400;
-  line-height: toRem(48);
-  letter-spacing: 0;
-
-  @include respond-to(medium) {
-    font-size: toRem(26);
-    line-height: toRem(32);
-  }
+  @include h2;
 }
 
 h3 {
-  font-family: var(--app-font-family-secondary);
-  font-size: toRem(24);
-  font-weight: 400;
-  line-height: toRem(32);
-  letter-spacing: 0;
-
-  @include respond-to(medium) {
-    font-size: toRem(20);
-    line-height: toRem(28);
-  }
+  @include h3;
 }
