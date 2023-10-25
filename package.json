@@ -30,7 +30,8 @@
     "@docusaurus/module-type-aliases": "2.4.1",
     "docusaurus-plugin-sass": "^0.2.5",
     "prettier": "^2.7.1",
-    "sass": "^1.69.4"
+    "sass": "^1.69.4",
+    "sass-resources-loader": "^2.2.5"
   },
   "browserslist": {
     "production": [
