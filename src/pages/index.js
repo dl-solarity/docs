@@ -27,11 +27,11 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={`${siteConfig.title}`} description="Solarity solidity lib <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+    // <main>
+    //   HI
+    // </main>
+    <Layout>
+      <main>HI</main>
     </Layout>
   );
 }
