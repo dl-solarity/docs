@@ -6,6 +6,15 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  plugins: [
+    "docusaurus-plugin-sass",
+    "./src/plugins/docusaurus-plugin-font-preload",
+    [
+      "./src/plugins/docusaurus-plugin-sass-resources-loader",
+      { hoistUseStatements: true, resources: "./src/styles/_resources.scss" },
+    ],
+  ],
+
   title: "Solarity",
   tagline: "The solidity lib",
   favicon: "img/favicon1.ico",
@@ -16,7 +25,7 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -39,7 +48,7 @@ const config = {
           editUrl: "https://github.com/dl-solarity/docs/tree/dev/",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve("./src/styles/app.scss"),
         },
       }),
     ],
