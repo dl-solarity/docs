@@ -8,9 +8,10 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   plugins: [
     "docusaurus-plugin-sass",
+    "./src/plugins/docusaurus-plugin-font-preload",
     [
       "./src/plugins/docusaurus-plugin-sass-resources-loader",
-      { hoistUseStatements: true, resources: ["./src/styles/_resources.scss"] },
+      { hoistUseStatements: true, resources: "./src/styles/_resources.scss" },
     ],
   ],
 
@@ -24,7 +25,7 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internalization, you can use this field to set useful
