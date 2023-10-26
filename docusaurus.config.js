@@ -17,7 +17,7 @@ const config = {
 
   title: "Solarity",
   tagline: "The solidity lib",
-  favicon: "img/favicon1.ico",
+  favicon: "img/favicon.png",
 
   // Set the production url of your site here
   url: "https://docs.solarity.dev/",
@@ -57,9 +57,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: "dark",
+        disableSwitch: true,
+      },
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "Solarity solidity lib",
+        title: "Solarity",
         logo: {
           src: "img/logo.png",
         },
@@ -67,13 +71,13 @@ const config = {
           {
             type: "docSidebar",
             sidebarId: "docGettingStarted",
-            position: "left",
+            position: "right",
             label: "Getting Started",
           },
           {
             type: "docSidebar",
             sidebarId: "docReference",
-            position: "left",
+            position: "right",
             label: "Reference",
           },
           {

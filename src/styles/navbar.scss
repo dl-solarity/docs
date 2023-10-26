@@ -1,0 +1,43 @@
+.navbar {
+  padding: 0 var(--app-padding-left) 0 var(--app-padding-right);
+  box-shadow: 0 toRem(1) var(--background-primary-light);
+}
+
+.navbar__toggle {
+  @include respond-to(medium) {
+    display: inherit;
+  }
+}
+
+.navbar__brand {
+  margin-left: toRem(-8);
+}
+
+.navbar__logo {
+  margin-right: 0;
+}
+
+.navbar__title {
+  @include h3;
+
+  font-size: toRem(20);
+}
+
+.navbar__items {
+  &--right {
+    margin-right: toRem(-12);
+  }
+}
+
+.navbar__link {
+  font-family: var(--app-font-family-secondary);
+  font-weight: unset;
+
+  &:not([disabled]):active {
+    color: var(--primary-light);
+  }
+}
+
+[class^="searchBox"] {
+  display: none;
+}
