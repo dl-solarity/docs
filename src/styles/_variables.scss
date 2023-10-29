@@ -107,10 +107,19 @@ html[data-theme='dark'] {
   --ifm-color-primary-dark: var(--primary-dark);
   --ifm-color-primary-darker: var(--primary-dark);
   --ifm-color-primary-darkest: var(--primary-dark);
+  --ifm-font-color-base: var(--text-primary-main);
+  --ifm-background-color: var(--background-primary-main);
   --ifm-button-color: var(--text-primary-invert-main);
   --ifm-button-border-radius: var(--border-radius-main);
   --ifm-button-padding-vertical: #{toRem(12)};
   --ifm-button-padding-horizontal: #{toRem(16)};
   --ifm-link-hover-color: var(--primary-dark);
   --ifm-hover-overlay: var(--background-primary-light);
+  --ifm-menu-color: var(--text-primary-main);
+  --ifm-menu-link-sublist-icon: url('/static/icons/chevron-up.svg') 50% / 2rem 2rem;
+  --ifm-toc-link-color: var(--text-primary-main);
+  --ifm-toc-border-color: var(--border-primary-dark);
+  --ifm-breadcrumb-border-radius: var(--border-radius-main);
+  --ifm-breadcrumb-separator: url('/static/icons/chevron-right.svg');
+  --ifm-pagination-nav-border-radius: var(--border-radius-main);
 }
