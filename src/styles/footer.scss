@@ -29,12 +29,12 @@ span.footer__link-item {
   }
 
   &:not([disabled]):hover {
-    color: var(--primary-main);
+    color: var(--primary-light);
   }
 
   &:not([disabled]):focus,
   &:not([disabled]):active {
-    color: var(--primary-light);
+    color: var(--primary-main);
   }
 
   @include p-14-semi-bold;

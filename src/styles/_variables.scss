@@ -20,7 +20,7 @@
   --ifm-navbar-background-color: var(--background-primary-main);
   --ifm-navbar-height: var(--app-height-header);
   --ifm-navbar-link-color: var(--text-primary-light);
-  --ifm-navbar-link-hover-color: var(--primary-main);
+  --ifm-navbar-link-hover-color: var(--primary-light);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
   /* status colors */
@@ -113,7 +113,7 @@ html[data-theme='dark'] {
   --ifm-button-border-radius: var(--border-radius-main);
   --ifm-button-padding-vertical: #{toRem(12)};
   --ifm-button-padding-horizontal: #{toRem(16)};
-  --ifm-link-hover-color: var(--primary-dark);
+  --ifm-link-hover-color: var(--primary-light);
   --ifm-hover-overlay: var(--background-primary-light);
   --ifm-menu-color: var(--text-primary-main);
   --ifm-menu-link-sublist-icon: url('/static/icons/chevron-up.svg') 50% / 2rem 2rem;
@@ -122,4 +122,6 @@ html[data-theme='dark'] {
   --ifm-breadcrumb-border-radius: var(--border-radius-main);
   --ifm-breadcrumb-separator: url('/static/icons/chevron-right.svg');
   --ifm-pagination-nav-border-radius: var(--border-radius-main);
+  --ifm-table-border-color: var(--border-primary-main);
+  --ifm-table-stripe-background: var(--background-primary-light);
 }

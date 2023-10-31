@@ -1,0 +1,34 @@
+.pagination-nav {
+  .pagination-nav__sublabel,
+  .pagination-nav__label {
+    color: var(--text-primary-main);
+
+    @include p-14-semi-bold;
+  }
+
+  .pagination-nav__link {
+    border: toRem(1) solid var(--border-primary-dark);
+    transition-property: background-color, border-color;
+
+    &:hover {
+      background: var(--background-primary-dark);
+      border-color: var(--primary-light);
+
+      .pagination-nav__sublabel,
+      .pagination-nav__label {
+        color: var(--primary-light);
+      }
+    }
+
+    &:not([disabled]):focus,
+    &:not([disabled]):active {
+      background: var(--background-primary-dark);
+      border-color: var(--primary-main);
+
+      .pagination-nav__sublabel,
+      .pagination-nav__label {
+        color: var(--primary-main);
+      }
+    }
+  }
+}
