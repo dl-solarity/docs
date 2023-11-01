@@ -1,0 +1,25 @@
+.breadcrumbs {
+  .breadcrumbs__link {
+    padding: toRem(6) toRem(8);
+
+    &:not(span) {
+      &:not([disabled]):hover {
+        color: var(--text-primary-main);
+      }
+
+      &:not([disabled]):focus,
+      &:not([disabled]):active {
+        color: var(--ifm-breadcrumb-color-active);
+        background: var(--ifm-breadcrumb-item-background-active);
+      }
+    }
+
+    span {
+      color: inherit;
+      transition: inherit;
+      font: inherit;
+    }
+
+    @include p-12-light;
+  }
+}

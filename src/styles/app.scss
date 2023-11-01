@@ -1,7 +1,12 @@
 @import '/static/fonts/index.css';
 
+@import 'breadcrumbs';
 @import 'button';
+@import 'footer';
+@import 'menu';
+@import 'navbar';
+@import 'pagination-nav';
+@import 'table-of-contents';
 
 @import 'variables';
-
 @import 'global';

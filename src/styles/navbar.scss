@@ -1,44 +1,53 @@
 .navbar {
   padding: 0 var(--app-padding-left) 0 var(--app-padding-right);
   box-shadow: 0 toRem(1) var(--background-primary-light);
-}
 
-.navbar__toggle {
-  @include respond-to(medium) {
-    display: inherit;
+  .navbar__toggle {
+    @include respond-to(medium) {
+      display: inherit;
+    }
   }
-}
 
-.navbar__brand {
-  margin-left: toRem(-8);
-}
+  .navbar__brand {
+    margin-left: toRem(-8);
 
-.navbar__logo {
-  margin-right: 0;
-}
+    transition: var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 
-.navbar__title {
-  @include h3;
-
-  font-size: toRem(20);
-}
-
-.navbar__items {
-  &--right {
-    margin-right: toRem(-12);
+    &:not([disabled]):focus,
+    &:not([disabled]):active {
+      color: var(--primary-main);
+    }
   }
-}
 
-.navbar__link {
-  font-family: var(--app-font-family-secondary);
-  font-weight: 400;
-  padding: toRem(12) toRem(16);
-
-  &:not([disabled]):active {
-    color: var(--primary-light);
+  .navbar__logo {
+    margin-right: 0;
   }
-}
 
-[class^="searchBox"] {
-  display: none;
+  .navbar__title {
+    @include h3;
+
+    font-size: toRem(20);
+  }
+
+  .navbar__items {
+    &--right {
+      margin-right: toRem(-12);
+    }
+  }
+
+  .navbar__link {
+    font-family: var(--app-font-family-secondary);
+    font-weight: 400;
+    padding: toRem(12) toRem(16);
+
+    &--active,
+    &:not([disabled]):focus,
+    &:not([disabled]):active {
+      color: var(--primary-main);
+    }
+  }
+
+  [class^="searchBox"] {
+    display: none;
+  }
 }
