@@ -17,11 +17,7 @@
 
   /* Infima variables */
   --ifm-code-font-size: 95%;
-  --ifm-navbar-background-color: var(--background-primary-main);
   --ifm-navbar-height: var(--app-height-header);
-  --ifm-navbar-link-color: var(--text-primary-light);
-  --ifm-navbar-link-hover-color: var(--primary-light);
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
   /* status colors */
   --success-light: #{$success-light};
@@ -103,6 +99,9 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 html[data-theme='dark'] {
+  --ifm-navbar-background-color: var(--background-primary-main);
+  --ifm-navbar-link-color: var(--text-primary-light);
+  --ifm-navbar-link-hover-color: var(--primary-light);
   --ifm-color-primary: var(--primary-main);
   --ifm-color-primary-dark: var(--primary-dark);
   --ifm-color-primary-darker: var(--primary-dark);
@@ -124,4 +123,5 @@ html[data-theme='dark'] {
   --ifm-pagination-nav-border-radius: var(--border-radius-main);
   --ifm-table-border-color: var(--border-primary-main);
   --ifm-table-stripe-background: var(--background-primary-light);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
