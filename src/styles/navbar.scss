@@ -31,7 +31,8 @@
 
 .navbar__link {
   font-family: var(--app-font-family-secondary);
-  font-weight: unset;
+  font-weight: 400;
+  padding: toRem(12) toRem(16);
 
   &:not([disabled]):active {
     color: var(--primary-light);

@@ -4,6 +4,12 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
+const createFooterLinkHTML = (label, href) => `
+  <a href="${href}" rel="noopener noreferrer" class="footer__link-item">
+    ${label}
+  </a>
+`;
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   plugins: [
@@ -91,33 +97,15 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
-            items: [
-              {
-                label: "Getting Started",
-                to: "/docs/getting-started/Overview",
-              },
-              {
-                label: "Reference",
-                to: "/docs/reference/contracts/Overview",
-              },
-            ],
+            html: createFooterLinkHTML("Community link", "https://stage.solarity.dev/"),
           },
           {
-            title: "Community",
-            items: [],
+            html: createFooterLinkHTML("Community link", "https://stage.solarity.dev/"),
           },
           {
-            title: "More",
-            items: [
-              {
-                label: "GitHub",
-                href: "https://github.com/dl-solarity/solidity-lib",
-              },
-            ],
+            html: createFooterLinkHTML("Community link", "https://stage.solarity.dev/"),
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Solarity. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

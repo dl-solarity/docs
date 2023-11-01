@@ -1,0 +1,15 @@
+.button {
+  &--primary {
+    &:focus,
+    &:active {
+      color: var(--primary-light);
+    }
+  }
+
+  &--link {
+    &:focus,
+    &:active {
+      color: var(--primary-light);
+    }
+  }
+}

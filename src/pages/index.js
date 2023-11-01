@@ -3,34 +3,36 @@ import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
 
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 
-function HomepageHeader() {
+export default function HomePage() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
+    <Layout>
+      <main className={styles["home-page"]}>
+        <div className={clsx(styles["home-page__content-wrp"], "padding--xl")}>
+          <h1 className={styles["home-page__primary-title"]}>{siteConfig.title}</h1>
+          <h1 className={styles["home-page__primary-title"]}>documentation</h1>
+          <p className={clsx(styles["home-page__secondary-title"], "margin-top--sm")}>
+            Lorem ipsum dolor sit amet consectetur. Morbi ornare neque porttitor convallis phasellus ultricies. Nunc
+            ultrices arcu eu id sit aliquam. Etiam netus at erat mauris vitae diam feugiat pulvinar nisi. Ridiculus amet
+          </p>
+          <div className={clsx(styles["home-page__buttons"], "margin-top--lg")}>
+            <Link
+              className={clsx(styles["home-page__button"], "button", "button--link")}
+              to="/docs/reference/contracts/Overview"
+            >
+              Reference
+            </Link>
+            <Link
+              className={clsx(styles["home-page__button"], "button", "button--primary")}
+              to="/docs/getting-started/Overview"
+            >
+              Get Started
+            </Link>
+          </div>
         </div>
-      </div>
-    </header>
-  );
-}
-
-export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <Layout title={`${siteConfig.title}`} description="Solarity solidity lib <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
       </main>
     </Layout>
   );
