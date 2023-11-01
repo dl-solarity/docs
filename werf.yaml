@@ -1,0 +1,36 @@
+configVersion: 1
+project: "web-client"
+---
+image: builder 
+from: node:16-alpine 
+git: 
+  - add: / 
+    to: /app 
+    stageDependencies: 
+      install: 
+        - package.json
+        - package-lock.json
+      setup: 
+        - "**/*"
+shell: 
+  install: 
+    - cd /app
+    #- yarn autoclean --init
+    #- yarn autoclean --force
+    - npm install
+  setup: # Для стадии Setup.
+    - cd /app
+    - npm run build
+
+---
+image: web
+from: nginx:alpine
+git:
+  - add: /nginx.conf
+    to: /etc/nginx/nginx.conf
+import:
+  - image: builder
+    add: /app/build
+    to: /usr/share/nginx/html
+    after: setup
+
