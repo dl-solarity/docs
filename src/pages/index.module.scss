@@ -11,6 +11,11 @@
   max-width: toRem(740);
   margin: 0 auto;
   text-align: center;
+  padding: toRem(80) toRem(40) toRem(120);
+
+  @include respond-to(small) {
+    padding: toRem(40) toRem(20) toRem(60);
+  }
 }
 
 .home-page__primary-title {
@@ -34,7 +39,12 @@
 .home-page__buttons {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: toRem(24);
+
+  @include respond-to(small) {
+    flex-direction: column-reverse;
+  }
 }
 
 .home-page__button {

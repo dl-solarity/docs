@@ -40,6 +40,11 @@ $media-breakpoints: (
   font-weight: 400;
   line-height: toRem(72);
   letter-spacing: 0;
+
+  @include respond-to(small) {
+    font-size: toRem(36);
+    line-height: toRem(48);
+  }
 }
 
 @mixin h2 {
