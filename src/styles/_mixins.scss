@@ -41,7 +41,7 @@ $media-breakpoints: (
   line-height: toRem(72);
   letter-spacing: 0;
 
-  @include respond-to(small) {
+  @include respond-to(medium) {
     font-size: toRem(36);
     line-height: toRem(48);
   }

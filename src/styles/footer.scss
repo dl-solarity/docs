@@ -20,7 +20,7 @@
     @include p-14-semi-bold;
   }
 
-  @include respond-to(small) {
+  @include respond-to(medium) {
     padding: toRem(16) var(--app-padding-right) toRem(16) var(--app-padding-left);
   }
 }
