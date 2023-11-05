@@ -4,12 +4,6 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
-const createFooterLinkHTML = (label, href) => `
-  <a href="${href}" rel="noopener noreferrer" class="footer__link-item">
-    ${label}
-  </a>
-`;
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   plugins: [
@@ -97,13 +91,7 @@ const config = {
         style: "dark",
         links: [
           {
-            html: createFooterLinkHTML("Community link", "https://stage.solarity.dev/"),
-          },
-          {
-            html: createFooterLinkHTML("Community link", "https://stage.solarity.dev/"),
-          },
-          {
-            html: createFooterLinkHTML("Community link", "https://stage.solarity.dev/"),
+            html: "License: MIT",
           },
         ],
       },
