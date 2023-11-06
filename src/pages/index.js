@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <Layout>
       <main className={styles["home-page"]}>
-        <div className={clsx(styles["home-page__content-wrp"], "padding--xl")}>
+        <div className={styles["home-page__content-wrp"]}>
           <h1 className={styles["home-page__primary-title"]}>{siteConfig.title}</h1>
           <h1 className={styles["home-page__primary-title"]}>documentation</h1>
           <p className={clsx(styles["home-page__secondary-title"], "margin-top--sm")}>

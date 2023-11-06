@@ -1,45 +1,26 @@
 .footer {
   background: var(--background-primary-main);
   box-shadow: 0 toRem(-1) var(--background-primary-light);
-  padding: 0;
+  padding: toRem(24) toRem(80);
 
-  .footer__links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0;
-    height: toRem(70);
-  }
-
-  span.footer__link-item {
+  .container {
     padding: 0;
   }
 
+  .footer__links {
+    text-align: left;
+    margin-bottom: 0;
+  }
+
   .footer__link-item {
-    text-decoration: none;
-    outline: none;
+    display: block;
+    padding: 0;
     color: var(--text-primary-main);
-    padding: toRem(12) toRem(16);
-
-    &:hover,
-    &:focus,
-    &:active {
-      text-decoration: none;
-    }
-
-    &:not([disabled]):hover {
-      color: var(--primary-light);
-    }
-
-    &:not([disabled]):focus,
-    &:not([disabled]):active {
-      color: var(--primary-main);
-    }
 
     @include p-14-semi-bold;
   }
 
-  .footer__link-separator {
-    display: none;
+  @include respond-to(medium) {
+    padding: toRem(16) var(--app-padding-right) toRem(16) var(--app-padding-left);
   }
 }
