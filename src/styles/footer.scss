@@ -1,9 +1,14 @@
+$z-index: 1;
+
 .footer {
-  background: var(--background-primary-main);
+  position: relative;
+  z-index: $z-index;
+  background: var(--background-primary-dark);
   box-shadow: 0 toRem(-1) var(--background-primary-light);
   padding: toRem(24) toRem(80);
 
   .container {
+    margin: 0;
     padding: 0;
   }
 
