@@ -1,60 +1,165 @@
+$z-index: 1;
+
 .home-page {
-  flex: 1;
-  background-image: url('/static/img/bg.png');
-  background-size: 100% 100%;
-  padding: toRem(80) toRem(40) toRem(120);
+  aspect-ratio: 1512/982;
+  position: relative;
+  flex-grow: 1;
+  padding: toRem(90) toRem(96);
+  overflow-y: hidden;
 
   @include respond-to(medium) {
-    padding: toRem(40) toRem(20) toRem(60);
-  }
-}
-
-.home-page__content-wrp {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: toRem(740);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.home-page__primary-title {
-  &:first-of-type {
-    background: -webkit-linear-gradient(
-      45deg,
-      #CBCBFF 28%,
-      #D9BDFD 40%,
-      #9747FF 64%,
-      #3B4EB3 80%
-    );
-    background-clip: text;
-    color: transparent;
-  }
-}
-
-.home-page__secondary-title {
-  color: var(--text-primary-main);
-}
-
-.home-page__buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: toRem(24);
-
-  @include respond-to(medium) {
-    gap: toRem(16);
+    padding: toRem(32) toRem(16);
   }
 
   @include respond-to(small) {
-    flex-direction: column-reverse;
+    aspect-ratio: 375/612;
+  }
+}
+
+.home-page__background {
+  aspect-ratio: 1512/2728;
+  position: absolute;
+  inset: 0;
+  background-image: url("/static/img/home-page/bg.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  z-index: $z-index;
+  overflow: hidden;
+
+  @include respond-to(small) {
+    aspect-ratio: 375/2200;
+    background-image: url('/static/img/home-page/bg-small.png');
+  }
+}
+
+.home-page__planet {
+  position: absolute;
+  display: block;
+  transition: transform var(--ifm-transition-slow)
+    var(--ifm-transition-timing-default);
+  border-radius: 50%;
+  overflow: hidden;
+  user-select: none;
+
+  /*
+    sizes and positions for background image
+    with aspect-ratio 1512/2728 (for small 375/2200)
+  */
+
+  // planet-solidity
+  &:nth-child(1) {
+    width: 24.33%; // 368px on 1512px width
+    top: 26.31%; // 718px on 2728px height
+    left: 78.96%; // 1194px on 1512px width
+
+    @include respond-to(small) {
+      width: 73.33%; // 275px on 375px width
+      top: 17.09%; // 376px on 2200px height
+      left: 56%; // 210px on 375px width
+    }
+  }
+
+  // planet-zk
+  &:nth-child(2) {
+    width: 8.86%; // 134px on 1512px width
+    top: 6.34%; // 173px on 2728px height
+    left: 73.61%; // 1113px on 512px width
+
+    @include respond-to(small) {
+      width: 20.26%; // 76px on 375px width
+      top: 9.95%; // 219px on 2200px height
+      left: 18.4%; // 69px on 964px width
+    }
+  }
+
+  // planet-hardhat
+  &:nth-child(3) {
+    width: 16.93%; // 256px on 1512px width
+    top: 22.76%; // 621px on 2728px height
+    left: 13.42%; // 203px on 1512px width
+
+    @include respond-to(small) {
+      width: 30.66%; // 115px on 1512px width
+      top: 16.45%; // 362px on 2200px height
+      left: -7.73%; // -29px pn 375px width
+    }
+  }
+
+  // planet-graph
+  &:nth-child(4) {
+    width: 10.05%; // 152px on 1512px width
+    top: 17.59%; // 480px on 2728px height
+    left: 53.57%; // 810px on 1512px width
+
+    @include respond-to(small) {
+      width: 25.6%; // 96px on 375px width
+      top: 12%; // 264px on 2200px height
+      left: 55.46%; // 208px on 375px width
+    }
+  }
+
+  // planet-viper
+  &:nth-child(5) {
+    width: 5.95%; // 90px on 1512px width
+    top: 29.69%; // 810px on 2728px height
+    left: 44.84%; // 678px on 1512px width
+
+    @include respond-to(small) {
+      width: 14.66%; // 55px on 375px width
+      top: 22.81%; // 502px on 2200px height
+      left: 20.26%; // 76px on 375px width
+    }
+  }
+
+  &:hover {
+    transform: scale(1.06);
+  }
+}
+
+.home-page__planet-img {
+  display: block;
+  width: 100%;
+}
+
+.home-page__title {
+  position: relative;
+  z-index: $z-index;
+  font-family: var(--app-font-family-secondary);
+  font-size: toRem(88);
+  font-weight: 400;
+  line-height: toRem(112);
+  letter-spacing: 0;
+  max-width: max-content;
+
+  @include respond-to(medium) {
+    font-size: toRem(40);
+    line-height: toRem(48);
+  }
+
+  &:first-of-type {
+    color: var(--primary-main);
+  }
+}
+
+.home-page__buttons-wrp {
+  margin-top: toRem(24);
+  display: flex;
+  align-items: center;
+  gap: toRem(24);
+  max-width: max-content;
+
+  @include respond-to(medium) {
+    margin-top: toRem(16);
+    gap: toRem(16);
   }
 }
 
 .home-page__button {
+  position: relative;
+  z-index: $z-index;
   min-width: toRem(210);
 
   @include respond-to(medium) {
-    min-width: toRem(170);
+    min-width: toRem(160);
   }
 }
