@@ -1,0 +1,33 @@
+html {
+  font-family: var(--app-font-family-main);
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  min-width: toRem(375);
+}
+
+body,
+span,
+p,
+a {
+  color: var(--text-primary-light);
+
+  @include p-16-regular;
+}
+
+h1 {
+  @include h1;
+}
+
+h2 {
+  @include h2;
+}
+
+h3 {
+  @include h3;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 0;
+}

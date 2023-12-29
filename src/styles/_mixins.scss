@@ -1,0 +1,130 @@
+@use 'sass:map';
+
+$media-breakpoints: (
+  xsmall: 480px,
+  small: 600px,
+  tablet: 868px,
+  medium: 1024px,
+  xmedium: 1280px,
+  large: 1400px,
+  xlarge: 1920px,
+  xlarge2k: 2048px,
+  xlarge4k: 4096px,
+);
+
+@mixin respond-to ($media) {
+  $breakpoint: map.get($media-breakpoints, $media);
+
+  @if $breakpoint {
+    @media (max-width: ($breakpoint - 1)) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (max-width: ($media - 1)) {
+      @content;
+    }
+  }
+}
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin h1 {
+  font-family: var(--app-font-family-secondary);
+  font-size: toRem(56);
+  font-weight: 400;
+  line-height: toRem(72);
+  letter-spacing: 0;
+
+  @include respond-to(medium) {
+    font-size: toRem(36);
+    line-height: toRem(48);
+  }
+}
+
+@mixin h2 {
+  font-family: var(--app-font-family-secondary);
+  font-size: toRem(40);
+  font-weight: 400;
+  line-height: toRem(48);
+  letter-spacing: 0;
+
+  @include respond-to(medium) {
+    font-size: toRem(26);
+    line-height: toRem(32);
+  }
+}
+
+@mixin h3 {
+  font-family: var(--app-font-family-secondary);
+  font-size: toRem(24);
+  font-weight: 400;
+  line-height: toRem(32);
+  letter-spacing: 0;
+
+  @include respond-to(medium) {
+    font-size: toRem(20);
+    line-height: toRem(28);
+  }
+}
+
+@mixin p-16-semi-bold {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(16);
+  font-weight: 600;
+  line-height: toRem(24);
+  letter-spacing: 0;
+}
+
+@mixin p-16-medium {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(16);
+  font-weight: 500;
+  line-height: toRem(24);
+  letter-spacing: 0;
+}
+
+@mixin p-16-regular {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(16);
+  font-weight: 400;
+  line-height: toRem(24);
+  letter-spacing: 0;
+}
+
+@mixin p-14-semi-bold {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(14);
+  font-weight: 600;
+  line-height: toRem(22);
+  letter-spacing: 0;
+}
+
+@mixin p-14-medium {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(14);
+  font-weight: 500;
+  line-height: toRem(22);
+  letter-spacing: 0;
+}
+
+@mixin p-14-regular {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(14);
+  font-weight: 400;
+  line-height: toRem(22);
+  letter-spacing: 0;
+}
+
+@mixin p-12-light {
+  font-family: var(--app-font-family-main);
+  font-size: toRem(12);
+  font-weight: 300;
+  line-height: toRem(20);
+  letter-spacing: 0;
+}

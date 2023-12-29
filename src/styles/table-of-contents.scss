@@ -1,0 +1,14 @@
+.table-of-contents {
+  .table-of-contents__link {
+    &:not(.table-of-contents__link--active):hover {
+      color: var(--primary-light);
+    }
+
+    &:not([disabled]):focus,
+    &:not([disabled]):active {
+      color: var(--primary-main);
+    }
+
+    @include p-14-semi-bold;
+  }
+}

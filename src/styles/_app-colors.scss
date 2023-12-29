@@ -1,0 +1,54 @@
+$white: #ffffff;
+$white-rgb: hexToRGB($white);
+$black: #000000;
+$black-rgb: hexToRGB($black);
+
+$background-primary-light: #252627;
+$background-primary-main: #151314;
+$background-primary-dark: #0C0D10;
+
+/* status colors */
+$success-light: #5EDDB7;
+$success-main: #5EDDB7;
+$success-dark: #5EDDB7;
+
+$error-light: #FF8383;
+$error-main: #FF8383;
+$error-dark: #FF8383;
+
+$warning-light: #FFDB5A;
+$warning-main: #FFDB5A;
+$warning-dark: #FFDB5A;
+
+$info-light: #C8ABFF;
+$info-main: #C8ABFF;
+$info-dark: #C8ABFF;
+
+$disable-primary-main: #525151;
+$disable-primary-dark: #262628;
+
+/* brand colors */
+$primary-light: #E5D7FF;
+$primary-main: #C8ABFF;
+$primary-dark: #B49AE6;
+
+$primary-light-rgb: hexToRGB($primary-light);
+$primary-main-rgb: hexToRGB($primary-main);
+$primary-dark-rgb: hexToRGB($primary-dark);
+
+/* typography colors */
+$text-primary-light: #FCFCFC;
+$text-primary-main: #A5A5A5;
+$text-primary-dark: #6A6A6A;
+
+$text-primary-invert-light: #0F141E;
+$text-primary-invert-main: #0F141E;
+$text-primary-invert-dark: #0F141E;
+
+/* border colors */
+$border-primary-light: #FCFCFC;
+$border-primary-main: #595758;
+$border-primary-dark: #2E2E2E;
+
+/* backdrop colors */
+$backdrop-modal: rgba(#000000, 0.5);

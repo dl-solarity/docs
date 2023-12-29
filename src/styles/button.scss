@@ -1,0 +1,45 @@
+.button {
+  &--primary {
+    &:focus,
+    &:active {
+      background: var(--primary-dark);
+      color: var(--primary-light);
+    }
+  }
+
+  &--link {
+    &:focus,
+    &:active {
+      text-decoration: underline;
+      color: var(--primary-dark);
+    }
+  }
+
+  @include p-14-semi-bold;
+}
+
+button[class*=backToTopButton] {
+  background-color: var(--background-primary-light);
+
+  &:hover {
+    background-color: var(--background-primary-light);
+
+    &:after {
+      background-color: var(--primary-light);
+    }
+  }
+
+  &:focus,
+  &:active {
+    &:after {
+      background-color: var(--primary-main);
+    }
+  }
+
+  &:after {
+    transition: inherit;
+    background-color: var(--text-primary-main);
+    -webkit-mask: var(--ifm-menu-link-sublist-icon);
+    mask: var(--ifm-menu-link-sublist-icon);
+  }
+}

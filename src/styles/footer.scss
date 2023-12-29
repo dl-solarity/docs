@@ -1,0 +1,31 @@
+$z-index: 1;
+
+.footer {
+  position: relative;
+  z-index: $z-index;
+  background: var(--background-primary-dark);
+  box-shadow: 0 toRem(-1) var(--background-primary-light);
+  padding: toRem(24) toRem(80);
+
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__links {
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  .footer__link-item {
+    display: block;
+    padding: 0;
+    color: var(--text-primary-main);
+
+    @include p-14-semi-bold;
+  }
+
+  @include respond-to(medium) {
+    padding: toRem(16) var(--app-padding-right) toRem(16) var(--app-padding-left);
+  }
+}
