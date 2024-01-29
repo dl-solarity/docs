@@ -1,11 +1,8 @@
 # AbstractDependant
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract AbstractDependant
@@ -13,7 +10,7 @@ abstract contract AbstractDependant
 
 The ContractsRegistry module
 
-This is a contract that must be used as dependencies accepter in the dependency injection mechanism.
+The contract that must be used as dependencies accepter in the dependency injection mechanism.
 Upon the injection, the Injector (ContractsRegistry most of the time) will call the `setDependencies()` function.
 The dependant contract will have to pull the required addresses from the supplied ContractsRegistry as a parameter.
 
@@ -39,7 +36,9 @@ function setDependencies(
 ```
 
 The function that will be called from the ContractsRegistry (or factory) to inject dependencies.
-The Dependant must apply dependant() modifier to this function
+
+The Dependant must apply `dependant()` modifier to this function
+
 
 
 Parameters:

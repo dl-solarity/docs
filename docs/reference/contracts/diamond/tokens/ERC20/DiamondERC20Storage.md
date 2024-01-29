@@ -1,15 +1,14 @@
 # DiamondERC20Storage
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract DiamondERC20Storage is InitializableStorage, IERC20, IERC20Metadata
 ```
+
+The Diamond standard module
 
 This is an ERC20 token Storage contract with Diamond Standard support
 ## Structs info

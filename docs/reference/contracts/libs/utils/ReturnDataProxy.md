@@ -1,11 +1,8 @@
 # ReturnDataProxy
 
-## Library Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 library ReturnDataProxy
@@ -13,6 +10,8 @@ library ReturnDataProxy
 
 This is a pure assembly library for "yielding" the returned data without doubling the
 encoding and decoding when tunneling calls.
+
+May be used to optimize gas if "facade" architectural pattern is used.
 ## Functions info
 
 ### yield

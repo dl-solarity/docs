@@ -1,11 +1,8 @@
 # RBAC
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract RBAC is IRBAC, Initializable
@@ -22,6 +19,14 @@ permissions (CREATE, DELETE) that are only valid for that specific resource.
 The RBAC model supports antipermissions as well. One can grant antipermissions to users to restrict their access level.
 There also is a special wildcard symbol "*" that means "everything". This symbol can be applied either to the
 resources or permissions.
+
+By default, the MASTER role is configured with "*" as resources and permissions, allowing masters to do everything.
+
+The RBAC structure is the following:
+
+(PERMISSION >- RESOURCE) >- ROLE
+
+Where ROLE is assignable to users
 ## Constants info
 
 ### MASTER_ROLE (0xdc224863)
@@ -105,10 +110,10 @@ The function to grant roles to a user
 
 Parameters:
 
-| Name          | Type     | Description                 |
-| :------------ | :------- | :-------------------------- |
-| to_           | address  | the user to grant roles to  |
-| rolesToGrant_ | string[] | roles to grant              |
+| Name          | Type     | Description                  |
+| :------------ | :------- | :--------------------------- |
+| to_           | address  | the user to grant roles to   |
+| rolesToGrant_ | string[] | roles to grant               |
 
 ### revokeRoles (0x4f0d84e3)
 
@@ -124,10 +129,10 @@ The function to revoke roles
 
 Parameters:
 
-| Name           | Type     | Description                    |
-| :------------- | :------- | :----------------------------- |
-| from_          | address  | the user to revoke roles from  |
-| rolesToRevoke_ | string[] | the roles to revoke            |
+| Name           | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| from_          | address  | the user to revoke roles from   |
+| rolesToRevoke_ | string[] | the roles to revoke             |
 
 ### addPermissionsToRole (0x37ff630d)
 
@@ -239,17 +244,19 @@ function hasPermission(
 
 The function to check the user's possession of the role
 
+
 DO NOT call `super.hasPermission(...)` in derived contracts, because this method
 handles not 2 but 3 states: NO PERMISSION, ALLOWED, DISALLOWED
 
 
+
 Parameters:
 
-| Name        | Type    | Description                                          |
-| :---------- | :------ | :--------------------------------------------------- |
-| who_        | address | the user                                             |
-| resource_   | string  | the resource the user has to have the permission of  |
-| permission_ | string  | the permission the user has to have                  |
+| Name        | Type    | Description                                           |
+| :---------- | :------ | :---------------------------------------------------- |
+| who_        | address | the user                                              |
+| resource_   | string  | the resource the user has to have the permission of   |
+| permission_ | string  | the permission the user has to have                   |
 
 
 Return values:

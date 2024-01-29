@@ -1,17 +1,14 @@
 # SetHelper
 
-## Library Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 library SetHelper
 ```
 
-A simple library to work with sets
+A simple library to work with Openzeppelin sets
 ## Functions info
 
 ### add
@@ -23,15 +20,15 @@ function add(
 ) internal
 ```
 
-The function to insert an array of elements into the set
+The function to insert an array of elements into the address set
 
 
 Parameters:
 
-| Name   | Type                            | Description                          |
-| :----- | :------------------------------ | :----------------------------------- |
-| set    | struct EnumerableSet.AddressSet | the set to insert the elements into  |
-| array_ | address[]                       | the elements to be inserted          |
+| Name   | Type                            | Description                           |
+| :----- | :------------------------------ | :------------------------------------ |
+| set    | struct EnumerableSet.AddressSet | the set to insert the elements into   |
+| array_ | address[]                       | the elements to be inserted           |
 
 ### add
 
@@ -42,14 +39,14 @@ function add(
 ) internal
 ```
 
-
+The function to insert an array of elements into the uint256 set
 ### add
 
 ```solidity
 function add(StringSet.Set storage set, string[] memory array_) internal
 ```
 
-
+The function to insert an array of elements into the string set
 ### remove
 
 ```solidity
@@ -59,15 +56,15 @@ function remove(
 ) internal
 ```
 
-The function to remove an array of elements from the set
+The function to remove an array of elements from the address set
 
 
 Parameters:
 
-| Name   | Type                            | Description                          |
-| :----- | :------------------------------ | :----------------------------------- |
-| set    | struct EnumerableSet.AddressSet | the set to remove the elements from  |
-| array_ | address[]                       | the elements to be removed           |
+| Name   | Type                            | Description                           |
+| :----- | :------------------------------ | :------------------------------------ |
+| set    | struct EnumerableSet.AddressSet | the set to remove the elements from   |
+| array_ | address[]                       | the elements to be removed            |
 
 ### remove
 
@@ -78,10 +75,11 @@ function remove(
 ) internal
 ```
 
-
+The function to remove an array of elements from the uint256 set
 ### remove
 
 ```solidity
 function remove(StringSet.Set storage set, string[] memory array_) internal
 ```
 
+The function to remove an array of elements from the string set

@@ -1,15 +1,14 @@
 # OwnableDiamondStorage
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract OwnableDiamondStorage
 ```
+
+The Diamond standard module
 
 The storage contract of Ownable Diamond preset
 ## Structs info
@@ -49,3 +48,11 @@ modifier onlyOwner()
 function owner() public view returns (address)
 ```
 
+The function to get the Diamond owner
+
+
+Return values:
+
+| Name | Type    | Description              |
+| :--- | :------ | :----------------------- |
+| [0]  | address | the owner of the Diamond |

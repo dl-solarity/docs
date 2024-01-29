@@ -1,11 +1,8 @@
 # IncrementalMerkleTree
 
-## Library Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 library IncrementalMerkleTree
@@ -28,14 +25,14 @@ Gas usage for _add and _root functions (where count is the number of elements ad
 
 | Statistic | _add         | _root            |
 | --------- | ------------ | ---------------- |
-| count     | 106000       | 106000           |
-| mean      | 36619 gas    | 71941 gas        |
-| std       | 3617 gas     | 4324 gas         |
-| min       | 34053 gas    | 28670 gas        |
-| 25%       | 34077 gas    | 69715 gas        |
-| 50%       | 36598 gas    | 72641 gas        |
-| 75%       | 39143 gas    | 75557 gas        |
-| max       | 94661 gas    | 75637 gas        |
+| count     | 49999        | 49999            |
+| mean      | 38972 gas    | 60213 gas        |
+| std       | 3871 gas     | 4996 gas         |
+| min       | 36251 gas    | 31238 gas        |
+| 25%       | 36263 gas    | 57020 gas        |
+| 50%       | 38954 gas    | 60292 gas        |
+| 75%       | 41657 gas    | 63564 gas        |
+| max       | 96758 gas    | 78071 gas        |
 
 ## Usage example:
 
@@ -64,7 +61,7 @@ struct UintIMT {
 }
 ```
 
-
+UintIMT      *
 ### Bytes32IMT
 
 ```solidity
@@ -73,7 +70,7 @@ struct Bytes32IMT {
 }
 ```
 
-
+Bytes32IMT     *
 ### AddressIMT
 
 ```solidity
@@ -82,18 +79,43 @@ struct AddressIMT {
 }
 ```
 
-
+AddressIMT      *
 ### IMT
 
 ```solidity
 struct IMT {
 	bytes32[] branches;
 	uint256 leavesCount;
+	bool isStrictHeightSet;
+	bool isCustomHasherSet;
+	function (bytes32) view returns (bytes32) hash1;
+	function (bytes32,bytes32) view returns (bytes32) hash2;
 }
 ```
 
-
+InnerIMT       *
 ## Functions info
+
+### setHeight
+
+```solidity
+function setHeight(
+    IncrementalMerkleTree.UintIMT storage tree,
+    uint256 height_
+) internal
+```
+
+The function to set the height of the uint256 tree.
+Complexity is O(1).
+
+
+
+Parameters:
+
+| Name    | Type                                 | Description                                                                |
+| :------ | :----------------------------------- | :------------------------------------------------------------------------- |
+| tree    | struct IncrementalMerkleTree.UintIMT | self.                                                                      |
+| height_ | uint256                              | The new height of the Merkle tree. Should be greater than the current one. |
 
 ### add
 
@@ -104,7 +126,7 @@ function add(
 ) internal
 ```
 
-The function to add a new element to the tree.
+The function to add a new element to the uint256 tree.
 Complexity is O(log(n)), where n is the number of elements in the tree.
 
 
@@ -116,6 +138,28 @@ Parameters:
 | tree     | struct IncrementalMerkleTree.UintIMT | self.                   |
 | element_ | uint256                              | The new element to add. |
 
+### setHashers
+
+```solidity
+function setHashers(
+    IncrementalMerkleTree.UintIMT storage tree,
+    function(bytes32) view returns (bytes32) hash1_,
+    function(bytes32, bytes32) view returns (bytes32) hash2_
+) internal
+```
+
+The function to set a custom hash functions, that will be used to build the Merkle Tree.
+
+
+
+Parameters:
+
+| Name   | Type                                              | Description                                    |
+| :----- | :------------------------------------------------ | :--------------------------------------------- |
+| tree   | struct IncrementalMerkleTree.UintIMT              | self.                                          |
+| hash1_ | function (bytes32) view returns (bytes32)         | The hash function that accepts one argument.   |
+| hash2_ | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments.  |
+
 ### root
 
 ```solidity
@@ -124,7 +168,7 @@ function root(
 ) internal view returns (bytes32)
 ```
 
-The function to return the root hash of the tree.
+The function to return the root hash of the uint256 tree.
 Complexity is O(log(n) + h), where n is the number of elements in the tree and
 h is the height of the tree.
 
@@ -151,7 +195,7 @@ function height(
 ) internal view returns (uint256)
 ```
 
-The function to return the height of the tree. Complexity is O(1).
+The function to return the height of the uint256 tree. Complexity is O(1).
 
 
 Parameters:
@@ -175,7 +219,7 @@ function length(
 ) internal view returns (uint256)
 ```
 
-The function to return the number of elements in the tree. Complexity is O(1).
+The function to return the number of elements in the uint256 tree. Complexity is O(1).
 
 
 Parameters:
@@ -191,6 +235,51 @@ Return values:
 | :--- | :------ | :----------------------------------------- |
 | [0]  | uint256 | The number of elements in the Merkle tree. |
 
+### isCustomHasherSet
+
+```solidity
+function isCustomHasherSet(
+    IncrementalMerkleTree.UintIMT storage tree
+) internal view returns (bool)
+```
+
+The function to check whether the custom hash functions are set.
+
+
+Parameters:
+
+| Name | Type                                 | Description |
+| :--- | :----------------------------------- | :---------- |
+| tree | struct IncrementalMerkleTree.UintIMT | self.       |
+
+
+Return values:
+
+| Name | Type | Description                                                 |
+| :--- | :--- | :---------------------------------------------------------- |
+| [0]  | bool | True if the custom hash functions are set, false otherwise. |
+
+### setHeight
+
+```solidity
+function setHeight(
+    IncrementalMerkleTree.Bytes32IMT storage tree,
+    uint256 height_
+) internal
+```
+
+The function to set the height of the bytes32 tree.
+Complexity is O(1).
+
+
+
+Parameters:
+
+| Name    | Type                                    | Description                                                                |
+| :------ | :-------------------------------------- | :------------------------------------------------------------------------- |
+| tree    | struct IncrementalMerkleTree.Bytes32IMT | self.                                                                      |
+| height_ | uint256                                 | The new height of the Merkle tree. Should be greater than the current one. |
+
 ### add
 
 ```solidity
@@ -200,6 +289,29 @@ function add(
 ) internal
 ```
 
+The function to add a new element to the bytes32 tree.
+Complexity is O(log(n)), where n is the number of elements in the tree.
+### setHashers
+
+```solidity
+function setHashers(
+    IncrementalMerkleTree.Bytes32IMT storage tree,
+    function(bytes32) view returns (bytes32) hash1_,
+    function(bytes32, bytes32) view returns (bytes32) hash2_
+) internal
+```
+
+The function to set a custom hash functions, that will be used to build the Merkle Tree.
+
+
+
+Parameters:
+
+| Name   | Type                                              | Description                                    |
+| :----- | :------------------------------------------------ | :--------------------------------------------- |
+| tree   | struct IncrementalMerkleTree.Bytes32IMT           | self.                                          |
+| hash1_ | function (bytes32) view returns (bytes32)         | The hash function that accepts one argument.   |
+| hash2_ | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments.  |
 
 ### root
 
@@ -209,7 +321,9 @@ function root(
 ) internal view returns (bytes32)
 ```
 
-
+The function to return the root hash of the bytes32 tree.
+Complexity is O(log(n) + h), where n is the number of elements in the tree and
+h is the height of the tree.
 ### height
 
 ```solidity
@@ -218,7 +332,7 @@ function height(
 ) internal view returns (uint256)
 ```
 
-
+The function to return the height of the bytes32 tree. Complexity is O(1).
 ### length
 
 ```solidity
@@ -227,6 +341,51 @@ function length(
 ) internal view returns (uint256)
 ```
 
+The function to return the number of elements in the bytes32 tree. Complexity is O(1).
+### isCustomHasherSet
+
+```solidity
+function isCustomHasherSet(
+    IncrementalMerkleTree.Bytes32IMT storage tree
+) internal view returns (bool)
+```
+
+The function to check whether the custom hash functions are set.
+
+
+Parameters:
+
+| Name | Type                                    | Description |
+| :--- | :-------------------------------------- | :---------- |
+| tree | struct IncrementalMerkleTree.Bytes32IMT | self.       |
+
+
+Return values:
+
+| Name | Type | Description                                                 |
+| :--- | :--- | :---------------------------------------------------------- |
+| [0]  | bool | True if the custom hash functions are set, false otherwise. |
+
+### setHeight
+
+```solidity
+function setHeight(
+    IncrementalMerkleTree.AddressIMT storage tree,
+    uint256 height_
+) internal
+```
+
+The function to set the height of the address tree.
+Complexity is O(1).
+
+
+
+Parameters:
+
+| Name    | Type                                    | Description                                                                |
+| :------ | :-------------------------------------- | :------------------------------------------------------------------------- |
+| tree    | struct IncrementalMerkleTree.AddressIMT | self.                                                                      |
+| height_ | uint256                                 | The new height of the Merkle tree. Should be greater than the current one. |
 
 ### add
 
@@ -237,6 +396,29 @@ function add(
 ) internal
 ```
 
+The function to add a new element to the address tree.
+Complexity is O(log(n)), where n is the number of elements in the tree.
+### setHashers
+
+```solidity
+function setHashers(
+    IncrementalMerkleTree.AddressIMT storage tree,
+    function(bytes32) view returns (bytes32) hash1_,
+    function(bytes32, bytes32) view returns (bytes32) hash2_
+) internal
+```
+
+The function to set a custom hash functions, that will be used to build the Merkle Tree.
+
+
+
+Parameters:
+
+| Name   | Type                                              | Description                                    |
+| :----- | :------------------------------------------------ | :--------------------------------------------- |
+| tree   | struct IncrementalMerkleTree.AddressIMT           | self.                                          |
+| hash1_ | function (bytes32) view returns (bytes32)         | The hash function that accepts one argument.   |
+| hash2_ | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments.  |
 
 ### root
 
@@ -246,7 +428,9 @@ function root(
 ) internal view returns (bytes32)
 ```
 
-
+The function to return the root hash of the address tree.
+Complexity is O(log(n) + h), where n is the number of elements in the tree and
+h is the height of the tree.
 ### height
 
 ```solidity
@@ -255,7 +439,7 @@ function height(
 ) internal view returns (uint256)
 ```
 
-
+The function to return the height of the address tree. Complexity is O(1).
 ### length
 
 ```solidity
@@ -264,3 +448,27 @@ function length(
 ) internal view returns (uint256)
 ```
 
+The function to return the number of elements in the address tree. Complexity is O(1).
+### isCustomHasherSet
+
+```solidity
+function isCustomHasherSet(
+    IncrementalMerkleTree.AddressIMT storage tree
+) internal view returns (bool)
+```
+
+The function to check whether the custom hash functions are set.
+
+
+Parameters:
+
+| Name | Type                                    | Description |
+| :--- | :-------------------------------------- | :---------- |
+| tree | struct IncrementalMerkleTree.AddressIMT | self.       |
+
+
+Return values:
+
+| Name | Type | Description                                                 |
+| :--- | :--- | :---------------------------------------------------------- |
+| [0]  | bool | True if the custom hash functions are set, false otherwise. |

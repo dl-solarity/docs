@@ -1,15 +1,14 @@
 # InitializableStorage
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract InitializableStorage
 ```
+
+The Diamond standard module
 
 This is a modified version of the OpenZeppelin Initializable contract to be compatible
 with the Diamond Standard.
@@ -32,7 +31,7 @@ struct IStorage {
 event Initialized(bytes32 storageSlot)
 ```
 
-Triggered when the {storageSlot} in the Diamond has been initialized.
+
 ## Modifiers info
 
 ### initializer

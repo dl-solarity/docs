@@ -1,17 +1,16 @@
 # TypeCaster
 
-## Library Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 library TypeCaster
 ```
 
-This library simplifies non-obvious type castings
+This library simplifies non-obvious type castings.
+
+Convertions from static to dynamic arrays, singleton arrays, and arrays of different types are supported.
 ## Functions info
 
 ### asUint256Array
@@ -22,21 +21,21 @@ function asUint256Array(
 ) internal pure returns (uint256[] memory array_)
 ```
 
-The function that casts the list of `X`-type elements to the list of uint256
+The function that casts the bytes32 array to the uint256 array
 
 
 Parameters:
 
-| Name  | Type      | Description                    |
-| :---- | :-------- | :----------------------------- |
-| from_ | bytes32[] | the list of `X`-type elements  |
+| Name  | Type      | Description         |
+| :---- | :-------- | :------------------ |
+| from_ | bytes32[] | the bytes32 array   |
 
 
 Return values:
 
-| Name   | Type      | Description         |
-| :----- | :-------- | :------------------ |
-| array_ | uint256[] | the list of uint256 |
+| Name   | Type      | Description       |
+| :----- | :-------- | :---------------- |
+| array_ | uint256[] | the uint256 array |
 
 ### asUint256Array
 
@@ -46,7 +45,7 @@ function asUint256Array(
 ) internal pure returns (uint256[] memory array_)
 ```
 
-
+The function that casts the address array to the uint256 array
 ### asAddressArray
 
 ```solidity
@@ -55,14 +54,14 @@ function asAddressArray(
 ) internal pure returns (address[] memory array_)
 ```
 
-The function that casts the list of `X`-type elements to the list of addresses
+The function that casts the bytes32 array to the address array
 
 
 Parameters:
 
-| Name  | Type      | Description                    |
-| :---- | :-------- | :----------------------------- |
-| from_ | bytes32[] | the list of `X`-type elements  |
+| Name  | Type      | Description         |
+| :---- | :-------- | :------------------ |
+| from_ | bytes32[] | the bytes32 array   |
 
 
 Return values:
@@ -79,7 +78,7 @@ function asAddressArray(
 ) internal pure returns (address[] memory array_)
 ```
 
-
+The function that casts the uint256 array to the address array
 ### asBytes32Array
 
 ```solidity
@@ -88,21 +87,21 @@ function asBytes32Array(
 ) internal pure returns (bytes32[] memory array_)
 ```
 
-The function that casts the list of `X`-type elements to the list of bytes32
+The function that casts the uint256 array to the bytes32 array
 
 
 Parameters:
 
-| Name  | Type      | Description                    |
-| :---- | :-------- | :----------------------------- |
-| from_ | uint256[] | the list of `X`-type elements  |
+| Name  | Type      | Description         |
+| :---- | :-------- | :------------------ |
+| from_ | uint256[] | the bytes32 array   |
 
 
 Return values:
 
-| Name   | Type      | Description         |
-| :----- | :-------- | :------------------ |
-| array_ | bytes32[] | the list of bytes32 |
+| Name   | Type      | Description           |
+| :----- | :-------- | :-------------------- |
+| array_ | bytes32[] | the list of addresses |
 
 ### asBytes32Array
 
@@ -112,7 +111,7 @@ function asBytes32Array(
 ) internal pure returns (bytes32[] memory array_)
 ```
 
-
+The function that casts the address array to the bytes32 array
 ### asSingletonArray
 
 ```solidity
@@ -121,14 +120,14 @@ function asSingletonArray(
 ) internal pure returns (uint256[] memory array_)
 ```
 
-The function to transform an element into an array
+The function to transform a uint256 element into an array
 
 
 Parameters:
 
-| Name  | Type    | Description  |
-| :---- | :------ | :----------- |
-| from_ | uint256 | the element  |
+| Name  | Type    | Description   |
+| :---- | :------ | :------------ |
+| from_ | uint256 | the element   |
 
 
 Return values:
@@ -145,7 +144,7 @@ function asSingletonArray(
 ) internal pure returns (address[] memory array_)
 ```
 
-
+The function to transform an address element into an array
 ### asSingletonArray
 
 ```solidity
@@ -154,7 +153,7 @@ function asSingletonArray(
 ) internal pure returns (bool[] memory array_)
 ```
 
-
+The function to transform a bool element into an array
 ### asSingletonArray
 
 ```solidity
@@ -163,7 +162,7 @@ function asSingletonArray(
 ) internal pure returns (string[] memory array_)
 ```
 
-
+The function to transform a string element into an array
 ### asSingletonArray
 
 ```solidity
@@ -172,7 +171,7 @@ function asSingletonArray(
 ) internal pure returns (bytes32[] memory array_)
 ```
 
-
+The function to transform a bytes32 element into an array
 ### asDynamic
 
 ```solidity
@@ -181,14 +180,14 @@ function asDynamic(
 ) internal pure returns (uint256[] memory dynamic_)
 ```
 
-The function to convert static array to dynamic
+The function to convert static uint256[1] array to dynamic
 
 
 Parameters:
 
-| Name    | Type       | Description                  |
-| :------ | :--------- | :--------------------------- |
-| static_ | uint256[1] | the static array to convert  |
+| Name    | Type       | Description                   |
+| :------ | :--------- | :---------------------------- |
+| static_ | uint256[1] | the static array to convert   |
 
 
 Return values:
@@ -205,7 +204,7 @@ function asDynamic(
 ) internal pure returns (uint256[] memory dynamic_)
 ```
 
-
+The function to convert static uint256[2] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -214,7 +213,7 @@ function asDynamic(
 ) internal pure returns (uint256[] memory dynamic_)
 ```
 
-
+The function to convert static uint256[3] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -223,7 +222,7 @@ function asDynamic(
 ) internal pure returns (uint256[] memory dynamic_)
 ```
 
-
+The function to convert static uint256[4] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -232,7 +231,7 @@ function asDynamic(
 ) internal pure returns (uint256[] memory dynamic_)
 ```
 
-
+The function to convert static uint256[5] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -241,7 +240,7 @@ function asDynamic(
 ) internal pure returns (address[] memory dynamic_)
 ```
 
-
+The function to convert static address[1] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -250,7 +249,7 @@ function asDynamic(
 ) internal pure returns (address[] memory dynamic_)
 ```
 
-
+The function to convert static address[2] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -259,7 +258,7 @@ function asDynamic(
 ) internal pure returns (address[] memory dynamic_)
 ```
 
-
+The function to convert static address[3] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -268,7 +267,7 @@ function asDynamic(
 ) internal pure returns (address[] memory dynamic_)
 ```
 
-
+The function to convert static address[4] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -277,7 +276,7 @@ function asDynamic(
 ) internal pure returns (address[] memory dynamic_)
 ```
 
-
+The function to convert static address[5] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -286,7 +285,7 @@ function asDynamic(
 ) internal pure returns (bool[] memory dynamic_)
 ```
 
-
+The function to convert static bool[1] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -295,7 +294,7 @@ function asDynamic(
 ) internal pure returns (bool[] memory dynamic_)
 ```
 
-
+The function to convert static bool[2] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -304,7 +303,7 @@ function asDynamic(
 ) internal pure returns (bool[] memory dynamic_)
 ```
 
-
+The function to convert static bool[3] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -313,7 +312,7 @@ function asDynamic(
 ) internal pure returns (bool[] memory dynamic_)
 ```
 
-
+The function to convert static bool[4] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -322,7 +321,7 @@ function asDynamic(
 ) internal pure returns (bool[] memory dynamic_)
 ```
 
-
+The function to convert static bool[5] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -331,7 +330,7 @@ function asDynamic(
 ) internal pure returns (string[] memory dynamic_)
 ```
 
-
+The function to convert static string[1] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -340,7 +339,7 @@ function asDynamic(
 ) internal pure returns (string[] memory dynamic_)
 ```
 
-
+The function to convert static string[2] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -349,7 +348,7 @@ function asDynamic(
 ) internal pure returns (string[] memory dynamic_)
 ```
 
-
+The function to convert static string[3] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -358,7 +357,7 @@ function asDynamic(
 ) internal pure returns (string[] memory dynamic_)
 ```
 
-
+The function to convert static string[4] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -367,7 +366,7 @@ function asDynamic(
 ) internal pure returns (string[] memory dynamic_)
 ```
 
-
+The function to convert static string[5] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -376,7 +375,7 @@ function asDynamic(
 ) internal pure returns (bytes32[] memory dynamic_)
 ```
 
-
+The function to convert static bytes32[1] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -385,7 +384,7 @@ function asDynamic(
 ) internal pure returns (bytes32[] memory dynamic_)
 ```
 
-
+The function to convert static bytes32[2] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -394,7 +393,7 @@ function asDynamic(
 ) internal pure returns (bytes32[] memory dynamic_)
 ```
 
-
+The function to convert static bytes32[3] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -403,7 +402,7 @@ function asDynamic(
 ) internal pure returns (bytes32[] memory dynamic_)
 ```
 
-
+The function to convert static bytes32[4] array to dynamic
 ### asDynamic
 
 ```solidity
@@ -412,3 +411,4 @@ function asDynamic(
 ) internal pure returns (bytes32[] memory dynamic_)
 ```
 
+The function to convert static bytes32[5] array to dynamic
