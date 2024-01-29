@@ -29,7 +29,7 @@ $ npm run coverage
 
 Expected output.
 
-<table><thead><tr><th width="133">File</th><th>% Stmts</th><th>% Branch</th><th>% Funcs</th><th>% Lines</th></tr></thead><tbody><tr><td>All files</td><td>100</td><td>100</td><td>100</td><td>100</td></tr></tbody></table>
+<table><thead><tr><th>File</th><th>% Stmts</th><th>% Branch</th><th>% Funcs</th><th>% Lines</th></tr></thead><tbody><tr><td>All files</td><td>100</td><td>100</td><td>100</td><td>100</td></tr></tbody></table>
 
 Sometimes, reaching 100% coverage can be challenging. For these situations, we recommend creating a contract within the `contracts/mock` folder. While mock contracts themselves are not included in the coverage metrics, they are highly beneficial. These can either inherit from the contract you're testing or provide specific functions to test a library. In tests, you can use these mock contracts to replace the original contract or library.&#x20;
 

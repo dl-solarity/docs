@@ -29,7 +29,7 @@ The `diamondCut` function is essential for managing facets and selectors, allowi
 
 In parallel, the diamond loupe is a group of view functions utilized for accessing the current configuration of facets and selectors. These functions include:
 
-<table><thead><tr><th width="311">Function</th><th>Description</th></tr></thead><tbody><tr><td><code>facets</code></td><td>Provides a list of all facets and their associated function selectors</td></tr><tr><td><code>facetFunctionSelectors</code></td><td>Details the function selectors linked to a specific facet</td></tr><tr><td><code>facetAddresses</code></td><td>Lists all the facets</td></tr><tr><td><code>facetAddress</code></td><td>Returns the address of the facet implementing a given function selector</td></tr></tbody></table>
+<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>facets</code></td><td>Provides a list of all facets and their associated function selectors</td></tr><tr><td><code>facetFunctionSelectors</code></td><td>Details the function selectors linked to a specific facet</td></tr><tr><td><code>facetAddresses</code></td><td>Lists all the facets</td></tr><tr><td><code>facetAddress</code></td><td>Returns the address of the facet implementing a given function selector</td></tr></tbody></table>
 
 #### **3 Storage and Initialization**
 

@@ -15,8 +15,9 @@ The Array Helper library provides a collection of functions related to arrays, i
 
 To use the `ArrayHelper` library, you need to import it.
 
-<pre class="language-solidity" data-full-width="false"><code class="lang-solidity"><strong>import "@solarity/solidity-lib/libs/arrays/ArrayHelper.sol";
-</strong></code></pre>
+```solidity
+import "@solarity/solidity-lib/libs/arrays/ArrayHelper.sol";
+```
 
 And optionally bind it to the type with the `using` statement.
 
