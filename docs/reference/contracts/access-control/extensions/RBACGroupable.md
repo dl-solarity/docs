@@ -1,11 +1,8 @@
 # RBACGroupable
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract RBACGroupable is IRBACGroupable, RBAC
@@ -15,6 +12,14 @@ The Role Based Access Control (RBAC) module
 
 This contract is an extension for the RBAC contract to provide the ability to organize roles
 into groups and assign users to them.
+
+The contract also supports default groups that all users may be in by default.
+
+The RBAC structure becomes the following:
+
+((PERMISSION >- RESOURCE) >- ROLE) >- GROUP
+
+Where ROLE and GROUP are assignable to users
 ## Functions info
 
 ### addUserToGroups (0xfcddfd4a)
@@ -69,10 +74,10 @@ The function to grant roles to the group
 
 Parameters:
 
-| Name          | Type     | Description                  |
-| :------------ | :------- | :--------------------------- |
-| groupTo_      | string   | the group to grant roles to  |
-| rolesToGrant_ | string[] | the list of roles to grant   |
+| Name          | Type     | Description                   |
+| :------------ | :------- | :---------------------------- |
+| groupTo_      | string   | the group to grant roles to   |
+| rolesToGrant_ | string[] | the list of roles to grant    |
 
 ### revokeGroupRoles (0x30cae168)
 
@@ -88,10 +93,10 @@ The function to revoke roles from the group
 
 Parameters:
 
-| Name           | Type     | Description                     |
-| :------------- | :------- | :------------------------------ |
-| groupFrom_     | string   | the group to revoke roles from  |
-| rolesToRevoke_ | string[] | the list of roles to revoke     |
+| Name           | Type     | Description                      |
+| :------------- | :------- | :------------------------------- |
+| groupFrom_     | string   | the group to revoke roles from   |
+| rolesToRevoke_ | string[] | the list of roles to revoke      |
 
 ### toggleDefaultGroup (0xd41de127)
 
@@ -190,11 +195,11 @@ handles not 2 but 3 states: NO PERMISSION, ALLOWED, DISALLOWED
 
 Parameters:
 
-| Name        | Type    | Description                                          |
-| :---------- | :------ | :--------------------------------------------------- |
-| who_        | address | the user                                             |
-| resource_   | string  | the resource the user has to have the permission of  |
-| permission_ | string  | the permission the user has to have                  |
+| Name        | Type    | Description                                           |
+| :---------- | :------ | :---------------------------------------------------- |
+| who_        | address | the user                                              |
+| resource_   | string  | the resource the user has to have the permission of   |
+| permission_ | string  | the permission the user has to have                   |
 
 
 Return values:

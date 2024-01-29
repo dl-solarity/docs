@@ -1,11 +1,8 @@
 # MultiOwnable
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract MultiOwnable is IMultiOwnable, Initializable
@@ -15,7 +12,8 @@ The MultiOwnable module
 
 Contract module which provides a basic access control mechanism, where there is a list of
 owner addresses those can be granted exclusive access to specific functions.
-All owners are equal in their access, they can add new owners, also remove each other and themself.
+
+All owners are equal in their access, they can add new owners, also remove each other and themselves.
 
 By default, the owner account will be the one that deploys the contract.
 
@@ -35,82 +33,76 @@ modifier onlyOwner()
 ### addOwners (0x6c46a2c5)
 
 ```solidity
-function addOwners(
-    address[] memory newOwners_
-) public virtual override onlyOwner
+function addOwners(address[] memory newOwners_) public override onlyOwner
 ```
 
-Owner can add new owners to the contract's owners list.
+The function to add equally rightful owners to the contract
 
 
 Parameters:
 
-| Name       | Type      | Description                               |
-| :--------- | :-------- | :---------------------------------------- |
-| newOwners_ | address[] | the array of addresses to add to _owners. |
+| Name       | Type      | Description            |
+| :--------- | :-------- | :--------------------- |
+| newOwners_ | address[] | the owners to be added |
 
 ### removeOwners (0xa9a5e3af)
 
 ```solidity
-function removeOwners(
-    address[] memory oldOwners_
-) public virtual override onlyOwner
+function removeOwners(address[] memory oldOwners_) public override onlyOwner
 ```
 
-Owner can remove the array of owners from the contract's owners list.
+The function to remove owners from the contract
 
 
 Parameters:
 
-| Name       | Type      | Description                                   |
-| :--------- | :-------- | :-------------------------------------------- |
-| oldOwners_ | address[] | the array of addresses to remove from _owners |
+| Name       | Type      | Description                                                 |
+| :--------- | :-------- | :---------------------------------------------------------- |
+| oldOwners_ | address[] | the owners to be removed. Note that one can remove themself |
 
 ### renounceOwnership (0x715018a6)
 
 ```solidity
-function renounceOwnership() public virtual override onlyOwner
+function renounceOwnership() public override onlyOwner
 ```
 
-Allows to remove yourself from list of owners.
-     
+The function to remove yourself from the owners list
+
 Note: renouncing ownership may leave the contract without an owner,
 thereby disabling any functionality that is only available to the owner.
 ### getOwners (0xa0e67e2b)
 
 ```solidity
-function getOwners() public view virtual override returns (address[] memory)
+function getOwners() public view override returns (address[] memory)
 ```
 
-Returns the addresses of the current owners.
-
-Returns a copy of the whole Set of owners.
+The function to get the list of current owners. Be careful, O(n) complexity
 
 
 Return values:
 
-| Name | Type      | Description             |
-| :--- | :-------- | :---------------------- |
-| [0]  | address[] | the array of addresses. |
+| Name | Type      | Description                |
+| :--- | :-------- | :------------------------- |
+| [0]  | address[] | the list of current owners |
 
 ### isOwner (0x2f54bf6e)
 
 ```solidity
-function isOwner(address address_) public view virtual override returns (bool)
+function isOwner(address address_) public view override returns (bool)
 ```
 
-Returns true if address is in the contract's owners list.
+The function to check the ownership of a user
 
 
 Parameters:
 
-| Name     | Type    | Description            |
-| :------- | :------ | :--------------------- |
-| address_ | address | the address to check.  |
+| Name     | Type    | Description         |
+| :------- | :------ | :------------------ |
+| address_ | address | the user to check   |
 
 
 Return values:
 
-| Name | Type | Description                      |
-| :--- | :--- | :------------------------------- |
-| [0]  | bool | whether the _address in _owners. |
+| Name | Type | Description                                |
+| :--- | :--- | :----------------------------------------- |
+| [0]  | bool | true if address_ is owner, false otherwise |

@@ -1,11 +1,8 @@
 # ArrayHelper
 
-## Library Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 library ArrayHelper
@@ -29,10 +26,10 @@ greater than or equal to the `element_`. The time complexity is O(log n)
 
 Parameters:
 
-| Name     | Type      | Description             |
-| :------- | :-------- | :---------------------- |
-| array    | uint256[] | the array to search in  |
-| element_ | uint256   | the element             |
+| Name     | Type      | Description              |
+| :------- | :-------- | :----------------------- |
+| array    | uint256[] | the array to search in   |
+| element_ | uint256   | the element              |
 
 
 Return values:
@@ -56,10 +53,10 @@ greater than the `element_`. The time complexity is O(log n)
 
 Parameters:
 
-| Name     | Type      | Description             |
-| :------- | :-------- | :---------------------- |
-| array    | uint256[] | the array to search in  |
-| element_ | uint256   | the element             |
+| Name     | Type      | Description              |
+| :------- | :-------- | :----------------------- |
+| array    | uint256[] | the array to search in   |
+| element_ | uint256   | the element              |
 
 
 Return values:
@@ -84,10 +81,10 @@ The function that calculates the sum of all array elements from `beginIndex_` to
 
 Parameters:
 
-| Name        | Type    | Description                           |
-| :---------- | :------ | :------------------------------------ |
-| beginIndex_ | uint256 | the index of the first range element  |
-| endIndex_   | uint256 | the index of the last range element   |
+| Name        | Type    | Description                            |
+| :---------- | :------ | :------------------------------------- |
+| beginIndex_ | uint256 | the index of the first range element   |
+| endIndex_   | uint256 | the index of the last range element    |
 
 
 Return values:
@@ -109,9 +106,9 @@ The function to compute the prefix sum array
 
 Parameters:
 
-| Name | Type      | Description                                               |
-| :--- | :-------- | :-------------------------------------------------------- |
-| arr_ | uint256[] | the initial array to be turned into the prefix sum array  |
+| Name | Type      | Description                                                |
+| :--- | :-------- | :--------------------------------------------------------- |
+| arr_ | uint256[] | the initial array to be turned into the prefix sum array   |
 
 
 Return values:
@@ -128,14 +125,14 @@ function reverse(
 ) internal pure returns (uint256[] memory reversed_)
 ```
 
-The function to reverse an array
+The function to reverse a uint256 array
 
 
 Parameters:
 
-| Name | Type      | Description           |
-| :--- | :-------- | :-------------------- |
-| arr_ | uint256[] | the array to reverse  |
+| Name | Type      | Description            |
+| :--- | :-------- | :--------------------- |
+| arr_ | uint256[] | the array to reverse   |
 
 
 Return values:
@@ -152,7 +149,7 @@ function reverse(
 ) internal pure returns (address[] memory reversed_)
 ```
 
-
+The function to reverse an address array
 ### reverse
 
 ```solidity
@@ -161,7 +158,7 @@ function reverse(
 ) internal pure returns (string[] memory reversed_)
 ```
 
-
+The function to reverse a string array
 ### reverse
 
 ```solidity
@@ -170,7 +167,7 @@ function reverse(
 ) internal pure returns (bytes32[] memory reversed_)
 ```
 
-
+The function to reverse a bytes32 array
 ### insert
 
 ```solidity
@@ -181,16 +178,16 @@ function insert(
 ) internal pure returns (uint256)
 ```
 
-The function to insert an array into the other array
+The function to insert a uint256 array into the other array
 
 
 Parameters:
 
-| Name   | Type      | Description                   |
-| :----- | :-------- | :---------------------------- |
-| to_    | uint256[] | the array to insert into      |
-| index_ | uint256   | the insertion starting index  |
-| what_  | uint256[] | the array to be inserted      |
+| Name   | Type      | Description                    |
+| :----- | :-------- | :----------------------------- |
+| to_    | uint256[] | the array to insert into       |
+| index_ | uint256   | the insertion starting index   |
+| what_  | uint256[] | the array to be inserted       |
 
 
 Return values:
@@ -209,7 +206,7 @@ function insert(
 ) internal pure returns (uint256)
 ```
 
-
+The function to insert an address array into the other array
 ### insert
 
 ```solidity
@@ -220,7 +217,7 @@ function insert(
 ) internal pure returns (uint256)
 ```
 
-
+The function to insert a string array into the other array
 ### insert
 
 ```solidity
@@ -231,7 +228,7 @@ function insert(
 ) internal pure returns (uint256)
 ```
 
-
+The function to insert a bytes32 array into the other array
 ### crop
 
 ```solidity
@@ -241,15 +238,15 @@ function crop(
 ) internal pure returns (uint256[] memory)
 ```
 
-The function that free memory that was allocated for array
+The function to crop a uint256 array
 
 
 Parameters:
 
-| Name       | Type      | Description                  |
-| :--------- | :-------- | :--------------------------- |
-| array_     | uint256[] | the array to crop            |
-| newLength_ | uint256   | the new length of the array  |
+| Name       | Type      | Description                                             |
+| :--------- | :-------- | :------------------------------------------------------ |
+| array_     | uint256[] | the array to crop                                       |
+| newLength_ | uint256   | the new length of the array (has to be less or equal)   |
 
 
 Return values:
@@ -267,7 +264,7 @@ function crop(
 ) internal pure returns (address[] memory)
 ```
 
-
+The function to crop an address array
 ### crop
 
 ```solidity
@@ -277,7 +274,7 @@ function crop(
 ) internal pure returns (bool[] memory)
 ```
 
-
+The function to crop a bool array
 ### crop
 
 ```solidity
@@ -287,7 +284,7 @@ function crop(
 ) internal pure returns (string[] memory)
 ```
 
-
+The function to crop a string array
 ### crop
 
 ```solidity
@@ -297,3 +294,4 @@ function crop(
 ) internal pure returns (bytes32[] memory)
 ```
 
+The function to crop a bytes32 array

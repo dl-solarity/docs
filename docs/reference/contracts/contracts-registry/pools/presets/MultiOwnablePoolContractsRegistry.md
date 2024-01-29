@@ -1,20 +1,20 @@
-# OwnablePoolContractsRegistry
+# MultiOwnablePoolContractsRegistry
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract OwnablePoolContractsRegistry is AbstractPoolContractsRegistry, OwnableUpgradeable
+abstract contract MultiOwnablePoolContractsRegistry is AbstractPoolContractsRegistry, MultiOwnable
 ```
 
-The Ownable preset of PoolContractsRegistry
+The MultiOwnable preset of PoolContractsRegistry
 ## Functions info
 
-### __OwnablePoolContractsRegistry_init (0x3853b68a)
+### __MultiOwnablePoolContractsRegistry_init (0xa148c7ff)
 
 ```solidity
-function __OwnablePoolContractsRegistry_init() public initializer
+function __MultiOwnablePoolContractsRegistry_init() public initializer
 ```
 
 The initialization function

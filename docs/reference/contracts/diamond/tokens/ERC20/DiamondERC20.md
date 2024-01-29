@@ -1,15 +1,14 @@
 # DiamondERC20
 
-## Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 contract DiamondERC20 is DiamondERC20Storage
 ```
+
+The Diamond standard module
 
 This is modified version of OpenZeppelin's ERC20 contract to be used as a Storage contract
 by the Diamond Standard.
@@ -67,23 +66,3 @@ allowance.
 Returns a boolean value indicating whether the operation succeeded.
 
 Emits a {Transfer} event.
-### increaseAllowance (0x39509351)
-
-```solidity
-function increaseAllowance(
-    address spender_,
-    uint256 addedValue_
-) public virtual returns (bool)
-```
-
-Atomically increases the allowance granted to `spender` by the caller.
-### decreaseAllowance (0xa457c2d7)
-
-```solidity
-function decreaseAllowance(
-    address spender_,
-    uint256 subtractedValue_
-) public virtual returns (bool)
-```
-
-Atomically decreases the allowance granted to `spender` by the caller.

@@ -1,15 +1,14 @@
 # OwnableDiamond
 
-## Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 contract OwnableDiamond is Diamond, OwnableDiamondStorage
 ```
+
+The Diamond standard module
 
 The Ownable preset of Diamond proxy
 ## Functions info
@@ -27,34 +26,47 @@ constructor()
 function transferOwnership(address newOwner_) public onlyOwner
 ```
 
-
-### addFacet (0x5547dad6)
-
-```solidity
-function addFacet(
-    address facet_,
-    bytes4[] memory selectors_
-) public virtual onlyOwner
-```
+The function to transfer the Diamond ownerhip
 
 
-### removeFacet (0xcf380c86)
+Parameters:
+
+| Name      | Type    | Description                  |
+| :-------- | :------ | :--------------------------- |
+| newOwner_ | address | the new owner of the Diamond |
+
+### diamondCut (0xe57e69c6)
 
 ```solidity
-function removeFacet(
-    address facet_,
-    bytes4[] memory selectors_
-) public virtual onlyOwner
+function diamondCut(Diamond.Facet[] memory facets_) public onlyOwner
 ```
 
+The function to manipulate the Diamond contract, as defined in [EIP-2535](https://eips.ethereum.org/EIPS/eip-2535)
 
-### updateFacet (0x218bc10a)
+
+Parameters:
+
+| Name    | Type                   | Description                                             |
+| :------ | :--------------------- | :------------------------------------------------------ |
+| facets_ | struct Diamond.Facet[] | the array of actions to be executed against the Diamond |
+
+### diamondCut (0x1f931c1c)
 
 ```solidity
-function updateFacet(
-    address facet_,
-    bytes4[] memory fromSelectors_,
-    bytes4[] memory toSelectors_
-) public virtual onlyOwner
+function diamondCut(
+    Diamond.Facet[] memory facets_,
+    address init_,
+    bytes memory initData_
+) public onlyOwner
 ```
 
+The function to manipulate the Diamond contract, as defined in [EIP-2535](https://eips.ethereum.org/EIPS/eip-2535)
+
+
+Parameters:
+
+| Name      | Type                   | Description                                                      |
+| :-------- | :--------------------- | :--------------------------------------------------------------- |
+| facets_   | struct Diamond.Facet[] | the array of actions to be executed against the Diamond          |
+| init_     | address                | the address of the init contract to be called via delegatecall   |
+| initData_ | bytes                  | the data the init address will be called with                    |

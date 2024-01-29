@@ -1,11 +1,8 @@
 # AbstractPoolContractsRegistry
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract AbstractPoolContractsRegistry is Initializable, AbstractDependant
@@ -14,15 +11,14 @@ abstract contract AbstractPoolContractsRegistry is Initializable, AbstractDepend
 The PoolContractsRegistry module
 
 This contract can be used as a pool registry that keeps track of deployed pools by the system.
-One can integrate factories to deploy and register pools or add them manually
+One can integrate factories to deploy and register pools or add them manually otherwise.
 
-The registry uses BeaconProxy pattern to provide upgradeability and Dependant pattern to provide dependency
-injection mechanism into the pools. This module should be used together with the ContractsRegistry module.
+The registry uses BeaconProxy pattern to provide upgradeability and EIP-6224 pattern to provide dependency
+injection mechanism into the pools.
 
-The users of this module have to override `_onlyPoolFactory()` method and revert in case a wrong msg.sender is
-trying to add pools into the registry.
-
-The contract is meant to be used behind a proxy itself.
+The PoolContractsRegistry contract operates by managing ProxyBeacons that point to pools' implementations.
+The factory contract would deploy BeaconProxies that point to these ProxyBeacons, allowing simple and cheap
+upgradeability mechanics.
 ## Functions info
 
 ### setDependencies (0x69130451)
@@ -43,6 +39,25 @@ Parameters:
 | :----------------- | :------ | :---------------------- |
 | contractsRegistry_ | address | the dependency registry |
 
+### addProxyPool (0x09ae152b)
+
+```solidity
+function addProxyPool(string memory name_, address poolAddress_) public virtual
+```
+
+The function to add new pools into the registry. Gets called from PoolFactory
+
+Proper only factory access control must be added in descending contracts + `_addProxyPool()` should be called inside.
+
+
+
+Parameters:
+
+| Name         | Type    | Description                   |
+| :----------- | :------ | :---------------------------- |
+| name_        | string  | the pool's associated name    |
+| poolAddress_ | address | the proxy address of the pool |
+
 ### getImplementation (0x6b683896)
 
 ```solidity
@@ -54,9 +69,9 @@ The function to get implementation of the specific pools
 
 Parameters:
 
-| Name  | Type   | Description            |
-| :---- | :----- | :--------------------- |
-| name_ | string | the name of the pools  |
+| Name  | Type   | Description             |
+| :---- | :----- | :---------------------- |
+| name_ | string | the name of the pools   |
 
 
 Return values:
@@ -76,9 +91,9 @@ The function to get the BeaconProxy of the specific pools (mostly needed in the 
 
 Parameters:
 
-| Name  | Type   | Description            |
-| :---- | :----- | :--------------------- |
-| name_ | string | the name of the pools  |
+| Name  | Type   | Description             |
+| :---- | :----- | :---------------------- |
+| name_ | string | the name of the pools   |
 
 
 Return values:
@@ -98,10 +113,10 @@ The function to check if the address is a pool
 
 Parameters:
 
-| Name  | Type    | Description                |
-| :---- | :------ | :------------------------- |
-| name_ | string  | the associated pools name  |
-| pool_ | address | the address to check       |
+| Name  | Type    | Description                 |
+| :---- | :------ | :-------------------------- |
+| name_ | string  | the associated pools name   |
+| pool_ | address | the address to check        |
 
 
 Return values:
@@ -121,9 +136,9 @@ The function to count pools by specified name
 
 Parameters:
 
-| Name  | Type   | Description                |
-| :---- | :----- | :------------------------- |
-| name_ | string | the associated pools name  |
+| Name  | Type   | Description                 |
+| :---- | :----- | :-------------------------- |
+| name_ | string | the associated pools name   |
 
 
 Return values:
@@ -147,11 +162,11 @@ The paginated function to list pools by their name (call `countPools()` to accou
 
 Parameters:
 
-| Name    | Type    | Description                            |
-| :------ | :------ | :------------------------------------- |
-| name_   | string  | the associated pools name              |
-| offset_ | uint256 | the starting index in the pools array  |
-| limit_  | uint256 | the number of pools                    |
+| Name    | Type    | Description                             |
+| :------ | :------ | :-------------------------------------- |
+| name_   | string  | the associated pools name               |
+| offset_ | uint256 | the starting index in the pools array   |
+| limit_  | uint256 | the number of pools                     |
 
 
 Return values:

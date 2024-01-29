@@ -1,11 +1,8 @@
 # MerkleWhitelisted
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract MerkleWhitelisted
@@ -55,10 +52,10 @@ The function to check if the leaf belongs to the Merkle tree
 
 Parameters:
 
-| Name         | Type      | Description                                     |
-| :----------- | :-------- | :---------------------------------------------- |
-| leaf_        | bytes32   | the leaf to be checked                          |
-| merkleProof_ | bytes32[] | the path from the leaf to the Merkle tree root  |
+| Name         | Type      | Description                                      |
+| :----------- | :-------- | :----------------------------------------------- |
+| leaf_        | bytes32   | the leaf to be checked                           |
+| merkleProof_ | bytes32[] | the path from the leaf to the Merkle tree root   |
 
 
 Return values:
@@ -81,10 +78,10 @@ The function to check if the user belongs to the Merkle tree
 
 Parameters:
 
-| Name         | Type      | Description                                     |
-| :----------- | :-------- | :---------------------------------------------- |
-| user_        | address   | the user to be checked                          |
-| merkleProof_ | bytes32[] | the path from the user to the Merkle tree root  |
+| Name         | Type      | Description                                      |
+| :----------- | :-------- | :----------------------------------------------- |
+| user_        | address   | the user to be checked                           |
+| merkleProof_ | bytes32[] | the path from the user to the Merkle tree root   |
 
 
 Return values:

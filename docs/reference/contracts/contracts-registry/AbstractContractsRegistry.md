@@ -1,11 +1,8 @@
 # AbstractContractsRegistry
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract AbstractContractsRegistry is Initializable
@@ -13,7 +10,9 @@ abstract contract AbstractContractsRegistry is Initializable
 
 The ContractsRegistry module
 
-The purpose of this module is to provide an organized registry of the project's smartcontracts
+For more information please refer to [EIP-6224](https://eips.ethereum.org/EIPS/eip-6224).
+
+The purpose of this module is to provide an organized registry of the project's smart contracts
 together with the upgradeability and dependency injection mechanisms.
 
 The ContractsRegistry should be used as the highest level smart contract that is aware of any other
@@ -27,16 +26,16 @@ The ContractsRegistry will help with the following use cases:
 2) Making the system contracts-interchangeable
 3) Simplifying the contracts management and deployment
 
-The ContractsRegistry acts as a Transparent proxy deployer. One can add proxy-compatible implementations to the registry
-and deploy proxies to them. Then these proxies can be upgraded easily using the ContractsRegistry.
+The ContractsRegistry acts as a TransparentProxy deployer. One can add proxy-compatible implementations to the registry
+and deploy proxies to them. Then these proxies can be upgraded easily using the provided interface.
 The ContractsRegistry itself can be deployed behind a proxy as well.
 
 The dependency injection system may come in handy when one wants to substitute a contract `A` with a contract `B`
 (for example contract `A` got exploited) without a necessity of redeploying the whole system. One would just add
 a new `B` contract to a ContractsRegistry and re-inject all the required dependencies. Dependency injection mechanism
-also works with factories.
+is also meant to be compatible with factories.
 
-The management is simplified because all of the contracts are now located in a single place.
+Users may also fetch all the contracts present in the system as they are now located in a single place.
 ## Events info
 
 ### ContractAdded
@@ -80,9 +79,9 @@ The function that returns an associated contract with the name
 
 Parameters:
 
-| Name  | Type   | Description               |
-| :---- | :----- | :------------------------ |
-| name_ | string | the name of the contract  |
+| Name  | Type   | Description                |
+| :---- | :----- | :------------------------- |
+| name_ | string | the name of the contract   |
 
 
 Return values:
@@ -102,9 +101,9 @@ The function that checks if a contract with a given name has been added
 
 Parameters:
 
-| Name  | Type   | Description               |
-| :---- | :----- | :------------------------ |
-| name_ | string | the name of the contract  |
+| Name  | Type   | Description                |
+| :---- | :----- | :------------------------- |
+| name_ | string | the name of the contract   |
 
 
 Return values:
@@ -139,9 +138,9 @@ The function that returns an implementation of the given proxy contract
 
 Parameters:
 
-| Name  | Type   | Description               |
-| :---- | :----- | :------------------------ |
-| name_ | string | the name of the contract  |
+| Name  | Type   | Description                |
+| :---- | :----- | :------------------------- |
+| name_ | string | the name of the contract   |
 
 
 Return values:

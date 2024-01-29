@@ -1,15 +1,14 @@
 # StringSet
 
-## Library Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 library StringSet
 ```
+
+The string extension to Openzeppelin sets
 
 ## Usage example:
 
@@ -84,10 +83,10 @@ The function returns true if value in the set
 
 Parameters:
 
-| Name   | Type                 | Description                 |
-| :----- | :------------------- | :-------------------------- |
-| set    | struct StringSet.Set | the set object              |
-| value_ | string               | the value to search in set  |
+| Name   | Type                 | Description                  |
+| :----- | :------------------- | :--------------------------- |
+| set    | struct StringSet.Set | the set object               |
+| value_ | string               | the value to search in set   |
 
 
 Return values:
@@ -107,9 +106,9 @@ The function returns length of set
 
 Parameters:
 
-| Name | Type                 | Description     |
-| :--- | :------------------- | :-------------- |
-| set  | struct StringSet.Set | the set object  |
+| Name | Type                 | Description      |
+| :--- | :------------------- | :--------------- |
+| set  | struct StringSet.Set | the set object   |
 
 
 Return values:
@@ -132,10 +131,10 @@ The function returns value from set by index
 
 Parameters:
 
-| Name   | Type                 | Description               |
-| :----- | :------------------- | :------------------------ |
-| set    | struct StringSet.Set | the set object            |
-| index_ | uint256              | the index of slot in set  |
+| Name   | Type                 | Description                |
+| :----- | :------------------- | :------------------------- |
+| set    | struct StringSet.Set | the set object             |
+| index_ | uint256              | the index of slot in set   |
 
 
 Return values:
@@ -157,9 +156,9 @@ The function that returns values the set stores, can be very expensive to call
 
 Parameters:
 
-| Name | Type                 | Description     |
-| :--- | :------------------- | :-------------- |
-| set  | struct StringSet.Set | the set object  |
+| Name | Type                 | Description      |
+| :--- | :------------------- | :--------------- |
+| set  | struct StringSet.Set | the set object   |
 
 
 Return values:

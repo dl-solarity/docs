@@ -1,11 +1,8 @@
 # PriorityQueue
 
-## Library Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 library PriorityQueue
@@ -43,7 +40,7 @@ struct UintQueue {
 }
 ```
 
-
+UintQueue       *
 ### Bytes32Queue
 
 ```solidity
@@ -52,7 +49,7 @@ struct Bytes32Queue {
 }
 ```
 
-
+Bytes32Queue     *
 ### AddressQueue
 
 ```solidity
@@ -61,7 +58,7 @@ struct AddressQueue {
 }
 ```
 
-
+AddressQueue     *
 ### Queue
 
 ```solidity
@@ -71,7 +68,7 @@ struct Queue {
 }
 ```
 
-
+Internal Queue    *
 ## Functions info
 
 ### add
@@ -84,7 +81,7 @@ function add(
 ) internal
 ```
 
-The function to add an element to the queue. O(log(n)) complex
+The function to add an element to the uint256 queue. O(log(n)) complex
 
 
 Parameters:
@@ -246,14 +243,14 @@ function add(
 ) internal
 ```
 
-
+The function to add an element to the bytes32 queue. O(log(n)) complex
 ### removeTop
 
 ```solidity
 function removeTop(PriorityQueue.Bytes32Queue storage queue) internal
 ```
 
-
+The function to remove the element with the highest priority. O(log(n)) complex
 ### topValue
 
 ```solidity
@@ -262,7 +259,7 @@ function topValue(
 ) internal view returns (bytes32)
 ```
 
-
+The function to read the value of the element with the highest priority. O(1) complex
 ### top
 
 ```solidity
@@ -271,7 +268,7 @@ function top(
 ) internal view returns (bytes32, uint256)
 ```
 
-
+The function to read the element with the highest priority. O(1) complex
 ### length
 
 ```solidity
@@ -280,7 +277,7 @@ function length(
 ) internal view returns (uint256)
 ```
 
-
+The function to read the size of the queue. O(1) complex
 ### values
 
 ```solidity
@@ -289,7 +286,8 @@ function values(
 ) internal view returns (bytes32[] memory values_)
 ```
 
-
+The function to get the values stored in the queue. O(n) complex
+It is very expensive to call this function as it reads all the queue elements. Use cautiously
 ### elements
 
 ```solidity
@@ -301,7 +299,8 @@ function elements(
     returns (bytes32[] memory values_, uint256[] memory priorities_)
 ```
 
-
+The function to get the values and priorities stored in the queue. O(n) complex
+It is very expensive to call this function as it reads all the queue elements. Use cautiously
 ### add
 
 ```solidity
@@ -312,14 +311,14 @@ function add(
 ) internal
 ```
 
-
+The function to add an element to the address queue. O(log(n)) complex
 ### removeTop
 
 ```solidity
 function removeTop(PriorityQueue.AddressQueue storage queue) internal
 ```
 
-
+The function to remove the element with the highest priority. O(log(n)) complex
 ### topValue
 
 ```solidity
@@ -328,7 +327,7 @@ function topValue(
 ) internal view returns (address)
 ```
 
-
+The function to read the value of the element with the highest priority. O(1) complex
 ### top
 
 ```solidity
@@ -337,7 +336,7 @@ function top(
 ) internal view returns (address, uint256)
 ```
 
-
+The function to read the element with the highest priority. O(1) complex
 ### length
 
 ```solidity
@@ -346,7 +345,7 @@ function length(
 ) internal view returns (uint256)
 ```
 
-
+The function to read the size of the queue. O(1) complex
 ### values
 
 ```solidity
@@ -355,7 +354,8 @@ function values(
 ) internal view returns (address[] memory values_)
 ```
 
-
+The function to get the values stored in the queue. O(n) complex
+It is very expensive to call this function as it reads all the queue elements. Use cautiously
 ### elements
 
 ```solidity
@@ -367,3 +367,5 @@ function elements(
     returns (address[] memory values_, uint256[] memory priorities_)
 ```
 
+The function to get the values and priorities stored in the queue. O(n) complex
+It is very expensive to call this function as it reads all the queue elements. Use cautiously

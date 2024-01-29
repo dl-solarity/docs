@@ -1,11 +1,8 @@
 # DiamondStorage
 
-## Abstract Contract Description
+## Overview
 
-
-License: MIT
-
-## 
+#### License: MIT
 
 ```solidity
 abstract contract DiamondStorage
@@ -26,6 +23,16 @@ struct DStorage {
 }
 ```
 
+The storage of the Diamond proxy
+### FacetInfo
+
+```solidity
+struct FacetInfo {
+	address facetAddress;
+	bytes4[] functionSelectors;
+}
+```
+
 
 ## Constants info
 
@@ -38,10 +45,52 @@ bytes32 constant DIAMOND_STORAGE_SLOT = keccak256("diamond.standard.diamond.stor
 The struct slot where the storage is
 ## Functions info
 
-### getFacets (0x662ea47d)
+### facets (0x7a0ed627)
 
 ```solidity
-function getFacets() public view returns (address[] memory facets_)
+function facets()
+    public
+    view
+    returns (DiamondStorage.FacetInfo[] memory facets_)
+```
+
+The function to get all the facets and their selectors
+
+
+Return values:
+
+| Name    | Type                              | Description            |
+| :------ | :-------------------------------- | :--------------------- |
+| facets_ | struct DiamondStorage.FacetInfo[] | the array of FacetInfo |
+
+### facetFunctionSelectors (0xadfca15e)
+
+```solidity
+function facetFunctionSelectors(
+    address facet_
+) public view returns (bytes4[] memory selectors_)
+```
+
+The function to get all the selectors assigned to the facet
+
+
+Parameters:
+
+| Name   | Type    | Description                              |
+| :----- | :------ | :--------------------------------------- |
+| facet_ | address | the facet to get assigned selectors of   |
+
+
+Return values:
+
+| Name       | Type     | Description                     |
+| :--------- | :------- | :------------------------------ |
+| selectors_ | bytes4[] | the array of assigned selectors |
+
+### facetAddresses (0x52ef6b2c)
+
+```solidity
+function facetAddresses() public view returns (address[] memory facets_)
 ```
 
 The function to get all the facets of this diamond
@@ -53,36 +102,10 @@ Return values:
 | :------ | :-------- | :----------------------------- |
 | facets_ | address[] | the array of facets' addresses |
 
-### getFacetSelectors (0x8ea0b248)
+### facetAddress (0xcdffacc6)
 
 ```solidity
-function getFacetSelectors(
-    address facet_
-) public view returns (bytes4[] memory selectors_)
-```
-
-The function to get all the selectors assigned to the facet
-
-
-Parameters:
-
-| Name   | Type    | Description                             |
-| :----- | :------ | :-------------------------------------- |
-| facet_ | address | the facet to get assigned selectors of  |
-
-
-Return values:
-
-| Name       | Type     | Description                     |
-| :--------- | :------- | :------------------------------ |
-| selectors_ | bytes4[] | the array of assigned selectors |
-
-### getFacetBySelector (0xfe00955e)
-
-```solidity
-function getFacetBySelector(
-    bytes4 selector_
-) public view returns (address facet_)
+function facetAddress(bytes4 selector_) public view returns (address facet_)
 ```
 
 The function to get associated facet by the selector
@@ -90,9 +113,9 @@ The function to get associated facet by the selector
 
 Parameters:
 
-| Name      | Type   | Description   |
-| :-------- | :----- | :------------ |
-| selector_ | bytes4 | the selector  |
+| Name      | Type   | Description    |
+| :-------- | :----- | :------------- |
+| selector_ | bytes4 | the selector   |
 
 
 Return values:

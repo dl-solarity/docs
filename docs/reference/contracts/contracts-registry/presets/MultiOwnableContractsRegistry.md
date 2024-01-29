@@ -1,20 +1,20 @@
-# OwnableContractsRegistry
+# MultiOwnableContractsRegistry
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-contract OwnableContractsRegistry is AbstractContractsRegistry, OwnableUpgradeable
+contract MultiOwnableContractsRegistry is AbstractContractsRegistry, MultiOwnable
 ```
 
-The Ownable preset of ContractsRegistry
+The MultiOwnable preset of ContractsRegistry
 ## Functions info
 
-### __OwnableContractsRegistry_init (0x1bae7a65)
+### __MultiOwnableContractsRegistry_init (0x62fe8259)
 
 ```solidity
-function __OwnableContractsRegistry_init() public initializer
+function __MultiOwnableContractsRegistry_init() public initializer
 ```
 
 The initialization function
