@@ -43,13 +43,11 @@ Logarithmic.
 
 #### Example
 
-{% code fullWidth="false" %}
 ```solidity
 uint256[] public arr = [1, 2, 2, 3];
 
 arr.lowerBound(2); // 1
 ```
-{% endcode %}
 
 ### upperBound
 

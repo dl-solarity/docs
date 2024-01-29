@@ -119,13 +119,11 @@ bytes32[] memory bytesArr_ = intArr_.asBytes32Array(); // [bytes32(0), bytes32(1
 
 ### asSingletonArray
 
-{% code overflow="wrap" fullWidth="false" %}
 ```solidity
 function asSingletonArray(
     uint256 from_
 ) internal pure returns (uint256[] memory array_);
 ```
-{% endcode %}
 
 ```solidity
 function asSingletonArray(
