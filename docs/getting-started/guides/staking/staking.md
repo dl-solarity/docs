@@ -8,15 +8,13 @@ The Staking module is an abstract solution that allows users to stake tokens and
 
 The module holds two primary contracts: the `AbstractValueDistributor` and the `AbstractStaking`. The first one handles the distribution calculations according to the algorithm that ensures the distribution is proportional to the shares held by each user and takes into account changes in the cumulative sum over time. The formula being used is:
 
-$$
-r(u, k, n) = S * (\sum_{i=0}^{n-1} \frac{R}{Ti} - \sum_{i=0}^{k-1} \frac{R}{Ti})
-$$
+<img src={require("/static/img/docs/staking.png").default} alt=""/>
 
-where\
-&#x20;   _r(u, k, n)_ = rewards earned by user _u_ from _k_ to _n_ seconds\
-&#x20;   _S_ = amount staked by user _u_ for time _k_ to _n - 1_\
-&#x20;   _Ti_ = total staked at time _i_ (assume _Ti_ > 0)\
-&#x20;   _R_ = reward rate per second (total rewards / duration)
+where
+- _r(u, k, n)_ = rewards earned by user _u_ from _k_ to _n_ seconds
+- _S_ = amount staked by user _u_ for time _k_ to _n - 1_
+- _Ti_ = total staked at time _i_ (assume _Ti_ > 0)
+- _R_ = reward rate per second (total rewards / duration)
 
 #### 1 Abstract Value Distributor contract
 
@@ -138,10 +136,10 @@ staking_.claim(1 wei);
 staking_.claim(0);
 
 // Claims all the earned rewards
-staking_.claim(staking.getRewardsEarned());
+staking.claim(staking.getOwedValue(0x..));
 
 // Reverts with "ValueDistributor: insufficient amount"
-staking_.claim(staking.getRewardsEarned() + 1);
+staking.claim(staking.getOwedValue(0x..) + 1);
 
 // Unstakes all the user's staked tokens 
 // Claims all the rewards earned by user
