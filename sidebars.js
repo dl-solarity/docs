@@ -138,7 +138,7 @@ const sidebars = {
     },
   ],
   docReference: [
-    "getting-started/Overview",
+    "reference/Overview",
     ...categories()
   ],
 };
