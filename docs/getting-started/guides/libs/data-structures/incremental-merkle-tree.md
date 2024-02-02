@@ -17,7 +17,7 @@ In the example below, the tree is nearly full, utilizing all `branches`. Initial
 
 The next attempt to add a new element to the tree will result in tree growth. As we complete a tree with four elements, it will attempt to add the element at index 3 to the branches array. If the array size is insufficient, the element will simply be pushed there.
 
-in general, to retrieve the Merkle Tree Root, we need to iterate over each level of the tree. The `leavesCount` field determines which pair of elements should be hashed to obtain the parent node hash. The algorithm is as follows:
+In general, to retrieve the Merkle Tree Root, we need to iterate over each level of the tree. The `leavesCount` field determines which pair of elements should be hashed to obtain the parent node hash. The algorithm is as follows:
 
 ```python
 root: int = zeroHashes[0]
