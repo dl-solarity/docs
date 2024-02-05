@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - 'master'
+      - 'add-env'
 
 jobs:
   converge:
