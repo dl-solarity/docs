@@ -6,7 +6,7 @@ The Verifier Helper library is designed to simplify working with auto-generated 
 
 ## Implementation
 
-Verifier contracts have a function `verifyProof(uint256[2] a_, uint256[2][2][2] b_, uint256[2] c_, uint256[<number-of-public-inputs>] inputs_)` where the `inputs_` is a static array with a length that depends on the circom circuit for which the verifier contract was generated. If the developer needs to develop one contract that will interact with **verifiers** for different circom circuits, i.e. with different lengths of `inputs_` arrays in the `verifyProof` function, then it will be necessary to create many interfaces, which will clearly complicate the task. The `VerifierHelper` library will help to solve this problem.
+Verifier contracts have a function `verifyProof(uint256[2] a_, uint256[2][2] b_, uint256[2] c_, uint256[<number-of-public-inputs>] inputs_)` where the `inputs_` is a static array with a length that depends on the circom circuit for which the verifier contract was generated. If the developer needs to develop one contract that will interact with **verifiers** for different circom circuits, i.e. with different lengths of `inputs_` arrays in the `verifyProof` function, then it will be necessary to create many interfaces, which will clearly complicate the task. The `VerifierHelper` library will help to solve this problem.
 
 The solution to this problem is quite simple, `staticcall` is used inside the `VerifierHelper` library, and the signature of the function to be called is generated dynamically. The length of the static array `inputs_` inside the `verifyProof` function is determined by the length of the dynamic array that was passed to the library function.
 
