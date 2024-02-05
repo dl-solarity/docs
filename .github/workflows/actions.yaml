@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - 'master'
+      - 'add-env'
 
 jobs:
   converge:
@@ -30,6 +30,7 @@ jobs:
       - name: Run Build
         run: |
           . $(werf ci-env github --as-file) 
+          echo "${{ secrets.STAGE_ENV }}" > .env
           werf export web --tag ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA
 
   stage-deploy:
