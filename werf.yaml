@@ -29,7 +29,7 @@ git:
   - add: /nginx.conf
     to: /etc/nginx/nginx.conf
   - add: /.env
-    to: /usr/share/nginx/html
+    to: /usr/share/nginx/html/.env
 import:
   - image: builder
     add: /app/build
