@@ -17,6 +17,7 @@ shell:
     - cd /app
     #- yarn autoclean --init
     #- yarn autoclean --force
+    - mv .env.deploy .env
     - npm install
   setup: # Для стадии Setup.
     - cd /app
