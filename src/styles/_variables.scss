@@ -119,6 +119,8 @@ html[data-theme='dark'] {
   --ifm-menu-link-sublist-icon: url('/static/icons/chevron-up.svg') 50% / 2rem 2rem;
   --ifm-toc-link-color: var(--text-primary-main);
   --ifm-toc-border-color: var(--border-primary-dark);
+  --ifm-toc-padding-vertical: #{toRem(4)};
+  --ifm-toc-padding-horizontal: #{toRem(4)};
   --ifm-breadcrumb-border-radius: var(--border-radius-main);
   --ifm-breadcrumb-separator: url('/static/icons/chevron-right.svg');
   --ifm-pagination-nav-border-radius: var(--border-radius-main);

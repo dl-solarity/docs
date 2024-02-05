@@ -1,6 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+require("dotenv").config();
+
 const darkCodeTheme = require("./prism-custom-theme");
 
 /** @type {import('@docusaurus/types').Config} */
@@ -19,7 +21,7 @@ const config = {
   favicon: "img/favicon.png",
 
   // Set the production url of your site here
-  url: "https://docs.solarity.dev/",
+  url: process.env.URL || "",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -60,7 +62,7 @@ const config = {
         defaultMode: "dark",
         disableSwitch: true,
       },
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/og-image.png",
       navbar: {
         title: "Solarity",
         logo: {

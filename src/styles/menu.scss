@@ -1,6 +1,6 @@
 .menu {
   .menu__link {
-    padding: toRem(12) toRem(16);
+    padding: toRem(6) toRem(8);
     border-radius: var(--border-radius-main);
 
     &:not([disabled]):focus,
@@ -19,7 +19,7 @@
   }
 
   .menu__list {
-    margin-top: toRem(8);
+    margin-top: toRem(4);
   }
 
   .menu__list-item-collapsible {
@@ -28,7 +28,7 @@
 
   .menu__list-item {
     &:not(:first-child) {
-      margin-top: toRem(8);
+      margin-top: toRem(4);
     }
   }
 }

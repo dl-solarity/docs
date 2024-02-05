@@ -9,10 +9,13 @@ html {
 
 body,
 span,
-p,
-a {
+p {
   color: var(--text-primary-light);
 
+  @include p-16-regular;
+}
+
+a {
   @include p-16-regular;
 }
 
@@ -30,4 +33,10 @@ h3 {
 
 h1, h2, h3, h4, h5, h6, p {
   margin-bottom: 0;
+}
+
+.col {
+  &--3 {
+    padding: 0 toRem(8) 0 0;
+  }
 }
