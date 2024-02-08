@@ -1,4 +1,4 @@
-# 🤠 Merkle Whitelisted
+# 📗 Merkle Whitelisted
 
 ## Introduction
 

@@ -1,4 +1,4 @@
-# 🗒 Contracts Registry
+# 🗒️ Contracts Registry
 
 ## Introduction
 
@@ -29,7 +29,40 @@ Behind the scenes, the `ContractRegistry` maintains a mapping of string contract
 
 Functions featured by the `ContractsRegisry`:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>injectDependencies</code>, <code>injectDependenciesWithData</code></td><td>Injects the dependencies into the given contract</td></tr><tr><td><code>upgradeContract</code>, <code>upgradeContractAndCall</code></td><td>Upgrades added proxy contract with a new implementation</td></tr><tr><td><code>addContract</code></td><td>Adds contracts that the system does not have direct upgradeability control over, or the contracts that are not upgradeable</td></tr><tr><td><code>addProxyContract</code>, <code>addProxyContractAndCall</code></td><td>Adds the contracts and deploys the proxy above them</td></tr><tr><td><code>justAddProxyContract</code></td><td>Adds the already deployed proxy</td></tr><tr><td><code>removeContact</code></td><td>Removes the contract</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>injectDependencies</code>, <code>injectDependenciesWithData</code></td>
+      <td>Injects the dependencies into the given contract</td>
+    </tr>
+    <tr>
+      <td><code>upgradeContract</code>, <code>upgradeContractAndCall</code></td>
+      <td>Upgrades added proxy contract with a new implementation</td>
+    </tr>
+    <tr>
+      <td><code>addContract</code></td>
+      <td>Adds contracts that the system does not have direct upgradeability control over, or the contracts that are not upgradeable</td>
+    </tr>
+    <tr>
+      <td><code>addProxyContract</code>, <code>addProxyContractAndCall</code></td>
+      <td>Adds the contracts and deploys the proxy above them</td>
+    </tr>
+    <tr>
+      <td><code>justAddProxyContract</code></td>
+      <td>Adds the already deployed proxy</td>
+    </tr>
+    <tr>
+      <td><code>removeContact</code></td>
+      <td>Removes the contract</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 2 Dependency Injection
 
@@ -41,17 +74,88 @@ To facilitate the deployment and management of pool contracts, the `PoolRegistry
 
 Functions featured by the `PoolRegistry`:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>setNewImplementations</code></td><td>Sets pools' implementations</td></tr><tr><td><code>injectDependenciesToExistingPools, injectDependenciesToExistingPoolsWithData</code></td><td>Injects dependencies to the pools</td></tr><tr><td><code>addProxyPool</code></td><td>Adds new pools</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>setNewImplementations</code></td>
+      <td>Sets pools' implementations</td>
+    </tr>
+    <tr>
+      <td><code>injectDependenciesToExistingPools, injectDependenciesToExistingPoolsWithData</code></td>
+      <td>Injects dependencies to the pools</td>
+    </tr>
+    <tr>
+      <td><code>addProxyPool</code></td>
+      <td>Adds new pools</td>
+    </tr>
+  </tbody>
+</table>
 
 Functions featured by the `PoolFactory`:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>deploy</code></td><td>Deploys Beacon Proxy pointing to the pool implementation taken from the <code>PoolRegistry</code></td></tr><tr><td><code>deploy2</code></td><td>Deploys Beacon Proxy pointing to the pool implementation taken from the <code>PoolRegistry</code> using the create2 mechanism</td></tr><tr><td><code>register</code></td><td>Registers newly deployed pool in the  <code>PoolRegistry</code></td></tr><tr><td><code>injectDependencies</code></td><td>Injects dependencies to the newly deployed pool and sets <code>PoolRegistry</code> as an injector</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>deploy</code></td>
+      <td>Deploys Beacon Proxy pointing to the pool implementation taken from the <code>PoolRegistry</code></td>
+    </tr>
+    <tr>
+      <td><code>deploy2</code></td>
+      <td>Deploys Beacon Proxy pointing to the pool implementation taken from the <code>PoolRegistry</code> using the create2 mechanism</td>
+    </tr>
+    <tr>
+      <td><code>register</code></td>
+      <td>Registers the newly deployed pool in the <code>PoolRegistry</code></td>
+    </tr>
+    <tr>
+      <td><code>injectDependencies</code></td>
+      <td>Injects dependencies into the newly deployed pool and sets <code>PoolRegistry</code> as an injector</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4 Presets
 
 The Contracts Registry module includes several preset contracts to help you establish permissions.
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/presets/OwnableContractsRegistry.sol">OwnableContractsRegistry</a></td><td>Only the owner can inject dependencies into, add, remove, and upgrade contracts</td></tr><tr><td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/presets/MultiOwnableContractsRegistry.sol">MultiOwnableContractsRegistry</a></td><td>Only multiple owners can inject dependencies into, add, remove, and upgrade contracts</td></tr><tr><td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/pools/presets/OwnablePoolContractsRegistry.sol">OwnablePoolContractsRegistry</a></td><td>Only the owner can call set pools' implementations and inject dependencies into existing pools</td></tr><tr><td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/pools/presets/MultiOwnablePoolContractsRegistry.sol">MultiOwnablePoolContractsRegistry</a></td><td>Only multiple owners can call set pools' implementations and inject dependencies into existing pools</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/presets/OwnableContractsRegistry.sol">OwnableContractsRegistry</a></td>
+      <td>Only the owner can inject dependencies into, add, remove, and upgrade contracts</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/presets/MultiOwnableContractsRegistry.sol">MultiOwnableContractsRegistry</a></td>
+      <td>Only multiple owners can inject dependencies into, add, remove, and upgrade contracts</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/pools/presets/OwnablePoolContractsRegistry.sol">OwnablePoolContractsRegistry</a></td>
+      <td>Only the owner can call set pools' implementations and inject dependencies into existing pools</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/pools/presets/MultiOwnablePoolContractsRegistry.sol">MultiOwnablePoolContractsRegistry</a></td>
+      <td>Only multiple owners can call set pools' implementations and inject dependencies into existing pools</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Example
 
@@ -97,7 +201,7 @@ contract SystemContract2 {
 }
 ```
 
-To initiate the migration process, begin by deploying and initializing the `ContractsRegistry` contract. Following this, deploy all system contracts and register them. In this example, `SystemContract1` is deployed under the transparent proxy managed by `ContractsRegistry`, while `SystemContract2` is added as is. Conclude by injecting dependencies into the `SystemContract1`.&#x20;
+To initiate the migration process, begin by deploying and initializing the `ContractsRegistry` contract. Following this, deploy all system contracts and register them. In this example, `SystemContract1` is deployed under the transparent proxy managed by `ContractsRegistry`, while `SystemContract2` is added as is. Conclude by injecting dependencies into the `SystemContract1`.
 
 ```solidity
 function migration() external {

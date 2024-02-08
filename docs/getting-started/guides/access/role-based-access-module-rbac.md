@@ -1,4 +1,4 @@
-# 😎 Role Based Access Module (RBAC)
+# 📚 Role Based Access Module (RBAC)
 
 ## Introduction
 
@@ -41,7 +41,32 @@ The `RBAC` contract comes with a pre-configured `MASTER` role. By default, the `
 
 Functions for managing `Roles`:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>grantRoles</code></td><td>Grants a set of <code>Roles</code> to the specified user</td></tr><tr><td><code>revokeRoles</code></td><td>Revokes a set of <code>Roles</code> from the specified user</td></tr><tr><td><code>addPermissionsToRole</code></td><td>Assigns a combination of <code>Resource</code> and its <code>Permissions</code> to a <code>Role</code> with an indicator to either allow or deny access</td></tr><tr><td><code>removePermissionsFromRole</code></td><td>Removes a combination of <code>Resource</code> and its <code>Permissions</code> from a <code>Role</code> with an indicator to either allow or deny access</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>grantRoles</code></td>
+      <td>Grants a set of <code>Roles</code> to the specified user</td>
+    </tr>
+    <tr>
+      <td><code>revokeRoles</code></td>
+      <td>Revokes a set of <code>Roles</code> from the specified user</td>
+    </tr>
+    <tr>
+      <td><code>addPermissionsToRole</code></td>
+      <td>Assigns a combination of <code>Resource</code> and its <code>Permissions</code> to a <code>Role</code> with an indicator to either allow or deny access</td>
+    </tr>
+    <tr>
+      <td><code>removePermissionsFromRole</code></td>
+      <td>Removes a combination of <code>Resource</code> and its <code>Permissions</code> from a <code>Role</code> with an indicator to either allow or deny access</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4 Group (extension)
 
@@ -51,7 +76,36 @@ If the default group is enabled, it will automatically include every user. The i
 
 Functions for managing `Group`:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>addUserToGroups</code></td><td>Adds a user to specified groups</td></tr><tr><td><code>removeUserFromGroups</code></td><td>Removes a user from specific groups</td></tr><tr><td><code>grantGroupRoles</code></td><td>Assigns a list of <code>Roles</code> to the specific group</td></tr><tr><td><code>revokeGroupRoles</code></td><td>Removes a list of <code>Roles</code> from the specified group</td></tr><tr><td><code>toggleDefaultGroup</code></td><td>Toggles the default group state between enabled and disabled</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>addUserToGroups</code></td>
+      <td>Adds a user to specified groups</td>
+    </tr>
+    <tr>
+      <td><code>removeUserFromGroups</code></td>
+      <td>Removes a user from specific groups</td>
+    </tr>
+    <tr>
+      <td><code>grantGroupRoles</code></td>
+      <td>Assigns a list of <code>Roles</code> to the specific group</td>
+    </tr>
+    <tr>
+      <td><code>revokeGroupRoles</code></td>
+      <td>Removes a list of <code>Roles</code> from the specified group</td>
+    </tr>
+    <tr>
+      <td><code>toggleDefaultGroup</code></td>
+      <td>Toggles the default group state between enabled and disabled</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Example
 

@@ -1,4 +1,4 @@
-# 3⃣ Uniswap V3 Oracle
+# 🧙🏼‍♂️ Uniswap V3 Oracle
 
 ## Introduction
 
@@ -10,7 +10,7 @@ The `UniswapV3Oracle` contract abstracts the complexities of interacting with Un
 
 > Time-Weighted Average Price (TWAP) is an algorithm that averages prices over a specified time period, providing a more stable and manipulation-resistant price metric compared to instant spot prices.
 
-Unlike its predecessor, Uniswap V2, Uniswap V3 introduces a more advanced mechanism by storing a series of price observations within each liquidity pool. This feature allows the `UniswapV3Oracle` to calculate TWAPs by referencing this historical data.&#x20;
+Unlike its predecessor, Uniswap V2, Uniswap V3 introduces a more advanced mechanism by storing a series of price observations within each liquidity pool. This feature allows the `UniswapV3Oracle` to calculate TWAPs by referencing this historical data.
 
 The `UniswapV3Oracle` contract is centered around its only function, `getPriceOfTokenInToken`, which is designed to compute the price of one token in terms of another. This function operates by taking a specified path of token addresses and their corresponding pool fees. For each pair of tokens in the path, the function calculates the price of one token in terms of the next by referencing the corresponding `UniswapV3Pool` contracts. This process involves determining the applicable time period for each calculation, which is the minimum of the user-specified period or the oldest available observation in the pool.
 
@@ -19,7 +19,7 @@ The `UniswapV3Oracle` contract is centered around its only function, `getPriceOf
 Start by deploying the `UniswapV3Oracle`  contract, passing the `UniswapV3Factory` contract address to the constructor. Notice that the `UniswapV3Oracle` requires Solidity version less than 0.8.0.
 
 ```solidity
-pragma solidity >=0.5.0 &#x3C;0.8.0;
+pragma solidity >=0.5.0 <0.8.0;
 
 import "@solarity/solidity-lib/oracles/UniswapV3Oracle.sol";
 
