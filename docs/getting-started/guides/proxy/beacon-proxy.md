@@ -52,4 +52,4 @@ contract PoolContractsRegistry is PermanentOwnable {
 
 ## Production References
 
-* &#x20;[dl-solarity/solidity-lib](https://github.com/dl-solarity/solidity-lib/tree/master) uses Beacon Proxy in the Contracts Registry module implementation.
+* [dl-solarity/solidity-lib](https://github.com/dl-solarity/solidity-lib/tree/master) uses Beacon Proxy in the Contracts Registry module implementation.

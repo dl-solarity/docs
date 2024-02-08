@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Compound Rate Keeper module is designed to be employed in lending protocols to compute interest and borrow rates, as well as in staking contracts to determine users' rewards accrual with a fixed Annual Percentage Yield (APY).&#x20;
+The Compound Rate Keeper module is designed to be employed in lending protocols to compute interest and borrow rates, as well as in staking contracts to determine users' rewards accrual with a fixed Annual Percentage Yield (APY).
 
 ## Implementation
 
@@ -22,11 +22,69 @@ Note, that the _compoundRate_ is calculated with the **precision** of `10**25`. 
 
 The `AbstractCompoundRateKeeper` contract defines the calculation of the compound rate and can serve as a base for implementing diverse lending or staking calculations. This contract includes the following public functions:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>emergencyUpdateCompoundRate</code></td><td>Updates the compound rate. If overflows, sets <code>isMaxRateReached</code> to true</td></tr><tr><td><code>getCompoundRate</code></td><td>Returns current compound rate</td></tr><tr><td><code>getFutureCompoundRate</code></td><td>Returns future compound rate</td></tr><tr><td><code>getCapitalizationRate</code></td><td>Returns current capitalization rate</td></tr><tr><td><code>getCapitalizationPeriod</code></td><td>Returns current capitalization period</td></tr><tr><td><code>getLastUpdate</code></td><td>Returns timestamp of the last update</td></tr><tr><td><code>getIsMaxRateReached</code></td><td>Returns whether the max rate is reached</td></tr><tr><td><code>getCurrentRate</code></td><td>Returns current rate</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>emergencyUpdateCompoundRate</code></td>
+      <td>Updates the compound rate. If overflows, sets <code>isMaxRateReached</code> to true</td>
+    </tr>
+    <tr>
+      <td><code>getCompoundRate</code></td>
+      <td>Returns current compound rate</td>
+    </tr>
+    <tr>
+      <td><code>getFutureCompoundRate</code></td>
+      <td>Returns future compound rate</td>
+    </tr>
+    <tr>
+      <td><code>getCapitalizationRate</code></td>
+      <td>Returns current capitalization rate</td>
+    </tr>
+    <tr>
+      <td><code>getCapitalizationPeriod</code></td>
+      <td>Returns current capitalization period</td>
+    </tr>
+    <tr>
+      <td><code>getLastUpdate</code></td>
+      <td>Returns timestamp of the last update</td>
+    </tr>
+    <tr>
+      <td><code>getIsMaxRateReached</code></td>
+      <td>Returns whether the max rate is reached</td>
+    </tr>
+    <tr>
+      <td><code>getCurrentRate</code></td>
+      <td>Returns current rate</td>
+    </tr>
+  </tbody>
+</table>
 
 Additionally, there are a couple of internal functions to update the capitalization rate or capitalization period:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>_setCapitalizationRate</code></td><td>Sets the capitalization rate</td></tr><tr><td><code>_setCapitalizationPeriod</code></td><td>Sets the capitalization period</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>_setCapitalizationRate</code></td>
+      <td>Sets the capitalization rate</td>
+    </tr>
+    <tr>
+      <td><code>_setCapitalizationPeriod</code></td>
+      <td>Sets the capitalization period</td>
+    </tr>
+  </tbody>
+</table>
 
 The core function containing the rate calculation logic is `getFutureCompoundRate`, which eventually returns the new rate.
 

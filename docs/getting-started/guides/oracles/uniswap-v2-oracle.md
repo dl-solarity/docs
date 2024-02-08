@@ -1,4 +1,4 @@
-# 2⃣ Uniswap V2 Oracle
+# 🧙🏻‍♀️ Uniswap V2 Oracle
 
 ## Introduction
 

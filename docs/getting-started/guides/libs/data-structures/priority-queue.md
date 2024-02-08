@@ -6,7 +6,7 @@ This Priority Queue offers a way to manage elements in a sequence based on their
 
 ## Implementation
 
-The Priority Queue follows the structure of a complete binary heap that fulfills the property: each node is higher in priority than its children. In this setup, the highest priority element is always at the top of the heap.&#x20;
+The Priority Queue follows the structure of a complete binary heap that fulfills the property: each node is higher in priority than its children. In this setup, the highest priority element is always at the top of the heap.
 
 <figure>
     <img src={require("/static/img/docs/priority-queue-diagram.png").default} alt=""/>
@@ -15,7 +15,7 @@ The Priority Queue follows the structure of a complete binary heap that fulfills
 
 As elements are added to the Priority Queue, they are initially placed at the bottom of the heap. This step is followed by a **shift up** process, where the added element is compared with its parent node and swapped if its priority is higher. This is repeated until the new element is properly positioned, ensuring that the heap's property is maintained. The efficiency of adding elements lies in the fact that the number of comparisons and potential swaps is proportional to the height of the heap, which is logarithmic in relation to the number of stored elements.
 
-The interaction with the Priority Queue also involves operations of accessing and removing the highest priority element. Once this top element is removed, the heap must be restructured to find the next highest priority element. This is done through a **shift down** process. In this process, the last element in the heap is temporarily moved to the top and then iteratively shifted down the heap. At each iteration, it is compared with its child nodes, and if a child node has a higher priority, a swap is made. This process continues until the temporary top element finds its correct position in the heap, thus restoring the heap property.&#x20;
+The interaction with the Priority Queue also involves operations of accessing and removing the highest priority element. Once this top element is removed, the heap must be restructured to find the next highest priority element. This is done through a **shift down** process. In this process, the last element in the heap is temporarily moved to the top and then iteratively shifted down the heap. At each iteration, it is compared with its child nodes, and if a child node has a higher priority, a swap is made. This process continues until the temporary top element finds its correct position in the heap, thus restoring the heap property.
 
 It's important to note that while this Priority Queue guarantees access to the highest priority element, the overall order of elements is not guaranteed.
 

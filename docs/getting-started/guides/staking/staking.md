@@ -10,7 +10,8 @@ The module holds two primary contracts: the `AbstractValueDistributor` and the `
 
 <img src={require("/static/img/docs/staking.png").default} alt=""/>
 
-where
+where:
+
 - _r(u, k, n)_ = rewards earned by user _u_ from _k_ to _n_ seconds
 - _S_ = amount staked by user _u_ for time _k_ to _n - 1_
 - _Ti_ = total staked at time _i_ (assume _Ti_ > 0)
@@ -22,11 +23,43 @@ The `AbstractValueDistributor` contract defines the core logic for distributing 
 
 It includes the following public functions:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>totalShares</code></td><td>Provides the total number of all the shares added to the contract</td></tr><tr><td><code>cumulativeSum</code></td><td>Provides the current cumulative sum of value that has been distributed</td></tr><tr><td><code>updatedAt</code></td><td>Provides the timestamp of the last update</td></tr><tr><td><code>userDistribution</code></td><td>Provides the distribution details for a specific user, including the user's shares, cumulative sum and value owed</td></tr><tr><td><code>getOwedValue</code></td><td>Provides the amount of value owed to a specific user at the current time</td></tr></tbody></table>
+<table>
+    <thead>
+        <tr><th>Function</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>totalShares</code></td><td>Provides the total number of all the shares added to the contract</td></tr>
+        <tr><td><code>cumulativeSum</code></td><td>Provides the current cumulative sum of value that has been distributed</td></tr>
+        <tr><td><code>updatedAt</code></td><td>Provides the timestamp of the last update</td></tr>
+        <tr><td><code>userDistribution</code></td><td>Provides the distribution details for a specific user, including the user's shares, cumulative sum and value owed</td></tr>
+        <tr><td><code>getOwedValue</code></td><td>Provides the amount of value owed to a specific user at the current time</td></tr>
+    </tbody>
+</table>
 
 There are also key internal functions for the shares and value manipulations:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>_addShares</code></td><td>Adds shares to a user's distribution</td></tr><tr><td><code>_removeShares</code></td><td>Removes shares from a user's distribution</td></tr><tr><td><code>_distributeValue</code></td><td>Distributes value to a specific user</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>_addShares</code></td>
+      <td>Adds shares to a user's distribution</td>
+    </tr>
+    <tr>
+      <td><code>_removeShares</code></td>
+      <td>Removes shares from a user's distribution</td>
+    </tr>
+    <tr>
+      <td><code>_distributeValue</code></td>
+      <td>Distributes value to a specific user</td>
+    </tr>
+  </tbody>
+</table>
 
 The contract includes `_afterAddShares`, `_afterRemoveShares` and `_afterDistributeValue` hooks for performing any required additional logic, such as transferring tokens, when shares are added or removed, or when value is distributed.
 
@@ -40,7 +73,24 @@ When shares and rewards tokens **are the same**, users may accidentally withdraw
 
 The rate and the staking start time can be changed with the help of the following internal functions:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>_setRate</code></td><td>Sets the rate of rewards distribution per second</td></tr><tr><td><code>_setStakingStartTime</code></td><td>Sets the staking start time</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>_setRate</code></td>
+      <td>Sets the rate of rewards distribution per second</td>
+    </tr>
+    <tr>
+      <td><code>_setStakingStartTime</code></td>
+      <td>Sets the staking start time</td>
+    </tr>
+  </tbody>
+</table>
 
 A chosen rate determines the rate at which rewards are earned and distributed to stakers based on their shares.
 
@@ -50,7 +100,32 @@ The use of the staking start time entity introduces the modifier `stakingStarted
 
 The key functions for staking and claiming rewards:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>stake</code></td><td>Stakes the specified amount of tokens</td></tr><tr><td><code>unstake</code></td><td>Unstakes the specified amount of tokens</td></tr><tr><td><code>claim</code></td><td>Claims the specified amount of rewards</td></tr><tr><td><code>withdraw</code></td><td>Withdraws all the staked tokens together with the rewards if there are any. It also returns the amount of shares being withdrawn and the total value of rewards owed to a user</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>stake</code></td>
+      <td>Stakes the specified amount of tokens</td>
+    </tr>
+    <tr>
+      <td><code>unstake</code></td>
+      <td>Unstakes the specified amount of tokens</td>
+    </tr>
+    <tr>
+      <td><code>claim</code></td>
+      <td>Claims the specified amount of rewards</td>
+    </tr>
+    <tr>
+      <td><code>withdraw</code></td>
+      <td>Withdraws all the staked tokens together with the rewards if there are any. It also returns the amount of shares being withdrawn and the total value of rewards owed to a user</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Example
 

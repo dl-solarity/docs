@@ -260,7 +260,7 @@ interface IBadEventParameterNames {
 
 #### 2.6 Constant and immutable variables
 
-Constant and immutable variables are named with SCREAMING\_SNAKE\_CASE. Internal and private constant and immutable variables are named with an underscore before the name, while public ones have no underscore.&#x20;
+Constant and immutable variables are named with SCREAMING\_SNAKE\_CASE. Internal and private constant and immutable variables are named with an underscore before the name, while public ones have no underscore.
 
 <Tabs>
 <TabItem value="good" label="Good" default>
@@ -464,7 +464,7 @@ contract BadErrorMessages {
 
 While we prioritize gas optimization in our code, readability remains equally important. As such, we don't engage in extreme optimization practices that could obscure code understanding or maintainability. To guide our approach, below are examples illustrating when optimization is necessary and when it's not.
 
-#### 5.1 Unchecked &#x20;
+#### 5.1 Unchecked
 
 Use `unchecked` statements only to migrate code from older Solidity versions. Avoid using it for loop iterator variables as it reduces readability.
 

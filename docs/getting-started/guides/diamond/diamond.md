@@ -1,4 +1,4 @@
-# ♦ Diamond
+# 💎 Diamond
 
 ## Introduction
 
@@ -6,9 +6,9 @@ The Diamond module contains a custom implementation of the [ERC-2535: Diamonds, 
 
 The Diamond pattern allows for creating virtually unlimited size contracts by dividing large contracts into smaller ones. These small contracts share the same storage and work together seamlessly as if they were a single contract. This approach is particularly useful for the following cases:
 
-* **Overcoming Bytecode Size Limits:** Smart contracts have a bytecode size limit of 24 KB. If your contract exceeds this size, it will be impossible to deploy it. The Diamond Pattern solves this by allowing you to divide a large contract into smaller ones, each fitting within the size constraints.
-* **Simplifying Development and Maintenance:** By splitting a big contract into smaller parts, it becomes easier to develop and maintain each piece. Smaller contracts are better suited for adding features and are less prone to errors, making overall management more efficient.
-* **Flexible Upgradability:** The Diamond pattern provides an efficient way to upgrade smart contracts by allowing functions to be selectively enabled or disabled. This method is more convenient as it eliminates the need to redeploy the entire implementation contract.
+- **Overcoming Bytecode Size Limits:** Smart contracts have a bytecode size limit of 24 KB. If your contract exceeds this size, it will be impossible to deploy it. The Diamond Pattern solves this by allowing you to divide a large contract into smaller ones, each fitting within the size constraints.
+- **Simplifying Development and Maintenance:** By splitting a big contract into smaller parts, it becomes easier to develop and maintain each piece. Smaller contracts are better suited for adding features and are less prone to errors, making overall management more efficient.
+- **Flexible Upgradability:** The Diamond pattern provides an efficient way to upgrade smart contracts by allowing functions to be selectively enabled or disabled. This method is more convenient as it eliminates the need to redeploy the entire implementation contract.
 
 ## Implementation
 
@@ -29,16 +29,41 @@ The `diamondCut` function is essential for managing facets and selectors, allowi
 
 In parallel, the diamond loupe is a group of view functions utilized for accessing the current configuration of facets and selectors. These functions include:
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>facets</code></td><td>Provides a list of all facets and their associated function selectors</td></tr><tr><td><code>facetFunctionSelectors</code></td><td>Details the function selectors linked to a specific facet</td></tr><tr><td><code>facetAddresses</code></td><td>Lists all the facets</td></tr><tr><td><code>facetAddress</code></td><td>Returns the address of the facet implementing a given function selector</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>facets</code></td>
+      <td>Provides a list of all facets and their associated function selectors</td>
+    </tr>
+    <tr>
+      <td><code>facetFunctionSelectors</code></td>
+      <td>Details the function selectors linked to a specific facet</td>
+    </tr>
+    <tr>
+      <td><code>facetAddresses</code></td>
+      <td>Lists all the facets</td>
+    </tr>
+    <tr>
+      <td><code>facetAddress</code></td>
+      <td>Returns the address of the facet implementing a given function selector</td>
+    </tr>
+  </tbody>
+</table>
 
 #### **3 Storage and Initialization**
 
-Facets often require own state for proper functionality. Storing this state beginning from `slot0` inside the facet may lead to collisions due to the shared storage space among facets. To resolve this, each stateful facet defines a struct to represent its state and allocates a unique storage slot for this struct. This slot is typically calculated by hashing a string associated with the facet's name. The state can then be simply accessed using the `sload` assembly function.&#x20;
+Facets often require own state for proper functionality. Storing this state beginning from `slot0` inside the facet may lead to collisions due to the shared storage space among facets. To resolve this, each stateful facet defines a struct to represent its state and allocates a unique storage slot for this struct. This slot is typically calculated by hashing a string associated with the facet's name. The state can then be simply accessed using the `sload` assembly function.
 
 ERC-2535 recommends storing the slot key and function for accessing the storage struct within an internal library. Our implementation improves upon this by defining these elements in a separate contracts called **storages**, which facets are required to inherit. Once inherited, facets are then responsible for providing functions that modify the storage. This structure clearly separates functions that view data from those that alter it. This approach offers several key advantages:
 
 * By examining the inheritance list, anyone can easily identify the storages utilized by a particular facet, enhancing clarity and understanding of the contract's structure.
-* This structure facilitates the conversion of upgradeable contracts into diamond-compatible ones.&#x20;
+* This structure facilitates the conversion of upgradeable contracts into diamond-compatible ones.
 * Facets can effortlessly manage multiple storages, allowing for more flexible and powerful contract interactions and data handling.
 
 Additionally, there are cases when you might require an **initializable** facet. To facilitate this, inherit from the `InitializableStorage` contract, which can be imported from our Diamond module. This allows the use of  `initialize` and `onlyInitializing` modifiers, similar to those in standard upgradeable contracts. When you add a new facet through the `diamondCut`, the initialization process is designed to be executed a single time, preventing reinitialization and maintaining the facet's state integrity.
@@ -51,12 +76,32 @@ It's important to secure the `diamondCut` function in your Diamond. To achieve t
 
 If you want your Diamond to behave like an `ERC20`, `ERC721`, or other popular standard, check out our constantly evolving list of predefined facets and storages. It might have what you need, saving you time in development.
 
-| Facet/Storage Name                                                                                                               | Description                              |
-| -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| [DiamondERC20](https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/tokens/ERC20)                           | OpenZeppelin ERC20-based Facet           |
-| [DiamondERC721](https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/tokens/ERC721)                         | OpenZeppelin ERC721-based Facet          |
-| [DiamondERC165](https://github.com/dl-solarity/solidity-lib/blob/master/contracts/diamond/introspection/DiamondERC165.sol)       | OpenZeppelin ERC165-based Facet          |
-| [InitializableStorage](https://github.com/dl-solarity/solidity-lib/blob/master/contracts/diamond/utils/InitializableStorage.sol) | OpenZeppelin Initializable-based Storage |
+<table>
+  <thead>
+    <tr>
+      <th>Facet/Storage Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/tokens/ERC20">DiamondERC20</a></td>
+      <td>OpenZeppelin ERC20-based Facet</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/tokens/ERC721">DiamondERC721</a></td>
+      <td>OpenZeppelin ERC721-based Facet</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/diamond/introspection/DiamondERC165.sol">DiamondERC165</a></td>
+      <td>OpenZeppelin ERC165-based Facet</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/diamond/utils/InitializableStorage.sol">InitializableStorage</a></td>
+      <td>OpenZeppelin Initializable-based Storage</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Example
 
@@ -136,7 +181,7 @@ function interactWithDiamond(address diamond_, IERC20 token_) external {
 }
 ```
 
-Now consider we want to add a new feature to our Diamond, enabling it to exchange tokens on a DEX such as UniswapV2. To achieve this, we'll implement a separate storage to hold the UniswapV2 router contract address. Additionally, we'll develop a new facet, equipped with a function to swap tokens. This facet will interact with the UniswapV2 router, using the address stored in the new storage to execute token swaps.&#x20;
+Now consider we want to add a new feature to our Diamond, enabling it to exchange tokens on a DEX such as UniswapV2. To achieve this, we'll implement a separate storage to hold the UniswapV2 router contract address. Additionally, we'll develop a new facet, equipped with a function to swap tokens. This facet will interact with the UniswapV2 router, using the address stored in the new storage to execute token swaps.
 
 ```solidity
 import "@solarity/solidity-lib/diamond/presets/OwnableDiamond/OwnableDiamond.sol";

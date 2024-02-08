@@ -8,7 +8,28 @@ The Block Guard module facilitates the flash-loan protection mechanism. It restr
 
 The `BlockGuard` is a simple contract that tracks the latest block in which a particular resource (group of functions) was accessed by a specific address. It provides several modifiers for easy integration.
 
-<table><thead><tr><th>Function</th><th>Description</th></tr></thead><tbody><tr><td><code>lockBlock</code></td><td>Saves the current block number when a resource is accessed</td></tr><tr><td><code>checkBlock</code></td><td>Ensures a resource isn't accessed more than once in the same block</td></tr><tr><td><code>checkLockBlock</code></td><td>Combines the functionalities of both checking and locking a resource in a block</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>lockBlock</code></td>
+      <td>Saves the current block number when a resource is accessed</td>
+    </tr>
+    <tr>
+      <td><code>checkBlock</code></td>
+      <td>Ensures a resource isn't accessed more than once in the same block</td>
+    </tr>
+    <tr>
+      <td><code>checkLockBlock</code></td>
+      <td>Combines the functionalities of both checking and locking a resource in a block</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Example
 

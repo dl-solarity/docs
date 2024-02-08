@@ -1,4 +1,4 @@
-# ⛓ Array Helper
+# ⛓️ Array Helper
 
 ## Introduction
 
