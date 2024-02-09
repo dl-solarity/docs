@@ -26,9 +26,9 @@ The function to check whether the Diamond supports the interface
 
 Parameters:
 
-| Name         | Type   | Description              |
-| :----------- | :----- | :----------------------- |
-| interfaceId_ | bytes4 | the interface to check   |
+| Name         | Type   | Description             |
+| :----------- | :----- | :---------------------- |
+| interfaceId_ | bytes4 | the interface to check  |
 
 
 Return values:

@@ -52,9 +52,9 @@ The function to get the address of the proxy implementation
 
 Parameters:
 
-| Name  | Type    | Description                     |
-| :---- | :------ | :------------------------------ |
-| what_ | address | the proxy contract to observe   |
+| Name  | Type    | Description                    |
+| :---- | :------ | :----------------------------- |
+| what_ | address | the proxy contract to observe  |
 
 
 Return values:

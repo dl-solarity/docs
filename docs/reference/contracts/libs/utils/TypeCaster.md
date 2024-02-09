@@ -26,9 +26,9 @@ The function that casts the bytes32 array to the uint256 array
 
 Parameters:
 
-| Name  | Type      | Description         |
-| :---- | :-------- | :------------------ |
-| from_ | bytes32[] | the bytes32 array   |
+| Name  | Type      | Description        |
+| :---- | :-------- | :----------------- |
+| from_ | bytes32[] | the bytes32 array  |
 
 
 Return values:
@@ -59,9 +59,9 @@ The function that casts the bytes32 array to the address array
 
 Parameters:
 
-| Name  | Type      | Description         |
-| :---- | :-------- | :------------------ |
-| from_ | bytes32[] | the bytes32 array   |
+| Name  | Type      | Description        |
+| :---- | :-------- | :----------------- |
+| from_ | bytes32[] | the bytes32 array  |
 
 
 Return values:
@@ -92,9 +92,9 @@ The function that casts the uint256 array to the bytes32 array
 
 Parameters:
 
-| Name  | Type      | Description         |
-| :---- | :-------- | :------------------ |
-| from_ | uint256[] | the bytes32 array   |
+| Name  | Type      | Description        |
+| :---- | :-------- | :----------------- |
+| from_ | uint256[] | the bytes32 array  |
 
 
 Return values:
@@ -125,9 +125,9 @@ The function to transform a uint256 element into an array
 
 Parameters:
 
-| Name  | Type    | Description   |
-| :---- | :------ | :------------ |
-| from_ | uint256 | the element   |
+| Name  | Type    | Description  |
+| :---- | :------ | :----------- |
+| from_ | uint256 | the element  |
 
 
 Return values:
@@ -185,9 +185,9 @@ The function to convert static uint256[1] array to dynamic
 
 Parameters:
 
-| Name    | Type       | Description                   |
-| :------ | :--------- | :---------------------------- |
-| static_ | uint256[1] | the static array to convert   |
+| Name    | Type       | Description                  |
+| :------ | :--------- | :--------------------------- |
+| static_ | uint256[1] | the static array to convert  |
 
 
 Return values:

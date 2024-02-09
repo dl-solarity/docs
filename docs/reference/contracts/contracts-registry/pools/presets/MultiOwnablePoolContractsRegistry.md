@@ -32,10 +32,10 @@ The function to set new implementation for the registered pools
 
 Parameters:
 
-| Name                | Type      | Description                                       |
-| :------------------ | :-------- | :------------------------------------------------ |
-| names_              | string[]  | the names of registered ProxyBeacons to upgrade   |
-| newImplementations_ | address[] | the addresses of new implementations to be used   |
+| Name                | Type      | Description                                      |
+| :------------------ | :-------- | :----------------------------------------------- |
+| names_              | string[]  | the names of registered ProxyBeacons to upgrade  |
+| newImplementations_ | address[] | the addresses of new implementations to be used  |
 
 ### injectDependenciesToExistingPools (0x24d6780f)
 
@@ -52,11 +52,11 @@ The function to inject dependencies to registered pools (via EIP-6224)
 
 Parameters:
 
-| Name    | Type    | Description                                     |
-| :------ | :------ | :---------------------------------------------- |
-| name_   | string  | the name of ProxyBeacon to identify the pools   |
-| offset_ | uint256 | the start index of the pools array              |
-| limit_  | uint256 | the number of pools to inject dependencies to   |
+| Name    | Type    | Description                                    |
+| :------ | :------ | :--------------------------------------------- |
+| name_   | string  | the name of ProxyBeacon to identify the pools  |
+| offset_ | uint256 | the start index of the pools array             |
+| limit_  | uint256 | the number of pools to inject dependencies to  |
 
 ### injectDependenciesToExistingPoolsWithData (0x52837c41)
 
@@ -74,9 +74,9 @@ The function to inject dependencies to registered pools with data (via EIP-6224)
 
 Parameters:
 
-| Name    | Type    | Description                                             |
-| :------ | :------ | :------------------------------------------------------ |
-| data_   | bytes   | the data to be passed to `setDependencies()` function   |
-| name_   | string  | the name of ProxyBeacon to identify the pools           |
-| offset_ | uint256 | the start index of the pools array                      |
-| limit_  | uint256 | the number of pools to inject dependencies to           |
+| Name    | Type    | Description                                            |
+| :------ | :------ | :----------------------------------------------------- |
+| data_   | bytes   | the data to be passed to `setDependencies()` function  |
+| name_   | string  | the name of ProxyBeacon to identify the pools          |
+| offset_ | uint256 | the start index of the pools array                     |
+| limit_  | uint256 | the number of pools to inject dependencies to          |

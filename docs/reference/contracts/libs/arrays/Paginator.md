@@ -132,8 +132,8 @@ Returns the exclusive index of the element to iterate to
 
 Parameters:
 
-| Name    | Type    | Description               |
-| :------ | :------ | :------------------------ |
-| length_ | uint256 | the length of the array   |
-| offset_ | uint256 | the starting index        |
-| limit_  | uint256 | the number of elements    |
+| Name    | Type    | Description              |
+| :------ | :------ | :----------------------- |
+| length_ | uint256 | the length of the array  |
+| offset_ | uint256 | the starting index       |
+| limit_  | uint256 | the number of elements   |

@@ -51,9 +51,9 @@ The function to get the decimals of ERC20 token. Needed for bytecode optimizatio
 
 Parameters:
 
-| Name   | Type    | Description       |
-| :----- | :------ | :---------------- |
-| token_ | address | the ERC20 token   |
+| Name   | Type    | Description      |
+| :----- | :------ | :--------------- |
+| token_ | address | the ERC20 token  |
 
 
 Return values:
@@ -73,10 +73,10 @@ The function to bring the number to 18 decimals of precision
 
 Parameters:
 
-| Name    | Type    | Description                                        |
-| :------ | :------ | :------------------------------------------------- |
-| amount_ | uint256 | the number to convert                              |
-| token_  | address | the token, whose decimals will be precised to 18   |
+| Name    | Type    | Description                                       |
+| :------ | :------ | :------------------------------------------------ |
+| amount_ | uint256 | the number to convert                             |
+| token_  | address | the token, whose decimals will be precised to 18  |
 
 
 Return values:
@@ -99,10 +99,10 @@ The function to bring the number to 18 decimals of precision
 
 Parameters:
 
-| Name          | Type    | Description                           |
-| :------------ | :------ | :------------------------------------ |
-| amount_       | uint256 | the number to convert                 |
-| baseDecimals_ | uint256 | the current precision of the number   |
+| Name          | Type    | Description                          |
+| :------------ | :------ | :----------------------------------- |
+| amount_       | uint256 | the number to convert                |
+| baseDecimals_ | uint256 | the current precision of the number  |
 
 
 Return values:
@@ -125,10 +125,10 @@ The function to bring the number to 18 decimals of precision. Reverts if output 
 
 Parameters:
 
-| Name    | Type    | Description                                        |
-| :------ | :------ | :------------------------------------------------- |
-| amount_ | uint256 | the number to convert                              |
-| token_  | address | the token, whose decimals will be precised to 18   |
+| Name    | Type    | Description                                       |
+| :------ | :------ | :------------------------------------------------ |
+| amount_ | uint256 | the number to convert                             |
+| token_  | address | the token, whose decimals will be precised to 18  |
 
 
 Return values:
@@ -151,10 +151,10 @@ The function to bring the number to 18 decimals of precision. Reverts if output 
 
 Parameters:
 
-| Name          | Type    | Description                           |
-| :------------ | :------ | :------------------------------------ |
-| amount_       | uint256 | the number to convert                 |
-| baseDecimals_ | uint256 | the current precision of the number   |
+| Name          | Type    | Description                          |
+| :------------ | :------ | :----------------------------------- |
+| amount_       | uint256 | the number to convert                |
+| baseDecimals_ | uint256 | the current precision of the number  |
 
 
 Return values:
@@ -177,10 +177,10 @@ The function to bring the number from 18 decimals to the desired decimals of pre
 
 Parameters:
 
-| Name    | Type    | Description                                                               |
-| :------ | :------ | :------------------------------------------------------------------------ |
-| amount_ | uint256 | the number to covert                                                      |
-| token_  | address | the token, whose decimals will be used as desired decimals of precision   |
+| Name    | Type    | Description                                                              |
+| :------ | :------ | :----------------------------------------------------------------------- |
+| amount_ | uint256 | the number to covert                                                     |
+| token_  | address | the token, whose decimals will be used as desired decimals of precision  |
 
 
 Return values:
@@ -203,10 +203,10 @@ The function to bring the number from 18 decimals to the desired decimals of pre
 
 Parameters:
 
-| Name          | Type    | Description                      |
-| :------------ | :------ | :------------------------------- |
-| amount_       | uint256 | the number to covert             |
-| destDecimals_ | uint256 | the desired precision decimals   |
+| Name          | Type    | Description                     |
+| :------------ | :------ | :------------------------------ |
+| amount_       | uint256 | the number to covert            |
+| destDecimals_ | uint256 | the desired precision decimals  |
 
 
 Return values:
@@ -230,10 +230,10 @@ Reverts if output is zero
 
 Parameters:
 
-| Name    | Type    | Description                                                               |
-| :------ | :------ | :------------------------------------------------------------------------ |
-| amount_ | uint256 | the number to covert                                                      |
-| token_  | address | the token, whose decimals will be used as desired decimals of precision   |
+| Name    | Type    | Description                                                              |
+| :------ | :------ | :----------------------------------------------------------------------- |
+| amount_ | uint256 | the number to covert                                                     |
+| token_  | address | the token, whose decimals will be used as desired decimals of precision  |
 
 
 Return values:
@@ -257,10 +257,10 @@ Reverts if output is zero
 
 Parameters:
 
-| Name          | Type    | Description                      |
-| :------------ | :------ | :------------------------------- |
-| amount_       | uint256 | the number to covert             |
-| destDecimals_ | uint256 | the desired precision decimals   |
+| Name          | Type    | Description                     |
+| :------------ | :------ | :------------------------------ |
+| amount_       | uint256 | the number to covert            |
+| destDecimals_ | uint256 | the desired precision decimals  |
 
 
 Return values:
@@ -283,10 +283,10 @@ The function to substitute the trailing digits of a number with zeros
 
 Parameters:
 
-| Name    | Type    | Description                                                               |
-| :------ | :------ | :------------------------------------------------------------------------ |
-| amount_ | uint256 | the number to round. Should be with 18 precision decimals                 |
-| token_  | address | the token, whose decimals will be used as desired decimals of precision   |
+| Name    | Type    | Description                                                              |
+| :------ | :------ | :----------------------------------------------------------------------- |
+| amount_ | uint256 | the number to round. Should be with 18 precision decimals                |
+| token_  | address | the token, whose decimals will be used as desired decimals of precision  |
 
 
 Return values:
@@ -309,10 +309,10 @@ The function to substitute the trailing digits of a number with zeros
 
 Parameters:
 
-| Name      | Type    | Description                                                 |
-| :-------- | :------ | :---------------------------------------------------------- |
-| amount_   | uint256 | the number to round. Should be with 18 precision decimals   |
-| decimals_ | uint256 | the required number precision                               |
+| Name      | Type    | Description                                                |
+| :-------- | :------ | :--------------------------------------------------------- |
+| amount_   | uint256 | the number to round. Should be with 18 precision decimals  |
+| decimals_ | uint256 | the required number precision                              |
 
 
 Return values:
@@ -335,10 +335,10 @@ The function to substitute the trailing digits of a number with zeros. Reverts i
 
 Parameters:
 
-| Name    | Type    | Description                                                               |
-| :------ | :------ | :------------------------------------------------------------------------ |
-| amount_ | uint256 | the number to round. Should be with 18 precision decimals                 |
-| token_  | address | the token, whose decimals will be used as desired decimals of precision   |
+| Name    | Type    | Description                                                              |
+| :------ | :------ | :----------------------------------------------------------------------- |
+| amount_ | uint256 | the number to round. Should be with 18 precision decimals                |
+| token_  | address | the token, whose decimals will be used as desired decimals of precision  |
 
 
 Return values:
@@ -361,10 +361,10 @@ The function to substitute the trailing digits of a number with zeros. Reverts i
 
 Parameters:
 
-| Name      | Type    | Description                                                 |
-| :-------- | :------ | :---------------------------------------------------------- |
-| amount_   | uint256 | the number to round. Should be with 18 precision decimals   |
-| decimals_ | uint256 | the required number precision                               |
+| Name      | Type    | Description                                                |
+| :-------- | :------ | :--------------------------------------------------------- |
+| amount_   | uint256 | the number to round. Should be with 18 precision decimals  |
+| decimals_ | uint256 | the required number precision                              |
 
 
 Return values:
@@ -388,11 +388,11 @@ The function to do the token precision convertion
 
 Parameters:
 
-| Name       | Type    | Description             |
-| :--------- | :------ | :---------------------- |
-| amount_    | uint256 | the amount to convert   |
-| baseToken_ | address | current token           |
-| destToken_ | address | desired token           |
+| Name       | Type    | Description            |
+| :--------- | :------ | :--------------------- |
+| amount_    | uint256 | the amount to convert  |
+| baseToken_ | address | current token          |
+| destToken_ | address | desired token          |
 
 
 Return values:
@@ -416,11 +416,11 @@ The function to do the precision convertion
 
 Parameters:
 
-| Name          | Type    | Description                |
-| :------------ | :------ | :------------------------- |
-| amount_       | uint256 | the amount to covert       |
-| baseDecimals_ | uint256 | current number precision   |
-| destDecimals_ | uint256 | desired number precision   |
+| Name          | Type    | Description               |
+| :------------ | :------ | :------------------------ |
+| amount_       | uint256 | the amount to covert      |
+| baseDecimals_ | uint256 | current number precision  |
+| destDecimals_ | uint256 | desired number precision  |
 
 
 Return values:

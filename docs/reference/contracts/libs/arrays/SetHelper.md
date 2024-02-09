@@ -25,10 +25,10 @@ The function to insert an array of elements into the address set
 
 Parameters:
 
-| Name   | Type                            | Description                           |
-| :----- | :------------------------------ | :------------------------------------ |
-| set    | struct EnumerableSet.AddressSet | the set to insert the elements into   |
-| array_ | address[]                       | the elements to be inserted           |
+| Name   | Type                            | Description                          |
+| :----- | :------------------------------ | :----------------------------------- |
+| set    | struct EnumerableSet.AddressSet | the set to insert the elements into  |
+| array_ | address[]                       | the elements to be inserted          |
 
 ### add
 
@@ -61,10 +61,10 @@ The function to remove an array of elements from the address set
 
 Parameters:
 
-| Name   | Type                            | Description                           |
-| :----- | :------------------------------ | :------------------------------------ |
-| set    | struct EnumerableSet.AddressSet | the set to remove the elements from   |
-| array_ | address[]                       | the elements to be removed            |
+| Name   | Type                            | Description                          |
+| :----- | :------------------------------ | :----------------------------------- |
+| set    | struct EnumerableSet.AddressSet | the set to remove the elements from  |
+| array_ | address[]                       | the elements to be removed           |
 
 ### remove
 

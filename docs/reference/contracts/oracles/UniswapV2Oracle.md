@@ -71,18 +71,18 @@ The function to retrieve the price of a token following the configured route
 
 Parameters:
 
-| Name     | Type    | Description                     |
-| :------- | :------ | :------------------------------ |
-| tokenIn_ | address | The input token address         |
-| amount_  | uint256 | The amount of the input token   |
+| Name     | Type    | Description                    |
+| :------- | :------ | :----------------------------- |
+| tokenIn_ | address | The input token address        |
+| amount_  | uint256 | The amount of the input token  |
 
 
 Return values:
 
-| Name | Type    | Description                                |
-| :--- | :------ | :----------------------------------------- |
-| [0]  | uint256 | The price in the last token of the route   |
-| [1]  | address | The output token address                   |
+| Name | Type    | Description                               |
+| :--- | :------ | :---------------------------------------- |
+| [0]  | uint256 | The price in the last token of the route  |
+| [1]  | address | The output token address                  |
 
 ### getPath (0x4f973bac)
 
@@ -95,9 +95,9 @@ The function to get the route of the token
 
 Parameters:
 
-| Name     | Type    | Description                     |
-| :------- | :------ | :------------------------------ |
-| tokenIn_ | address | the token to get the route of   |
+| Name     | Type    | Description                    |
+| :------- | :------ | :----------------------------- |
+| tokenIn_ | address | the token to get the route of  |
 
 
 Return values:
@@ -132,9 +132,9 @@ The function to get the number of observations of a pair
 
 Parameters:
 
-| Name  | Type    | Description        |
-| :---- | :------ | :----------------- |
-| pair_ | address | the pair address   |
+| Name  | Type    | Description       |
+| :---- | :------ | :---------------- |
+| pair_ | address | the pair address  |
 
 
 Return values:
@@ -157,16 +157,16 @@ The function to get the exact observation of a pair
 
 Parameters:
 
-| Name   | Type    | Description             |
-| :----- | :------ | :---------------------- |
-| pair_  | address | the pair address        |
-| round_ | uint256 | the observation index   |
+| Name   | Type    | Description            |
+| :----- | :------ | :--------------------- |
+| pair_  | address | the pair address       |
+| round_ | uint256 | the observation index  |
 
 
 Return values:
 
-| Name | Type    | Description                                |
-| :--- | :------ | :----------------------------------------- |
-| [0]  | uint256 | the prices0Cumulative of the observation   |
-| [1]  | uint256 | the prices1Cumulative of the observation   |
-| [2]  | uint256 | the timestamp of the observation           |
+| Name | Type    | Description                               |
+| :--- | :------ | :---------------------------------------- |
+| [0]  | uint256 | the prices0Cumulative of the observation  |
+| [1]  | uint256 | the prices1Cumulative of the observation  |
+| [2]  | uint256 | the timestamp of the observation          |

@@ -103,9 +103,9 @@ The length_ number of default value elements will be added to the vector
 
 Parameters:
 
-| Name    | Type    | Description                      |
-| :------ | :------ | :------------------------------- |
-| length_ | uint256 | the initial number of elements   |
+| Name    | Type    | Description                     |
+| :------ | :------ | :------------------------------ |
+| length_ | uint256 | the initial number of elements  |
 
 
 Return values:
@@ -127,9 +127,9 @@ The UintVector constructor, creates a vector instance from the array, O(1) compl
 
 Parameters:
 
-| Name   | Type      | Description         |
-| :----- | :-------- | :------------------ |
-| array_ | uint256[] | the initial array   |
+| Name   | Type      | Description        |
+| :----- | :-------- | :----------------- |
+| array_ | uint256[] | the initial array  |
 
 
 Return values:
@@ -203,11 +203,11 @@ The function to assign the value to a uint256 vector element
 
 Parameters:
 
-| Name   | Type                     | Description                               |
-| :----- | :----------------------- | :---------------------------------------- |
-| vector | struct Vector.UintVector | self                                      |
-| index_ | uint256                  | the index of the element to be assigned   |
-| value_ | uint256                  | the value to assign                       |
+| Name   | Type                     | Description                              |
+| :----- | :----------------------- | :--------------------------------------- |
+| vector | struct Vector.UintVector | self                                     |
+| index_ | uint256                  | the index of the element to be assigned  |
+| value_ | uint256                  | the value to assign                      |
 
 ### at
 
@@ -223,10 +223,10 @@ The function to read the element of the uint256 vector
 
 Parameters:
 
-| Name   | Type                     | Description                        |
-| :----- | :----------------------- | :--------------------------------- |
-| vector | struct Vector.UintVector | self                               |
-| index_ | uint256                  | the index of the element to read   |
+| Name   | Type                     | Description                       |
+| :----- | :----------------------- | :-------------------------------- |
+| vector | struct Vector.UintVector | self                              |
+| index_ | uint256                  | the index of the element to read  |
 
 
 Return values:

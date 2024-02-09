@@ -65,8 +65,8 @@ The function to manipulate the Diamond contract, as defined in [EIP-2535](https:
 
 Parameters:
 
-| Name      | Type                   | Description                                                      |
-| :-------- | :--------------------- | :--------------------------------------------------------------- |
-| facets_   | struct Diamond.Facet[] | the array of actions to be executed against the Diamond          |
-| init_     | address                | the address of the init contract to be called via delegatecall   |
-| initData_ | bytes                  | the data the init address will be called with                    |
+| Name      | Type                   | Description                                                     |
+| :-------- | :--------------------- | :-------------------------------------------------------------- |
+| facets_   | struct Diamond.Facet[] | the array of actions to be executed against the Diamond         |
+| init_     | address                | the address of the init contract to be called via delegatecall  |
+| initData_ | bytes                  | the data the init address will be called with                   |

@@ -69,9 +69,9 @@ The function to get implementation of the specific pools
 
 Parameters:
 
-| Name  | Type   | Description             |
-| :---- | :----- | :---------------------- |
-| name_ | string | the name of the pools   |
+| Name  | Type   | Description            |
+| :---- | :----- | :--------------------- |
+| name_ | string | the name of the pools  |
 
 
 Return values:
@@ -91,9 +91,9 @@ The function to get the BeaconProxy of the specific pools (mostly needed in the 
 
 Parameters:
 
-| Name  | Type   | Description             |
-| :---- | :----- | :---------------------- |
-| name_ | string | the name of the pools   |
+| Name  | Type   | Description            |
+| :---- | :----- | :--------------------- |
+| name_ | string | the name of the pools  |
 
 
 Return values:
@@ -113,10 +113,10 @@ The function to check if the address is a pool
 
 Parameters:
 
-| Name  | Type    | Description                 |
-| :---- | :------ | :-------------------------- |
-| name_ | string  | the associated pools name   |
-| pool_ | address | the address to check        |
+| Name  | Type    | Description                |
+| :---- | :------ | :------------------------- |
+| name_ | string  | the associated pools name  |
+| pool_ | address | the address to check       |
 
 
 Return values:
@@ -136,9 +136,9 @@ The function to count pools by specified name
 
 Parameters:
 
-| Name  | Type   | Description                 |
-| :---- | :----- | :-------------------------- |
-| name_ | string | the associated pools name   |
+| Name  | Type   | Description                |
+| :---- | :----- | :------------------------- |
+| name_ | string | the associated pools name  |
 
 
 Return values:
@@ -162,11 +162,11 @@ The paginated function to list pools by their name (call `countPools()` to accou
 
 Parameters:
 
-| Name    | Type    | Description                             |
-| :------ | :------ | :-------------------------------------- |
-| name_   | string  | the associated pools name               |
-| offset_ | uint256 | the starting index in the pools array   |
-| limit_  | uint256 | the number of pools                     |
+| Name    | Type    | Description                            |
+| :------ | :------ | :------------------------------------- |
+| name_   | string  | the associated pools name              |
+| offset_ | uint256 | the starting index in the pools array  |
+| limit_  | uint256 | the number of pools                    |
 
 
 Return values:

@@ -76,9 +76,9 @@ The function to get all the selectors assigned to the facet
 
 Parameters:
 
-| Name   | Type    | Description                              |
-| :----- | :------ | :--------------------------------------- |
-| facet_ | address | the facet to get assigned selectors of   |
+| Name   | Type    | Description                             |
+| :----- | :------ | :-------------------------------------- |
+| facet_ | address | the facet to get assigned selectors of  |
 
 
 Return values:
@@ -113,9 +113,9 @@ The function to get associated facet by the selector
 
 Parameters:
 
-| Name      | Type   | Description    |
-| :-------- | :----- | :------------- |
-| selector_ | bytes4 | the selector   |
+| Name      | Type   | Description   |
+| :-------- | :----- | :------------ |
+| selector_ | bytes4 | the selector  |
 
 
 Return values:

@@ -59,9 +59,9 @@ The function to check the existence of the token
 
 Parameters:
 
-| Name     | Type    | Description          |
-| :------- | :------ | :------------------- |
-| tokenId_ | uint256 | the token to check   |
+| Name     | Type    | Description         |
+| :------- | :------ | :------------------ |
+| tokenId_ | uint256 | the token to check  |
 
 
 Return values:
@@ -83,9 +83,9 @@ The function to get the balance of the user
 
 Parameters:
 
-| Name   | Type    | Description                      |
-| :----- | :------ | :------------------------------- |
-| owner_ | address | the user to get the balance of   |
+| Name   | Type    | Description                     |
+| :----- | :------ | :------------------------------ |
+| owner_ | address | the user to get the balance of  |
 
 
 Return values:
@@ -108,10 +108,10 @@ The function to get a user's token by its ordinal id
 
 Parameters:
 
-| Name   | Type    | Description                               |
-| :----- | :------ | :---------------------------------------- |
-| owner_ | address | the user to get the token of              |
-| index_ | uint256 | the id of the token in the user's array   |
+| Name   | Type    | Description                              |
+| :----- | :------ | :--------------------------------------- |
+| owner_ | address | the user to get the token of             |
+| index_ | uint256 | the id of the token in the user's array  |
 
 
 Return values:
@@ -133,9 +133,9 @@ The function to get ALL the tokens of a user. Be careful, O(n) complexity
 
 Parameters:
 
-| Name   | Type    | Description                     |
-| :----- | :------ | :------------------------------ |
-| owner_ | address | the user to get the tokens of   |
+| Name   | Type    | Description                    |
+| :----- | :------ | :----------------------------- |
+| owner_ | address | the user to get the tokens of  |
 
 
 Return values:
@@ -157,9 +157,9 @@ The function to get the owner of a token
 
 Parameters:
 
-| Name     | Type    | Description                     |
-| :------- | :------ | :------------------------------ |
-| tokenId_ | uint256 | the token to get the owner of   |
+| Name     | Type    | Description                    |
+| :------- | :------ | :----------------------------- |
+| tokenId_ | uint256 | the token to get the owner of  |
 
 
 Return values:
@@ -201,9 +201,9 @@ The function to get the token URI.
 
 Parameters:
 
-| Name     | Type    | Description                   |
-| :------- | :------ | :---------------------------- |
-| tokenId_ | uint256 | the token to get the URI of   |
+| Name     | Type    | Description                  |
+| :------- | :------ | :--------------------------- |
+| tokenId_ | uint256 | the token to get the URI of  |
 
 
 Return values:
@@ -225,9 +225,9 @@ Returns true if this contract implements the interface defined by `interfaceId`
 
 Parameters:
 
-| Name         | Type   | Description                 |
-| :----------- | :----- | :-------------------------- |
-| interfaceId_ | bytes4 | the interface ID to check   |
+| Name         | Type   | Description                |
+| :----------- | :----- | :------------------------- |
+| interfaceId_ | bytes4 | the interface ID to check  |
 
 
 Return values:

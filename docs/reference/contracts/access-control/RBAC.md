@@ -110,10 +110,10 @@ The function to grant roles to a user
 
 Parameters:
 
-| Name          | Type     | Description                  |
-| :------------ | :------- | :--------------------------- |
-| to_           | address  | the user to grant roles to   |
-| rolesToGrant_ | string[] | roles to grant               |
+| Name          | Type     | Description                 |
+| :------------ | :------- | :-------------------------- |
+| to_           | address  | the user to grant roles to  |
+| rolesToGrant_ | string[] | roles to grant              |
 
 ### revokeRoles (0x4f0d84e3)
 
@@ -129,10 +129,10 @@ The function to revoke roles
 
 Parameters:
 
-| Name           | Type     | Description                     |
-| :------------- | :------- | :------------------------------ |
-| from_          | address  | the user to revoke roles from   |
-| rolesToRevoke_ | string[] | the roles to revoke             |
+| Name           | Type     | Description                    |
+| :------------- | :------- | :----------------------------- |
+| from_          | address  | the user to revoke roles from  |
+| rolesToRevoke_ | string[] | the roles to revoke            |
 
 ### addPermissionsToRole (0x37ff630d)
 
@@ -252,11 +252,11 @@ handles not 2 but 3 states: NO PERMISSION, ALLOWED, DISALLOWED
 
 Parameters:
 
-| Name        | Type    | Description                                           |
-| :---------- | :------ | :---------------------------------------------------- |
-| who_        | address | the user                                              |
-| resource_   | string  | the resource the user has to have the permission of   |
-| permission_ | string  | the permission the user has to have                   |
+| Name        | Type    | Description                                          |
+| :---------- | :------ | :--------------------------------------------------- |
+| who_        | address | the user                                             |
+| resource_   | string  | the resource the user has to have the permission of  |
+| permission_ | string  | the permission the user has to have                  |
 
 
 Return values:

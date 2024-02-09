@@ -79,9 +79,9 @@ The function that returns an associated contract with the name
 
 Parameters:
 
-| Name  | Type   | Description                |
-| :---- | :----- | :------------------------- |
-| name_ | string | the name of the contract   |
+| Name  | Type   | Description               |
+| :---- | :----- | :------------------------ |
+| name_ | string | the name of the contract  |
 
 
 Return values:
@@ -101,9 +101,9 @@ The function that checks if a contract with a given name has been added
 
 Parameters:
 
-| Name  | Type   | Description                |
-| :---- | :----- | :------------------------- |
-| name_ | string | the name of the contract   |
+| Name  | Type   | Description               |
+| :---- | :----- | :------------------------ |
+| name_ | string | the name of the contract  |
 
 
 Return values:
@@ -138,9 +138,9 @@ The function that returns an implementation of the given proxy contract
 
 Parameters:
 
-| Name  | Type   | Description                |
-| :---- | :----- | :------------------------- |
-| name_ | string | the name of the contract   |
+| Name  | Type   | Description               |
+| :---- | :----- | :------------------------ |
+| name_ | string | the name of the contract  |
 
 
 Return values:

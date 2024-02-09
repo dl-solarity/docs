@@ -96,9 +96,9 @@ The function to check the ownership of a user
 
 Parameters:
 
-| Name     | Type    | Description         |
-| :------- | :------ | :------------------ |
-| address_ | address | the user to check   |
+| Name     | Type    | Description        |
+| :------- | :------ | :----------------- |
+| address_ | address | the user to check  |
 
 
 Return values:

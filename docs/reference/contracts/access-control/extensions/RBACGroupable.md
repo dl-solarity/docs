@@ -74,10 +74,10 @@ The function to grant roles to the group
 
 Parameters:
 
-| Name          | Type     | Description                   |
-| :------------ | :------- | :---------------------------- |
-| groupTo_      | string   | the group to grant roles to   |
-| rolesToGrant_ | string[] | the list of roles to grant    |
+| Name          | Type     | Description                  |
+| :------------ | :------- | :--------------------------- |
+| groupTo_      | string   | the group to grant roles to  |
+| rolesToGrant_ | string[] | the list of roles to grant   |
 
 ### revokeGroupRoles (0x30cae168)
 
@@ -93,10 +93,10 @@ The function to revoke roles from the group
 
 Parameters:
 
-| Name           | Type     | Description                      |
-| :------------- | :------- | :------------------------------- |
-| groupFrom_     | string   | the group to revoke roles from   |
-| rolesToRevoke_ | string[] | the list of roles to revoke      |
+| Name           | Type     | Description                     |
+| :------------- | :------- | :------------------------------ |
+| groupFrom_     | string   | the group to revoke roles from  |
+| rolesToRevoke_ | string[] | the list of roles to revoke     |
 
 ### toggleDefaultGroup (0xd41de127)
 
@@ -195,11 +195,11 @@ handles not 2 but 3 states: NO PERMISSION, ALLOWED, DISALLOWED
 
 Parameters:
 
-| Name        | Type    | Description                                           |
-| :---------- | :------ | :---------------------------------------------------- |
-| who_        | address | the user                                              |
-| resource_   | string  | the resource the user has to have the permission of   |
-| permission_ | string  | the permission the user has to have                   |
+| Name        | Type    | Description                                          |
+| :---------- | :------ | :--------------------------------------------------- |
+| who_        | address | the user                                             |
+| resource_   | string  | the resource the user has to have the permission of  |
+| permission_ | string  | the permission the user has to have                  |
 
 
 Return values:

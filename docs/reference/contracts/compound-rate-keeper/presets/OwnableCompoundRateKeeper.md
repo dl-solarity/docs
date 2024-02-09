@@ -25,10 +25,10 @@ The initialization function
 
 Parameters:
 
-| Name                  | Type    | Description                                         |
-| :-------------------- | :------ | :-------------------------------------------------- |
-| capitalizationRate_   | uint256 | the compound interest rate with 10\**25 precision   |
-| capitalizationPeriod_ | uint64  | the compounding period in seconds                   |
+| Name                  | Type    | Description                                        |
+| :-------------------- | :------ | :------------------------------------------------- |
+| capitalizationRate_   | uint256 | the compound interest rate with 10\**25 precision  |
+| capitalizationPeriod_ | uint64  | the compounding period in seconds                  |
 
 ### setCapitalizationRate (0x9aad5c9a)
 

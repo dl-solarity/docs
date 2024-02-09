@@ -60,9 +60,9 @@ The function to get future compound rate (the timestamp_ may be equal to the las
 
 Parameters:
 
-| Name       | Type   | Description                               |
-| :--------- | :----- | :---------------------------------------- |
-| timestamp_ | uint64 | the timestamp to calculate the rate for   |
+| Name       | Type   | Description                              |
+| :--------- | :----- | :--------------------------------------- |
+| timestamp_ | uint64 | the timestamp to calculate the rate for  |
 
 
 Return values:

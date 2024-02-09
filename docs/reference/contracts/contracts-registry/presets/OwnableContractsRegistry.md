@@ -66,10 +66,10 @@ The function to upgrade the specified proxy contract
 
 Parameters:
 
-| Name               | Type    | Description                                 |
-| :----------------- | :------ | :------------------------------------------ |
-| name_              | string  | the name of the proxy contract to upgrade   |
-| newImplementation_ | address | the new implementation                      |
+| Name               | Type    | Description                                |
+| :----------------- | :------ | :----------------------------------------- |
+| name_              | string  | the name of the proxy contract to upgrade  |
+| newImplementation_ | address | the new implementation                     |
 
 ### upgradeContractAndCall (0x6bbe8694)
 
@@ -106,10 +106,10 @@ The function to add the regular contract to the registry
 
 Parameters:
 
-| Name             | Type    | Description                            |
-| :--------------- | :------ | :------------------------------------- |
-| name_            | string  | the associative name of the contract   |
-| contractAddress_ | address | the address of the contract to add     |
+| Name             | Type    | Description                           |
+| :--------------- | :------ | :------------------------------------ |
+| name_            | string  | the associative name of the contract  |
+| contractAddress_ | address | the address of the contract to add    |
 
 ### addProxyContract (0xe0e084f8)
 

@@ -55,12 +55,12 @@ The function returns price in quote token decimals. If amount is zero, returns (
 
 Parameters:
 
-| Name    | Type      | Description                                                                        |
-| :------ | :-------- | :--------------------------------------------------------------------------------- |
-| path_   | address[] | the path of token address, the last one is token in which price will be returned   |
-| fees_   | uint24[]  | the array of fees for particular pools (10\**4 precision)                          |
-| amount_ | uint128   | the amount of baseToken_                                                           |
-| period_ | uint32    | the time period                                                                    |
+| Name    | Type      | Description                                                                       |
+| :------ | :-------- | :-------------------------------------------------------------------------------- |
+| path_   | address[] | the path of token address, the last one is token in which price will be returned  |
+| fees_   | uint24[]  | the array of fees for particular pools (10\**4 precision)                         |
+| amount_ | uint128   | the amount of baseToken_                                                          |
+| period_ | uint32    | the time period                                                                   |
 
 
 Return values:

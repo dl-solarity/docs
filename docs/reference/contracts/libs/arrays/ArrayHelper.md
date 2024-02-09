@@ -26,10 +26,10 @@ greater than or equal to the `element_`. The time complexity is O(log n)
 
 Parameters:
 
-| Name     | Type      | Description              |
-| :------- | :-------- | :----------------------- |
-| array    | uint256[] | the array to search in   |
-| element_ | uint256   | the element              |
+| Name     | Type      | Description             |
+| :------- | :-------- | :---------------------- |
+| array    | uint256[] | the array to search in  |
+| element_ | uint256   | the element             |
 
 
 Return values:
@@ -53,10 +53,10 @@ greater than the `element_`. The time complexity is O(log n)
 
 Parameters:
 
-| Name     | Type      | Description              |
-| :------- | :-------- | :----------------------- |
-| array    | uint256[] | the array to search in   |
-| element_ | uint256   | the element              |
+| Name     | Type      | Description             |
+| :------- | :-------- | :---------------------- |
+| array    | uint256[] | the array to search in  |
+| element_ | uint256   | the element             |
 
 
 Return values:
@@ -81,10 +81,10 @@ The function that calculates the sum of all array elements from `beginIndex_` to
 
 Parameters:
 
-| Name        | Type    | Description                            |
-| :---------- | :------ | :------------------------------------- |
-| beginIndex_ | uint256 | the index of the first range element   |
-| endIndex_   | uint256 | the index of the last range element    |
+| Name        | Type    | Description                           |
+| :---------- | :------ | :------------------------------------ |
+| beginIndex_ | uint256 | the index of the first range element  |
+| endIndex_   | uint256 | the index of the last range element   |
 
 
 Return values:
@@ -106,9 +106,9 @@ The function to compute the prefix sum array
 
 Parameters:
 
-| Name | Type      | Description                                                |
-| :--- | :-------- | :--------------------------------------------------------- |
-| arr_ | uint256[] | the initial array to be turned into the prefix sum array   |
+| Name | Type      | Description                                               |
+| :--- | :-------- | :-------------------------------------------------------- |
+| arr_ | uint256[] | the initial array to be turned into the prefix sum array  |
 
 
 Return values:
@@ -130,9 +130,9 @@ The function to reverse a uint256 array
 
 Parameters:
 
-| Name | Type      | Description            |
-| :--- | :-------- | :--------------------- |
-| arr_ | uint256[] | the array to reverse   |
+| Name | Type      | Description           |
+| :--- | :-------- | :-------------------- |
+| arr_ | uint256[] | the array to reverse  |
 
 
 Return values:
@@ -183,11 +183,11 @@ The function to insert a uint256 array into the other array
 
 Parameters:
 
-| Name   | Type      | Description                    |
-| :----- | :-------- | :----------------------------- |
-| to_    | uint256[] | the array to insert into       |
-| index_ | uint256   | the insertion starting index   |
-| what_  | uint256[] | the array to be inserted       |
+| Name   | Type      | Description                   |
+| :----- | :-------- | :---------------------------- |
+| to_    | uint256[] | the array to insert into      |
+| index_ | uint256   | the insertion starting index  |
+| what_  | uint256[] | the array to be inserted      |
 
 
 Return values:
@@ -243,10 +243,10 @@ The function to crop a uint256 array
 
 Parameters:
 
-| Name       | Type      | Description                                             |
-| :--------- | :-------- | :------------------------------------------------------ |
-| array_     | uint256[] | the array to crop                                       |
-| newLength_ | uint256   | the new length of the array (has to be less or equal)   |
+| Name       | Type      | Description                                            |
+| :--------- | :-------- | :----------------------------------------------------- |
+| array_     | uint256[] | the array to crop                                      |
+| newLength_ | uint256   | the new length of the array (has to be less or equal)  |
 
 
 Return values:

@@ -154,11 +154,11 @@ The function to set a custom hash functions, that will be used to build the Merk
 
 Parameters:
 
-| Name   | Type                                              | Description                                    |
-| :----- | :------------------------------------------------ | :--------------------------------------------- |
-| tree   | struct IncrementalMerkleTree.UintIMT              | self.                                          |
-| hash1_ | function (bytes32) view returns (bytes32)         | The hash function that accepts one argument.   |
-| hash2_ | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments.  |
+| Name   | Type                                              | Description                                   |
+| :----- | :------------------------------------------------ | :-------------------------------------------- |
+| tree   | struct IncrementalMerkleTree.UintIMT              | self.                                         |
+| hash1_ | function (bytes32) view returns (bytes32)         | The hash function that accepts one argument.  |
+| hash2_ | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments. |
 
 ### root
 
@@ -307,11 +307,11 @@ The function to set a custom hash functions, that will be used to build the Merk
 
 Parameters:
 
-| Name   | Type                                              | Description                                    |
-| :----- | :------------------------------------------------ | :--------------------------------------------- |
-| tree   | struct IncrementalMerkleTree.Bytes32IMT           | self.                                          |
-| hash1_ | function (bytes32) view returns (bytes32)         | The hash function that accepts one argument.   |
-| hash2_ | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments.  |
+| Name   | Type                                              | Description                                   |
+| :----- | :------------------------------------------------ | :-------------------------------------------- |
+| tree   | struct IncrementalMerkleTree.Bytes32IMT           | self.                                         |
+| hash1_ | function (bytes32) view returns (bytes32)         | The hash function that accepts one argument.  |
+| hash2_ | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments. |
 
 ### root
 
@@ -414,11 +414,11 @@ The function to set a custom hash functions, that will be used to build the Merk
 
 Parameters:
 
-| Name   | Type                                              | Description                                    |
-| :----- | :------------------------------------------------ | :--------------------------------------------- |
-| tree   | struct IncrementalMerkleTree.AddressIMT           | self.                                          |
-| hash1_ | function (bytes32) view returns (bytes32)         | The hash function that accepts one argument.   |
-| hash2_ | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments.  |
+| Name   | Type                                              | Description                                   |
+| :----- | :------------------------------------------------ | :-------------------------------------------- |
+| tree   | struct IncrementalMerkleTree.AddressIMT           | self.                                         |
+| hash1_ | function (bytes32) view returns (bytes32)         | The hash function that accepts one argument.  |
+| hash2_ | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments. |
 
 ### root
 

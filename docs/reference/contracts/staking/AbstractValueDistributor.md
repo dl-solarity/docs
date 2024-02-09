@@ -116,9 +116,9 @@ Returns the distribution details for a specific user.
 
 Parameters:
 
-| Name  | Type    | Description                |
-| :---- | :------ | :------------------------- |
-| user_ | address | The address of the user.   |
+| Name  | Type    | Description               |
+| :---- | :------ | :------------------------ |
+| user_ | address | The address of the user.  |
 
 
 Return values:
@@ -138,9 +138,9 @@ Gets the amount of value owed to a specific user.
 
 Parameters:
 
-| Name  | Type    | Description                |
-| :---- | :------ | :------------------------- |
-| user_ | address | The address of the user.   |
+| Name  | Type    | Description               |
+| :---- | :------ | :------------------------ |
+| user_ | address | The address of the user.  |
 
 
 Return values:
