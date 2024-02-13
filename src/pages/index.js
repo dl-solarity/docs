@@ -50,10 +50,7 @@ export default function HomePage() {
         <h1 className={styles["home-page__title"]}>{siteConfig.title}</h1>
         <h1 className={styles["home-page__title"]}>Documentation</h1>
         <div className={styles["home-page__buttons-wrp"]}>
-          <Link
-            className={clsx(styles["home-page__button"], "button", "button--link")}
-            to="/docs/reference/contracts/Overview"
-          >
+          <Link className={clsx(styles["home-page__button"], "button", "button--link")} to="/docs/reference/Overview">
             Reference
           </Link>
           <Link
