@@ -5,35 +5,13 @@
 #### License: MIT
 
 ```solidity
-contract OwnableDiamond is Diamond, OwnableDiamondStorage
+contract OwnableDiamond is Diamond, DiamondOwnable
 ```
 
 The Diamond standard module
 
 The Ownable preset of Diamond proxy
 ## Functions info
-
-### constructor
-
-```solidity
-constructor()
-```
-
-
-### transferOwnership (0xf2fde38b)
-
-```solidity
-function transferOwnership(address newOwner_) public onlyOwner
-```
-
-The function to transfer the Diamond ownerhip
-
-
-Parameters:
-
-| Name      | Type    | Description                  |
-| :-------- | :------ | :--------------------------- |
-| newOwner_ | address | the new owner of the Diamond |
 
 ### diamondCut (0xe57e69c6)
 

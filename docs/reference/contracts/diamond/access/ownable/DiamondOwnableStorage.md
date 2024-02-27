@@ -1,22 +1,22 @@
-# OwnableDiamondStorage
+# DiamondOwnableStorage
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract OwnableDiamondStorage
+abstract contract DiamondOwnableStorage is InitializableStorage
 ```
 
 The Diamond standard module
 
-The storage contract of Ownable Diamond preset
+This is an Ownable Storage contract with Diamond Standard support
 ## Structs info
 
-### ODStorage
+### DOStorage
 
 ```solidity
-struct ODStorage {
+struct DOStorage {
 	address owner;
 }
 ```
@@ -24,10 +24,10 @@ struct ODStorage {
 
 ## Constants info
 
-### OWNABLE_DIAMOND_STORAGE_SLOT (0xe3e077ad)
+### DIAMOND_OWNABLE_STORAGE_SLOT (0x4ac3371e)
 
 ```solidity
-bytes32 constant OWNABLE_DIAMOND_STORAGE_SLOT = keccak256("diamond.standard.ownablediamond.storage")
+bytes32 constant DIAMOND_OWNABLE_STORAGE_SLOT = keccak256("diamond.standard.diamond.ownable.storage")
 ```
 
 
@@ -45,7 +45,7 @@ modifier onlyOwner()
 ### owner (0x8da5cb5b)
 
 ```solidity
-function owner() public view returns (address)
+function owner() public view virtual returns (address)
 ```
 
 The function to get the Diamond owner

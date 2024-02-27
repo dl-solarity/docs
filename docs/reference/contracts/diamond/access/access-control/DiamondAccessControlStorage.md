@@ -48,6 +48,20 @@ bytes32 constant DEFAULT_ADMIN_ROLE = 0x00
 ```
 
 
+## Modifiers info
+
+### onlyRole
+
+```solidity
+modifier onlyRole(bytes32 role_)
+```
+
+Modifier that checks that an account has a specific role. Reverts
+with a standardized message including the required role.
+
+The format of the revert reason is given by the following regular expression:
+
+/^AccessControl: account (0x[0-9a-f]{40}) is missing role (0x[0-9a-f]{64})$/
 ## Functions info
 
 ### hasRole (0x91d14854)
