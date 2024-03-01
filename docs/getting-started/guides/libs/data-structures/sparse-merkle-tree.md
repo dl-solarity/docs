@@ -1,8 +1,8 @@
-# Sparse Merkle Tree
+# #️⃣ Sparse Merkle Tree
 
 ## Introduction
 
-The Sparse Merkle Tree library provides a way to efficiently store an entire Merkle Tree data structure on-chain. This includes the capability to obtain **Inclusion** or **Exclusion** Merkle Tree Proofs (MTP) directly from the contract. Additionally, the library provides the flexibility to set a custom hash function, such as the Poseidon hash function, making it ZKP-friendly. Its origin is based on the [iden3 SMTLib implementation](https://github.com/iden3/contracts/blob/master/contracts/lib/SmtLib.sol) and the ["Sparse Merkle Trees" PDF](https://docs.iden3.io/publications/pdfs/Merkle-Tree.pdf), but it has been optimized and polished.&#x20;
+The Sparse Merkle Tree library provides a way to efficiently store an entire Merkle Tree data structure on-chain. This includes the capability to obtain **Inclusion** or **Exclusion** Merkle Tree Proofs (MTP) directly from the contract. Additionally, the library provides the flexibility to set a custom hash function, such as the Poseidon hash function, making it ZKP-friendly. Its origin is based on the [iden3 SMTLib implementation](https://github.com/iden3/contracts/blob/master/contracts/lib/SmtLib.sol) and the ["Sparse Merkle Trees" PDF](https://docs.iden3.io/publications/pdfs/Merkle-Tree.pdf), but it has been optimized and polished.
 
 ## Implementation
 
@@ -12,11 +12,9 @@ The `SparseMerkleTree` library contains three main structures:
 2. **Node**: This structure contains information about the tree element, including its children (left and right), hash, key, value, and type.
 3. **Proof Structure**: This includes the Merkle Tree Proof (MTP) and auxiliary information for the MTP proof.
 
-These data structures store all leaves and build the tree from the top to bottom. The gas cost for addition increases linearly with each tree level. The gas cost growth can be approximated by the following formula:
+These data structures store all leaves and build the tree from the top to bottom. The gas cost for addition increases linearly with each tree level. The gas cost growth can be approximated by the following formula: `y = 92,457x + 255,689`
 
-y = 92,457x + 255,689
-
-For example, if a leaf is added at tree level 50, the addition operation would cost 4,878,539 gas units.
+For example, if a leaf is added at tree level `50`, the addition operation would cost `4,878,539` gas units.
 
 In the example below, the tree contains three elements. SMT defines three different types of nodes:
 
@@ -24,7 +22,7 @@ In the example below, the tree contains three elements. SMT defines three differ
 * **Middle**: A node that does not contain a key and value.
 * **Leaf**: A node that contains a key and value, with both child left and right set to zero.
 
-Each node also contains a hash; for an `Empty` type node, it is zero.&#x20;
+Each node also contains a hash; for an `Empty` type node, it is zero.
 
 For a `Middle` node, it is calculated as follows: `H(H_L || H_R)`, where `H` is the hash function used within the library, `H_L` is the hash of the left node, and `H_R` is the hash of the right node. By default, the hash function is `Keccak-256`, but it can be changed to another, such as the `Poseidon` hash function.
 
@@ -49,16 +47,44 @@ The aim of the implementation is to optimize gas efficiency for Sparse Merkle Tr
 
 A detailed breakdown of gas usage for the addition of 16,001 leaves (using the addBytes32 method) to a tree of size 80 is provided below:
 
-| Statistic | Value         |
-|-----------|---------------|
-| Mean      | 16,001        |
-| Mean      | 1,444,220 gas |
-| Std Dev   | 209,147.6 gas |
-| Min       | 177,853 gas   |
-| 25%       | 1,317,555 gas |
-| 50%       | 1,461,562 ga  |
-| 75%       | 1,554,030 gas |
-| Max       | 2,723,812 gas |
+<table>
+  <tr>
+    <th>Statistic</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Mean</td>
+    <td>16,001</td>
+  </tr>
+  <tr>
+    <td>Mean</td>
+    <td>1,444,220 gas</td>
+  </tr>
+  <tr>
+    <td>Std Dev</td>
+    <td>209,147.6 gas</td>
+  </tr>
+  <tr>
+    <td>Min</td>
+    <td>177,853 gas</td>
+  </tr>
+  <tr>
+    <td>25%</td>
+    <td>1,317,555 gas</td>
+  </tr>
+  <tr>
+    <td>50%</td>
+    <td>1,461,562 gas</td>
+  </tr>
+  <tr>
+    <td>75%</td>
+    <td>1,554,030 gas</td>
+  </tr>
+  <tr>
+    <td>Max</td>
+    <td>2,723,812 gas</td>
+  </tr>
+</table>
 
 ## Functions
 
@@ -94,7 +120,7 @@ function initialize(AddressSMT storage tree, uint256 maxDepth_) internal;
 
 The function is used for initializing the Sparse Merkle Tree data structure. To start working with a tree, it is required to set a maximum depth. This maximum depth is used in the `getProof` and `getNodeByKey` functions.
 
-**Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -127,7 +153,7 @@ function setMaxDepth(AddressSMT storage tree, uint256 maxDepth_) internal;
 
 This function sets the maximum depth of the Merkle Tree. It reverts if the provided height is less than or equal to the current Merkle Tree depth. Also, it cannot exceed 256 due to the limitations of the uint256 data type; depths greater than 256 are not feasible.
 
-**Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -172,13 +198,10 @@ function setHashers(
 
 #### Description
 
-This function sets custom hash functions to be used for Merkle Tree construction.&#x20;
+This function sets custom hash functions to be used for Merkle Tree construction.
+The function will **revert** if the tree already contains at least one leaf.
 
-{% hint style="warning" %}
-The function will revert if the tree already contains at least one leaf.
-{% endhint %}
-
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -225,7 +248,7 @@ function add(AddressSMT storage tree, bytes32 key_, address value_) internal'
 
 This function adds a new element to the tree. The algorithm for adding an element to the tree is recursive; therefore, the maximum depth specifies the point up to which the recursion can proceed.
 
-**Time complexity**
+#### Time complexity
 
 `O(n)`, where `n` is the max depth of the tree.
 
@@ -271,20 +294,21 @@ This function generates Inclusion/Exclusion proofs for an element in the tree. T
 3. **Exclusion Proof with Different Key**: If the algorithm encounters a `Leaf` whose key does not match the requested one, it will return an Exclusion proof. This proof includes the data of the encountered leaf, indicating that the requested element does not exist in the tree.
 4. **Exclusion Proof with Empty Node**: If the algorithm encounters an empty node, it will also return an Exclusion proof, signifying that the element does not exist in the tree.
 
-#### **Time complexity**
+#### Time complexity
 
 `O(n)`, where `n` is the max depth of the tree.
 
 #### Example
 
-<pre class="language-solidity"><code class="lang-solidity">SparseMerkleTree.UintSMT public uintTree;
+```solidity
+SparseMerkleTree.UintSMT public uintTree;
 
 uintTree.add(3, 5); 
 uintTree.add(1, 10);
 
 uintTree.getProof(3); 
-<strong>// Root: 0x03a14b15187328b46952f37dbb8f36620c8f12e97e4c0dc8b147e7060337c2ab
-</strong>// Siblings: [
+// Root: 0x03a14b15187328b46952f37dbb8f36620c8f12e97e4c0dc8b147e7060337c2ab
+// Siblings: [
 //   0x0000000000000000000000000000000000000000000000000000000000000000
 //   0x273b79dd2dbb4163ccbee92a259242d3d728b787e5cb5b69e45509c6b8b6a19c
 //   0x0000000000000000000000000000000000000000000000000000000000000000
@@ -329,7 +353,7 @@ uintTree.getProof(2);
 // auxExistence: false
 // auxIndex: 0x0000000000000000000000000000000000000000000000000000000000000000
 // auxValue: 0x0000000000000000000000000000000000000000000000000000000000000000
-</code></pre>
+```
 
 ### getRoot
 
@@ -349,7 +373,7 @@ function getRoot(AddressSMT storage tree) internal view returns (bytes32);
 
 This function calculates and returns the root of the Merkle Tree based on the elements that have been previously added to the tree.
 
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -389,7 +413,7 @@ function getNode(
 
 This function returns a node element by its index in the tree. Each `Middle` or `Leaf` element is assigned a sequential or numerical order when added to the tree, stqarting with index 1.
 
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -430,7 +454,7 @@ function getNodeByKey(
 
 This function returns a `Leaf` node for the given key.
 
-#### **Time complexity**
+#### Time complexity
 
 `O(n)`, where `n` is the max depth of the tree.
 
@@ -464,7 +488,7 @@ function getMaxDepth(AddressSMT storage tree) internal view returns (uint256)
 
 This function returns the maximum depth of the tree.
 
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -498,7 +522,7 @@ function getNodesCount(AddressSMT storage tree) internal view returns (uint256);
 
 This function returns the total number of nodes (the sum of the Middle and Leaf nodes) in the Merkle Tree.
 
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -532,9 +556,9 @@ function isCustomHasherSet(AddressSMT storage tree) internal view returns (bool)
 
 #### Description
 
-This function returns true, if the custom hash function was set, and false otherwise.&#x20;
+This function returns true, if the custom hash function was set, and false otherwise.
 
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -569,4 +593,4 @@ uintTree.isCustomHasherSet(); // true
 
 ## Production References
 
-* [rarimo/voting-contracts](https://github.com/rarimo/voting-contracts) uses SMT to store commitments of users registrations.&#x20;
+* [rarimo/voting-contracts](https://github.com/rarimo/voting-contracts) uses SMT to store commitments of users registrations.

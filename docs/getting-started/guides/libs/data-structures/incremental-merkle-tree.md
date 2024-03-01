@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Incremental Merkle Tree library library provides a cost-effective and straightforward method for maintaining the Merkle Tree data structure on-chain, including the capability to retrieve its root at the contract level. It also offers the flexibility to set a custom hash function, such as the Poseidon hash function, to make it ZKP-friendly. It has been implemented following the analysis of the [Deposit Contract Verification](https://github.com/runtimeverification/deposit-contract-verification/blob/master/deposit-contract-verification.pdf).
+The Incremental Merkle Tree library provides a cost-effective and straightforward method for maintaining the Merkle Tree data structure on-chain, including the capability to retrieve its root at the contract level. It also offers the flexibility to set a custom hash function, such as the Poseidon hash function, to make it ZKP-friendly. It has been implemented following the analysis of the [Deposit Contract Verification](https://github.com/runtimeverification/deposit-contract-verification/blob/master/deposit-contract-verification.pdf).
 
 ## Implementation
 
@@ -76,7 +76,7 @@ function setHeight(AddressIMT storage tree, uint256 height_) internal;
 
 This function sets the height of the Merkle Tree. It **reverts** if the provided height is less than or equal to the current Merkle Tree height. After the Tree Height is set, it will no longer grow automatically, and its height will have to be adjusted manually.
 
-**Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -114,7 +114,7 @@ This function adds a new element to the tree. In the case where the tree has (`2
 
 However, if the tree height was previously set manually, the operation will revert.
 
-**Time complexity**
+#### Time complexity
 
 `O(log(n))`, where `n` is the number of elements in the tree.
 
@@ -163,7 +163,7 @@ function setHashers(
 
 This function sets custom hash functions to be used for Merkle Tree construction. The function will **revert** if the tree already contains at least one leaf.
 
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -206,7 +206,7 @@ function root(AddressIMT storage tree) internal view returns (bytes32);
 
 This function calculates and returns the root of the Merkle Tree based on the elements that were added to the tree previously and the tree's height
 
-#### **Time complexity**
+#### Time complexity
 
 `O(log(n) + h)`, where `n` is the number of elements in the tree and `h` is the height of the tree.
 
@@ -238,7 +238,7 @@ function height(AddressIMT storage tree) internal view returns (uint256)
 
 This function returns the tree height, which corresponds directly to the length of the `branches` array.
 
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -276,7 +276,7 @@ function length(AddressIMT storage tree) internal view returns (uint256);
 
 This function returns the number of leaves that have been added to the Merkle Tree.
 
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -314,7 +314,7 @@ function isCustomHasherSet(AddressIMT storage tree) internal view returns (bool)
 
 This function returns true, if the custom hash function was set, and false otherwise.
 
-#### **Time complexity**
+#### Time complexity
 
 Constant.
 
