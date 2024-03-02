@@ -151,7 +151,7 @@ function setMaxDepth(AddressSMT storage tree, uint256 maxDepth_) internal;
 
 #### Description
 
-This function sets the maximum depth of the Merkle Tree. It reverts if the provided height is less than or equal to the current Merkle Tree depth. Also, it cannot exceed 256 due to the limitations of the uint256 data type; depths greater than 256 are not feasible.
+This function sets the maximum depth of the Merkle Tree. It reverts if the provided height is less than or equal to the current Merkle Tree depth. Also, it cannot exceed 256 due to the limitations of the uint256 data type; depths greater than 256 are not feasible. Practically, this number is even lower, around 100, due to EVM constraints. During tests using the Hardhat environment, we were not able to reach a depth greater than 96.
 
 #### Time complexity
 
