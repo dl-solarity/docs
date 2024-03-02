@@ -37,7 +37,7 @@ When a new element is added to the tree, the binary representation of the key is
 
 1. The tree is recursively navigated to find an "empty" slot (an `Empty` node) where the new `Leaf` node can be placed.
 2. The path is decided based on the element's key, left is chosen for a bit value of 0 and right for a bit value of 1.
-3. If a `Leaf` node is encountered during the insertion process, it is pushed down, and `Middle` nodes are inserted in their stead until a bit that differs between the leaves is identified. This scenario is illustrated on the image above. when the differing bit at position 3 leads to the creation of a branch at the tree's third level.
+3. If a `Leaf` node is encountered during the insertion process, it is pushed down, and `Middle` nodes are inserted in their stead until a bit that differs between the leaves is identified. This scenario is illustrated in the image above. When the differing bit at position 3 leads to the creation of a branch at the tree's third level.
 
 The aim of the implementation is to optimize gas efficiency for Sparse Merkle Tree operations while allowing flexibility with various types and values of keys. The significant updates have been made as follows:
 
