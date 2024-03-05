@@ -97,6 +97,14 @@ If you want your Diamond to behave like an `ERC20`, `ERC721`, or other popular s
       <td>OpenZeppelin ERC165-based Facet</td>
     </tr>
     <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/access/ownable">DiamondOwnable</a></td>
+      <td>OpenZeppelin Ownable-based Facet</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/access/access-control">DiamondAccessControl</a></td>
+      <td>OpenZeppelin AccessControl-based Facet</td>
+    </tr>
+    <tr>
       <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/diamond/utils/InitializableStorage.sol">InitializableStorage</a></td>
       <td>OpenZeppelin Initializable-based Storage</td>
     </tr>

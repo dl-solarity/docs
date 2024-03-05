@@ -138,7 +138,7 @@ function push(AddressVector memory vector, address[] memory values_) internal pu
 
 This function appends new elements to the `vector`. If there is no space left, it reallocates memory, doubling capacity.
 
-**Time complexity**
+#### Time complexity
 
 Amortized `O(1)` when a single `value_` is passed. Otherwise, it is amortized `O(n)`, where `n` is the `values_.length`.
 
@@ -175,7 +175,7 @@ function pop(AddressVector memory vector) internal pure;
 
 This function removes the last element from the `vector`. It neither changes the capacity nor reallocates memory. It will revert if called on an empty `vector`.
 
-**Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -273,7 +273,7 @@ function at(
 
 This function returns an element by its 0-based `index_`. It is a read-only function. It will revert if the `index_` is out of bounds.
 
-**Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -309,7 +309,7 @@ function length(AddressVector memory vector) internal pure returns (uint256);
 
 This function returns the length of the `vector`. It's a read-only function.
 
-**Time complexity**
+#### Time complexity
 
 Constant.
 
@@ -354,7 +354,7 @@ function toArray(
 
 This function returns a raw array `vector` based on. It's a read-only function.
 
-**Time complexity**
+#### Time complexity
 
 Constant, as it's a pointer copy, not a deep copy.
 
