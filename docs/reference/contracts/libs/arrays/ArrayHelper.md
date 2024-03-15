@@ -154,6 +154,15 @@ The function to reverse an address array
 
 ```solidity
 function reverse(
+    bool[] memory arr_
+) internal pure returns (bool[] memory reversed_)
+```
+
+The function to reverse a bool array
+### reverse
+
+```solidity
+function reverse(
     string[] memory arr_
 ) internal pure returns (string[] memory reversed_)
 ```
@@ -207,6 +216,17 @@ function insert(
 ```
 
 The function to insert an address array into the other array
+### insert
+
+```solidity
+function insert(
+    bool[] memory to_,
+    uint256 index_,
+    bool[] memory what_
+) internal pure returns (uint256)
+```
+
+The function to insert a bool array into the other array
 ### insert
 
 ```solidity

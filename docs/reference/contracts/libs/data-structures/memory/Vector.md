@@ -14,7 +14,7 @@ This library is inspired by C++ STD vector to enable push() and pop() operations
 
 Currently Solidity allows resizing only storage arrays, which may be a roadblock if you need to
 filter the elements by a specific property or add new ones without writing bulky code. The Vector library
-is ment to help with that.
+is meant to help with that.
 
 It is very important to create Vectors via constructors (newUint, newBytes32, newAddress) as they allocate and clean
 the memory for the data structure.

@@ -43,6 +43,16 @@ The function to insert an array of elements into the uint256 set
 ### add
 
 ```solidity
+function add(
+    EnumerableSet.Bytes32Set storage set,
+    bytes32[] memory array_
+) internal
+```
+
+The function to insert an array of elements into the bytes32 set
+### add
+
+```solidity
 function add(StringSet.Set storage set, string[] memory array_) internal
 ```
 
@@ -76,6 +86,16 @@ function strictAdd(
 ```
 
 The function for the strict insertion of an array of elements into the uint256 set
+### strictAdd
+
+```solidity
+function strictAdd(
+    EnumerableSet.Bytes32Set storage set,
+    bytes32[] memory array_
+) internal
+```
+
+The function for the strict insertion of an array of elements into the bytes32 set
 ### strictAdd
 
 ```solidity
@@ -115,6 +135,16 @@ The function to remove an array of elements from the uint256 set
 ### remove
 
 ```solidity
+function remove(
+    EnumerableSet.Bytes32Set storage set,
+    bytes32[] memory array_
+) internal
+```
+
+The function to remove an array of elements from the bytes32 set
+### remove
+
+```solidity
 function remove(StringSet.Set storage set, string[] memory array_) internal
 ```
 
@@ -148,6 +178,16 @@ function strictRemove(
 ```
 
 The function for the strict removal of an array of elements from the uint256 set
+### strictRemove
+
+```solidity
+function strictRemove(
+    EnumerableSet.Bytes32Set storage set,
+    bytes32[] memory array_
+) internal
+```
+
+The function for the strict removal of an array of elements from the bytes32 set
 ### strictRemove
 
 ```solidity

@@ -10,7 +10,7 @@ library TypeCaster
 
 This library simplifies non-obvious type castings.
 
-Convertions from static to dynamic arrays, singleton arrays, and arrays of different types are supported.
+Conversions from static to dynamic arrays, singleton arrays, and arrays of different types are supported.
 ## Functions info
 
 ### asUint256Array
