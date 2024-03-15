@@ -148,6 +148,12 @@ function reverse(
 
 ```solidity
 function reverse(
+    bool[] memory arr_
+) internal pure returns (address[] memory reversed_);
+```
+
+```solidity
+function reverse(
     string[] memory arr_
 ) internal pure returns (string[] memory reversed_);
 ```
@@ -194,6 +200,14 @@ function insert(
     address[] memory to_,
     uint256 index_,
     address[] memory what_
+) internal pure returns (uint256);
+```
+
+```solidity
+function insert(
+    bool[] memory to_,
+    uint256 index_,
+    bool[] memory what_
 ) internal pure returns (uint256);
 ```
 
