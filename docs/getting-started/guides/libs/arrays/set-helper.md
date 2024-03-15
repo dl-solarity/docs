@@ -36,7 +36,7 @@ function add(
 
 ```solidity
 function add(
-    Bytes32Set.UintSet storage set, 
+    EnumerableSet.Bytes32Set storage set, 
     bytes32[] memory array_
 ) internal;
 ```
@@ -88,7 +88,7 @@ function strictAdd(
 
 ```solidity
 function strictAdd(
-    Bytes32Set.UintSet storage set, 
+    EnumerableSet.Bytes32Set storage set, 
     bytes32[] memory array_
 ) internal;
 ```
