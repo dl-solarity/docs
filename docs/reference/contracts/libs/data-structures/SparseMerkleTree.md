@@ -18,27 +18,33 @@ It aims to provide more gas-efficient operations for the Sparse Merkle Tree whil
 in using different types of keys and values.
 
 The main differences from the original implementation include:
+- Added the ability to remove or update nodes in the tree.
 - Optimized storage usage to reduce the number of storage slots.
 - Added the ability to set custom hash functions.
 - Removed methods and associated storage for managing the tree root's history.
 
-Gas usage for adding (addBytes32) 16,001 leaves to a tree of size 80 is detailed below:
+Gas usage for adding (addUint) 20,000 leaves to a tree of size 80 "based" on the Poseidon Hash function is detailed below:
 
-| Statistic |     Value     |
+| Statistic |     Add       |
 |-----------|-------------- |
-| Count     | 16,001        |
-| Mean      | 1,444,220 gas |
-| Std Dev   | 209,147.6 gas |
-| Min       | 177,853   gas |
-| 25%       | 1,317,555 gas |
-| 50%       | 1,461,562 gas |
-| 75%       | 1,554,030 gas |
-| Max       | 2,723,812 gas |
+| Count     | 20,000        |
+| Mean      | 890,446 gas |
+| Std Dev   | 147,775 gas |
+| Min       | 177,797 gas   |
+| 25%       | 784,961 gas   |
+| 50%       | 866,482 gas   |
+| 75%       | 959,075 gas   |
+| Max       | 1,937,554 gas |
 
 The gas cost increases linearly with the depth of the leaves added. This growth can be approximated by the following formula:
-Linear regression formula: y = 92,457x + 255,689
+Linear regression formula: y = 46,377x + 215,088
 
-This implies that adding an element at depth 80 would approximately cost 7.5M gas.
+This implies that adding an element at depth 80 would approximately cost 3.93M gas.
+
+On the other hand, the growth of the gas cost for removing leaves can be approximated by the following formula:
+Linear regression formula: y = 44840*x + 88821
+
+This implies that removing an element at depth 80 would approximately cost 3.68M gas.
 
 ## Usage Example:
 
@@ -56,6 +62,8 @@ uintTree.getRoot();
 SparseMerkleTree.Proof memory proof = uintTree.getProof(100);
 
 uintTree.getNodeByKey(100);
+
+uintTree.remove(100);
 ```
 ## Enums info
 
@@ -105,8 +113,9 @@ AddressSMT      *
 struct SMT {
 	mapping(uint256 => SparseMerkleTree.Node) nodes;
 	uint64 merkleRootId;
-	uint64 maxDepth;
 	uint64 nodesCount;
+	uint64 deletedNodesCount;
+	uint32 maxDepth;
 	bool isCustomHasherSet;
 	function (bytes32,bytes32) view returns (bytes32) hash2;
 	function (bytes32,bytes32,bytes32) view returns (bytes32) hash3;
@@ -123,7 +132,7 @@ Parameters:
 | :---------------- | :-------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | nodes             | mapping(uint256 => struct SparseMerkleTree.Node)          | A mapping of the tree's nodes, where the key is the node's index, starting from 1 upon node addition. This approach differs from the original implementation, which utilized a hash as the key: H(k \|| v || 1) for leaf nodes and H(left || right) for middle nodes.  |
 | merkleRootId      | uint64                                                    | The index of the root node.                                                                                                                                                                                                                                            |
-| maxDepth          | uint64                                                    | The maximum depth of the Merkle tree.                                                                                                                                                                                                                                  |
+| maxDepth          | uint32                                                    | The maximum depth of the Merkle tree.                                                                                                                                                                                                                                  |
 | nodesCount        | uint64                                                    | The total number of nodes within the Merkle tree.                                                                                                                                                                                                                      |
 | isCustomHasherSet | bool                                                      | Indicates whether custom hash functions have been configured (true) or not (false).                                                                                                                                                                                    |
 | hash2             | function (bytes32,bytes32) view returns (bytes32)         | A hash function accepting two arguments.                                                                                                                                                                                                                               |
@@ -205,7 +214,7 @@ modifier onlyInitialized(SparseMerkleTree.SMT storage tree)
 ```solidity
 function initialize(
     SparseMerkleTree.UintSMT storage tree,
-    uint64 maxDepth_
+    uint32 maxDepth_
 ) internal
 ```
 
@@ -223,14 +232,14 @@ Parameters:
 | Name      | Type                            | Description                       |
 | :-------- | :------------------------------ | :-------------------------------- |
 | tree      | struct SparseMerkleTree.UintSMT | self.                             |
-| maxDepth_ | uint64                          | The max depth of the Merkle tree. |
+| maxDepth_ | uint32                          | The max depth of the Merkle tree. |
 
 ### setMaxDepth
 
 ```solidity
 function setMaxDepth(
     SparseMerkleTree.UintSMT storage tree,
-    uint64 maxDepth_
+    uint32 maxDepth_
 ) internal
 ```
 
@@ -248,7 +257,7 @@ Parameters:
 | Name      | Type                            | Description                       |
 | :-------- | :------------------------------ | :-------------------------------- |
 | tree      | struct SparseMerkleTree.UintSMT | self.                             |
-| maxDepth_ | uint64                          | The max depth of the Merkle tree. |
+| maxDepth_ | uint32                          | The max depth of the Merkle tree. |
 
 ### setHashers
 
@@ -280,7 +289,7 @@ Parameters:
 ```solidity
 function add(
     SparseMerkleTree.UintSMT storage tree,
-    uint256 key_,
+    bytes32 key_,
     uint256 value_
 ) internal
 ```
@@ -295,15 +304,56 @@ Parameters:
 | Name   | Type                            | Description               |
 | :----- | :------------------------------ | :------------------------ |
 | tree   | struct SparseMerkleTree.UintSMT | self.                     |
-| key_   | uint256                         | The key of the element.   |
+| key_   | bytes32                         | The key of the element.   |
 | value_ | uint256                         | The value of the element. |
+
+### remove
+
+```solidity
+function remove(SparseMerkleTree.UintSMT storage tree, bytes32 key_) internal
+```
+
+The function to remove a (leaf) element from the uint256 tree.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name | Type                            | Description             |
+| :--- | :------------------------------ | :---------------------- |
+| tree | struct SparseMerkleTree.UintSMT | self.                   |
+| key_ | bytes32                         | The key of the element. |
+
+### update
+
+```solidity
+function update(
+    SparseMerkleTree.UintSMT storage tree,
+    bytes32 key_,
+    uint256 newValue_
+) internal
+```
+
+The function to update a (leaf) element in the uint256 tree.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name      | Type                            | Description                   |
+| :-------- | :------------------------------ | :---------------------------- |
+| tree      | struct SparseMerkleTree.UintSMT | self.                         |
+| key_      | bytes32                         | The key of the element.       |
+| newValue_ | uint256                         | The new value of the element. |
 
 ### getProof
 
 ```solidity
 function getProof(
     SparseMerkleTree.UintSMT storage tree,
-    uint256 key_
+    bytes32 key_
 ) internal view returns (SparseMerkleTree.Proof memory)
 ```
 
@@ -317,7 +367,7 @@ Parameters:
 | Name | Type                            | Description              |
 | :--- | :------------------------------ | :----------------------- |
 | tree | struct SparseMerkleTree.UintSMT | self.                    |
-| key_ | uint256                         | The key of the element.  |
+| key_ | bytes32                         | The key of the element.  |
 
 
 Return values:
@@ -488,7 +538,7 @@ Return values:
 ```solidity
 function initialize(
     SparseMerkleTree.Bytes32SMT storage tree,
-    uint64 maxDepth_
+    uint32 maxDepth_
 ) internal
 ```
 
@@ -506,14 +556,14 @@ Parameters:
 | Name      | Type                               | Description                       |
 | :-------- | :--------------------------------- | :-------------------------------- |
 | tree      | struct SparseMerkleTree.Bytes32SMT | self.                             |
-| maxDepth_ | uint64                             | The max depth of the Merkle tree. |
+| maxDepth_ | uint32                             | The max depth of the Merkle tree. |
 
 ### setMaxDepth
 
 ```solidity
 function setMaxDepth(
     SparseMerkleTree.Bytes32SMT storage tree,
-    uint64 maxDepth_
+    uint32 maxDepth_
 ) internal
 ```
 
@@ -531,7 +581,7 @@ Parameters:
 | Name      | Type                               | Description                       |
 | :-------- | :--------------------------------- | :-------------------------------- |
 | tree      | struct SparseMerkleTree.Bytes32SMT | self.                             |
-| maxDepth_ | uint64                             | The max depth of the Merkle tree. |
+| maxDepth_ | uint32                             | The max depth of the Merkle tree. |
 
 ### setHashers
 
@@ -580,6 +630,50 @@ Parameters:
 | tree   | struct SparseMerkleTree.Bytes32SMT | self.                     |
 | key_   | bytes32                            | The key of the element.   |
 | value_ | bytes32                            | The value of the element. |
+
+### remove
+
+```solidity
+function remove(
+    SparseMerkleTree.Bytes32SMT storage tree,
+    bytes32 key_
+) internal
+```
+
+The function to remove a (leaf) element from the bytes32 tree.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name | Type                               | Description             |
+| :--- | :--------------------------------- | :---------------------- |
+| tree | struct SparseMerkleTree.Bytes32SMT | self.                   |
+| key_ | bytes32                            | The key of the element. |
+
+### update
+
+```solidity
+function update(
+    SparseMerkleTree.Bytes32SMT storage tree,
+    bytes32 key_,
+    bytes32 newValue_
+) internal
+```
+
+The function to update a (leaf) element in the bytes32 tree.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name      | Type                               | Description                   |
+| :-------- | :--------------------------------- | :---------------------------- |
+| tree      | struct SparseMerkleTree.Bytes32SMT | self.                         |
+| key_      | bytes32                            | The key of the element.       |
+| newValue_ | bytes32                            | The new value of the element. |
 
 ### getProof
 
@@ -771,7 +865,7 @@ Return values:
 ```solidity
 function initialize(
     SparseMerkleTree.AddressSMT storage tree,
-    uint64 maxDepth_
+    uint32 maxDepth_
 ) internal
 ```
 
@@ -789,14 +883,14 @@ Parameters:
 | Name      | Type                               | Description                       |
 | :-------- | :--------------------------------- | :-------------------------------- |
 | tree      | struct SparseMerkleTree.AddressSMT | self.                             |
-| maxDepth_ | uint64                             | The max depth of the Merkle tree. |
+| maxDepth_ | uint32                             | The max depth of the Merkle tree. |
 
 ### setMaxDepth
 
 ```solidity
 function setMaxDepth(
     SparseMerkleTree.AddressSMT storage tree,
-    uint64 maxDepth_
+    uint32 maxDepth_
 ) internal
 ```
 
@@ -814,7 +908,7 @@ Parameters:
 | Name      | Type                               | Description                       |
 | :-------- | :--------------------------------- | :-------------------------------- |
 | tree      | struct SparseMerkleTree.AddressSMT | self.                             |
-| maxDepth_ | uint64                             | The max depth of the Merkle tree. |
+| maxDepth_ | uint32                             | The max depth of the Merkle tree. |
 
 ### setHashers
 
@@ -863,6 +957,50 @@ Parameters:
 | tree   | struct SparseMerkleTree.AddressSMT | self.                     |
 | key_   | bytes32                            | The key of the element.   |
 | value_ | address                            | The value of the element. |
+
+### remove
+
+```solidity
+function remove(
+    SparseMerkleTree.AddressSMT storage tree,
+    bytes32 key_
+) internal
+```
+
+The function to remove a (leaf) element from the address tree.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name | Type                               | Description             |
+| :--- | :--------------------------------- | :---------------------- |
+| tree | struct SparseMerkleTree.AddressSMT | self.                   |
+| key_ | bytes32                            | The key of the element. |
+
+### update
+
+```solidity
+function update(
+    SparseMerkleTree.AddressSMT storage tree,
+    bytes32 key_,
+    address newValue_
+) internal
+```
+
+The function to update a (leaf) element in the address tree.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name      | Type                               | Description                   |
+| :-------- | :--------------------------------- | :---------------------------- |
+| tree      | struct SparseMerkleTree.AddressSMT | self.                         |
+| key_      | bytes32                            | The key of the element.       |
+| newValue_ | address                            | The new value of the element. |
 
 ### getProof
 
