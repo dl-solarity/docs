@@ -12,7 +12,7 @@ The proxies module
 
 The helper BeaconProxy that can be deployed by the factories.
 
-Note that the external `implementation()` function is added to the contract to provide compatability with
+Note that the external `implementation()` function is added to the contract to provide compatibility with
 Etherscan. This means that the implementation contract must not have such a function declared.
 ## Functions info
 
