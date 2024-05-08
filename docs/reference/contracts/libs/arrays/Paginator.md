@@ -10,8 +10,8 @@ library Paginator
 
 Library for pagination.
 
-Supports the following data types `uin256[]`, `address[]`, `bytes32[]`, `UintSet`,
-`AddressSet`, `BytesSet`, `StringSet`.
+Supports the following data types `uint256[]`, `address[]`, `bytes32[]`, `UintSet`,
+`AddressSet`, `Bytes32Set`, `BytesSet`, `StringSet`.
 ## Functions info
 
 ### part
@@ -110,7 +110,18 @@ Returns part of a bytes32 set
 
 ```solidity
 function part(
-    StringSet.Set storage set,
+    DynamicSet.BytesSet storage set,
+    uint256 offset_,
+    uint256 limit_
+) internal view returns (bytes[] memory list_)
+```
+
+Returns part of a bytes set
+### part
+
+```solidity
+function part(
+    DynamicSet.StringSet storage set,
     uint256 offset_,
     uint256 limit_
 ) internal view returns (string[] memory list_)

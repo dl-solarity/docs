@@ -53,7 +53,14 @@ The function to insert an array of elements into the bytes32 set
 ### add
 
 ```solidity
-function add(StringSet.Set storage set, string[] memory array_) internal
+function add(DynamicSet.BytesSet storage set, bytes[] memory array_) internal
+```
+
+The function to insert an array of elements into the bytes set
+### add
+
+```solidity
+function add(DynamicSet.StringSet storage set, string[] memory array_) internal
 ```
 
 The function to insert an array of elements into the string set
@@ -99,7 +106,20 @@ The function for the strict insertion of an array of elements into the bytes32 s
 ### strictAdd
 
 ```solidity
-function strictAdd(StringSet.Set storage set, string[] memory array_) internal
+function strictAdd(
+    DynamicSet.BytesSet storage set,
+    bytes[] memory array_
+) internal
+```
+
+The function for the strict insertion of an array of elements into the bytes set
+### strictAdd
+
+```solidity
+function strictAdd(
+    DynamicSet.StringSet storage set,
+    string[] memory array_
+) internal
 ```
 
 The function for the strict insertion of an array of elements into the string set
@@ -145,7 +165,20 @@ The function to remove an array of elements from the bytes32 set
 ### remove
 
 ```solidity
-function remove(StringSet.Set storage set, string[] memory array_) internal
+function remove(
+    DynamicSet.BytesSet storage set,
+    bytes[] memory array_
+) internal
+```
+
+The function to remove an array of elements from the bytes set
+### remove
+
+```solidity
+function remove(
+    DynamicSet.StringSet storage set,
+    string[] memory array_
+) internal
 ```
 
 The function to remove an array of elements from the string set
@@ -192,7 +225,17 @@ The function for the strict removal of an array of elements from the bytes32 set
 
 ```solidity
 function strictRemove(
-    StringSet.Set storage set,
+    DynamicSet.BytesSet storage set,
+    bytes[] memory array_
+) internal
+```
+
+The function for the strict removal of an array of elements from the bytes set
+### strictRemove
+
+```solidity
+function strictRemove(
+    DynamicSet.StringSet storage set,
     string[] memory array_
 ) internal
 ```
