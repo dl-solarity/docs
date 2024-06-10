@@ -6,9 +6,9 @@ The AVL Tree library offers an efficient on-chain solution for managing balanced
 
 ## Implementation
 
-The `AvlTree` library is structured to handle three types of keys: uint256, bytes32, and address, each facilitating different use cases. Every node in the AVL tree is equipped with a dynamic bytes `value` field, allowing for the storage of complex data types, including structs.
+The `AvlTree` library is structured to handle three types of values: uint256, bytes32, and address, each facilitating different use cases. Every node in the AVL tree has a bytes32 key, allowing for the storage of different data types as keys.
 
-The tree is simply a mapping of keys to nodes. The example below shows how the nodes are represented in the tree.
+The tree is simply a mapping of keys to nodes. Thanks to the structure of node which provides the parent node reference the iterative traversal of the tree is possible.The example below shows how the nodes are represented in the tree.
 
 <figure>
     <img src={require("/static/img/docs/avl-tree-diagram.png").default} alt=""/>
@@ -36,27 +36,27 @@ using AvlTree for AvlTree.AddressAVL;
 ```solidity
 function setComparator(
     UintAVL storage tree,
-    function(bytes32, bytes32, bytes memory, bytes memory) view returns (int8) comparator_
+    function(bytes32, bytes32) view returns (int256) comparator_
 ) internal;
 ```
 
 ```solidity
 function setComparator(
     Bytes32AVL storage tree,
-    function(bytes32, bytes32, bytes memory, bytes memory) view returns (int8) comparator_
+    function(bytes32, bytes32) view returns (int256) comparator_
 ) internal;
 ```
 
 ```solidity
 function setComparator(
     AddressAVL storage tree,
-    function(bytes32, bytes32, bytes memory, bytes memory) view returns (int8) comparator_
+    function(bytes32, bytes32) view returns (int256) comparator_
 ) internal;
 ```
 
 #### Description
 
-This function sets a custom comparator function to be used for Avl Tree construction. The comparator function takes 2 keys and 2 values as parameters to enable the implementation of flexible comparing logic. It is expected to return 1 if the first element to be compared is greater than the second one, -1 if it is less, 0 if they are equal. 
+This function sets a custom comparator function to be used for Avl Tree construction. The comparator function takes 2 keys to compare as parameters. It is expected to return 1 if the first element to be compared is greater than the second one, -1 if it is less, 0 if they are equal. 
 
 The operation will revert if the tree already contains at least one node.
 
@@ -71,12 +71,16 @@ AvlTree.UintAVL public uintTree;
 
 function _descComparator(
     bytes32 key1_,
-    bytes32 key2_,
-    bytes memory,
-    bytes memory
-) internal pure returns (int8) {
-    if (key1_ > key2_) return -1;
-    if (key1_ < key2_) return 1;
+    bytes32 key2_
+) internal pure returns (int256) {
+    if (key1_ > key2_) {
+        return -1;
+    }
+
+    if (key1_ < key2_) {
+        return 1;
+    }
+
     return 0;
 }
 
@@ -86,15 +90,15 @@ uintTree.setComparator(_descComparator);
 ### insert
 
 ```solidity
-function insert(UintAVL storage tree, uint256 key_, bytes memory value_) internal;
+function insert(UintAVL storage tree, bytes32 key_, uint256 value_) internal;
 ```
 
 ```solidity
-function insert(Bytes32AVL storage tree, bytes32 key_, bytes memory value_) internal;
+function insert(Bytes32AVL storage tree, bytes32 key_, bytes32 value_) internal;
 ```
 
 ```solidity
-function insert(AddressAVL storage tree, address key_, bytes memory value_) internal;
+function insert(AddressAVL storage tree, bytes32 key_, address value_) internal;
 ```
 
 #### Description
@@ -110,8 +114,8 @@ This function inserts a new node into the tree. The operation will revert if the
 ```solidity
 AvlTree.UintAVL public uintTree;
 
-uintTree.insert(1, abi.encode(100));
-uintTree.insert(2, abi.encode(200));
+uintTree.insert(bytes32(1), 100);
+uintTree.insert(bytes32(2), 200);
 
 uintTree.treeSize(); // 2
 ```
@@ -119,7 +123,7 @@ uintTree.treeSize(); // 2
 ### remove
 
 ```solidity
-function remove(UintAVL storage tree, uint256 key_) internal;
+function remove(UintAVL storage tree, bytes32 key_) internal;
 ```
 
 ```solidity
@@ -127,7 +131,7 @@ function remove(Bytes32AVL storage tree, bytes32 key_) internal;
 ```
 
 ```solidity
-function remove(AddressAVL storage tree, address key_) internal;
+function remove(AddressAVL storage tree, bytes32 key_) internal;
 ```
 
 #### Description
@@ -143,59 +147,26 @@ This function removes a new node from the tree. The operation will revert if the
 ```solidity
 AvlTree.UintAVL public uintTree;
 
-uintTree.insert(1, abi.encode(100));
+uintTree.insert(bytes32(1), 100);
 
-uintTree.remove(2); // Reverts with "AvlTree: the node doesn't exist"
-uintTree.remove(1);
+uintTree.remove(bytes32(2)); // Reverts with "AvlTree: the node doesn't exist"
+uintTree.remove(bytes32(1));
 
 uintTree.treeSize(); // 0
 ```
 
-### search
+### get
 
 ```solidity
-function search(UintAVL storage tree, uint256 key_) internal view returns (bool);
+function get(UintAVL storage tree, bytes32 key_) internal view returns (uint256);
 ```
 
 ```solidity
-function search(Bytes32AVL storage tree, bytes32 key_) internal view returns (bool);
+function get(Bytes32AVL storage tree, bytes32 key_) internal view returns (bytes32);
 ```
 
 ```solidity
-function search(AddressAVL storage tree, address key_) internal view returns (bool);
-```
-
-#### Description
-
-This function returns true, if a node with the specified key exists in the tree, and false otherwise.
-
-#### Time complexity
-
-Constant.
-
-#### Example
-
-```solidity
-AvlTree.UintAVL public uintTree;
-
-uintTree.insert(3, abi.encode(300));
-
-uintTree.search(1); // false
-uintTree.search(3); // true
-```
-
-### getValue
-
-```solidity
-function getValue(UintAVL storage tree, uint256 key_) internal view returns (bytes storage);
-```
-
-```solidity
-function getValue(Bytes32AVL storage tree, bytes32 key_) internal view returns (bytes storage);
-```
-
-```solidity
-function getValue(AddressAVL storage tree, address key_) internal view returns (bytes storage);
+function get(AddressAVL storage tree, bytes32 key_) internal view returns (address);
 ```
 
 #### Description
@@ -204,38 +175,36 @@ This function returns the `value` of the node with the specified key. The operat
 
 #### Time complexity
 
-Constant.
+`O(log(n))`, where `n` is the number of elements in the tree.
 
 #### Example
 
 ```solidity
 AvlTree.UintAVL public uintTree;
 
-uintTree.insert(1, abi.encode(100));
+uintTree.insert(bytes32(3), 300);
 
-bytes memory bytesValue_ = uintTree.getValue(1);
-abi.decode(bytesValue_, (uint256)); // 100
-
-uintTree.getValue(2); // Reverts with "AvlTree: node with such key doesn't exist"
+uintTree.get(bytes32(1)); // Reverts with "AvlTree: the node doesn't exist"
+uintTree.get(bytes32(3)); // 300
 ```
 
-### getMin
+### tryGet
 
 ```solidity
-function getMin(UintAVL storage tree) internal view returns (uint256);
-```
-
-```solidity
-function getMin(Bytes32AVL storage tree) internal view returns (bytes32);
+function tryGet(UintAVL storage tree, bytes32 key_) internal view returns (bool, uint256);
 ```
 
 ```solidity
-function getMin(AddressAVL storage tree) internal view returns (address);
+function tryGet(Bytes32AVL storage tree, bytes32 key_) internal view returns (bool, bytes32);
+```
+
+```solidity
+function tryGet(AddressAVL storage tree, bytes32 key_) internal view returns (bool, address);
 ```
 
 #### Description
 
-This function returns the minimum key from the tree or in other words the leftmost node of the tree. Returns 0 if the tree is empty.
+This function tries to retrieve the value associated with the specified key. It returns true if node with the key exists, false otherwise, and the `value` of the node. The operation will not revert if a node with the key doesn't exist in the tree.
 
 #### Time complexity
 
@@ -246,93 +215,24 @@ This function returns the minimum key from the tree or in other words the leftmo
 ```solidity
 AvlTree.UintAVL public uintTree;
 
-uintTree.insert(10, abi.encode(10));
-uintTree.insert(2, abi.encode(20));
-uintTree.insert(3, abi.encode(30));
+uintTree.insert(bytes32(1), 100);
 
-uintTree.getMin(); // 2
+uintTree.tryGet(bytes32(2)); // (false, 0)
+uintTree.tryGet(bytes32(1)); // (true, 100)
 ```
 
-### getMax
+### size
 
 ```solidity
-function getMax(UintAVL storage tree) internal view returns (uint256);
-```
-
-```solidity
-function getMax(Bytes32AVL storage tree) internal view returns (bytes32);
+function size(UintAVL storage tree) internal view returns (uint64);
 ```
 
 ```solidity
-function getMax(AddressAVL storage tree) internal view returns (address);
-```
-
-#### Description
-
-This function returns the maximum key from the tree or in other words the rightmost node of the tree. Returns 0 if the tree is empty.
-
-#### Time complexity
-
-`O(log(n))`, where `n` is the number of elements in the tree.
-
-#### Example
-
-```solidity
-AvlTree.UintAVL public uintTree;
-
-uintTree.insert(10, abi.encode(10));
-uintTree.insert(2, abi.encode(20));
-uintTree.insert(3, abi.encode(30));
-
-uintTree.getMax(); // 10
-```
-
-### root
-
-```solidity
-function root(UintAVL storage tree) internal view returns (uint256);
+function size(Bytes32AVL storage tree) internal view returns (uint64);
 ```
 
 ```solidity
-function root(Bytes32AVL storage tree) internal view returns (bytes32);
-```
-
-```solidity
-function root(AddressAVL storage tree) internal view returns (address);
-```
-
-#### Description
-
-This function returns the key of the root node in the tree. Returns 0 if the tree is empty.
-
-#### Time complexity
-
-Constant.
-
-#### Example
-
-```solidity
-Avltree.UintAVL public uintTree;
-
-uintTree.insert(10, abi.encode(10));
-uintTree.insert(5, abi.encode(10));
-uintTree.insert(2, abi.encode(10));
-
-uintTree.root(); // 5
-```
-
-### treeSize
-
-```solidity
-function treeSize(UintAVL storage tree) internal view returns (uint256);
-```
-
-```solidity
-function treeSize(Bytes32AVL storage tree) internal view returns (uint256);
-```
-
-```solidity
-function treeSize(AddressAVL storage tree) internal view returns (uint256);
+function size(AddressAVL storage tree) internal view returns (uint64);
 ```
 
 #### Description
@@ -348,113 +248,82 @@ Constant.
 ```solidity
 Avltree.UintAVL public uintTree;
 
-uintTree.insert(1, abi.encode(10));
-uintTree.insert(2, abi.encode(20));
+uintTree.insert(bytes32(1), 10);
+uintTree.insert(bytes32(2), 20);
 
-uintTree.treeSize(); // 2
+uintTree.size(); // 2
 ```
 
-### inOrderTraversal
+### first
 
 ```solidity
-function inOrderTraversal(UintAVL storage tree) internal view returns (uint256[] memory);
-```
-
-```solidity
-function inOrderTraversal(Bytes32AVL storage tree) internal view returns (bytes32[] memory);
+function first(UintAVL storage tree) internal view returns (Traversal.Iterator memory);
 ```
 
 ```solidity
-function inOrderTraversal(AddressAVL storage tree) internal view returns (address[] memory);
+function first(Bytes32AVL storage tree) internal view returns (Traversal.Iterator memory);
+```
+
+```solidity
+function first(AddressAVL storage tree) internal view returns (Traversal.Iterator memory);
 ```
 
 #### Description
 
-This function returns an array of keys in in-order traversal. It recursively visits the left subtree, the node itself, and then the right subtree. The function is particularly useful when it is required to process or display data in its natural, sequential order.
+This function returns the [iterator](#-traversal) pointing to the first (leftmost) node in the tree. The functions can be utilized for an in-order traversal of the tree.
 
 #### Time complexity
 
-`O(n)`, where `n` is the number of elements in the tree.
+`O(log(n))`, where `n` is the number of elements in the tree.
 
 #### Example
 
 ```solidity
 Avltree.UintAVL public uintTree;
 
-uintTree.insert(5, abi.encode(50));
-uintTree.insert(1, abi.encode(10));
-uintTree.insert(2, abi.encode(20));
+uintTree.insert(bytes32(2), 20);
+uintTree.insert(bytes32(1), 10);
+uintTree.insert(bytes32(4), 40);
 
-uintTree.inOrderTraversal(); // [1, 2, 5]
+Traversal.Iterator memory iterator_ = uintTree.first();
+
+iterator_..value(); // (bytes32(1), bytes32(10))
 ```
 
-### preOrderTraversal
+### last
 
 ```solidity
-function preOrderTraversal(UintAVL storage tree) internal view returns (uint256[] memory);
-```
-
-```solidity
-function preOrderTraversal(Bytes32AVL storage tree) internal view returns (bytes32[] memory);
+function last(UintAVL storage tree) internal view returns (Traversal.Iterator memory);
 ```
 
 ```solidity
-function preOrderTraversal(AddressAVL storage tree) internal view returns (address[] memory);
+function last(Bytes32AVL storage tree) internal view returns (Traversal.Iterator memory);
+```
+
+```solidity
+function last(AddressAVL storage tree) internal view returns (Traversal.Iterator memory);
 ```
 
 #### Description
 
-This function returns an array of keys in pre-order traversal. It visits the current node first (processing the root node first), then recursively visits the left subtree followed by the right subtree. The function can be particularly useful when it is required to create a copy of the tree or explore the structure before the subtrees are examined.
+This function returns the [iterator](#-traversal) pointing to the last (rightmost) node in the tree. The functions can be utilized for an in-order backwards traversal of the tree.
 
 #### Time complexity
 
-`O(n)`, where `n` is the number of elements in the tree.
+`O(log(n))`, where `n` is the number of elements in the tree.
 
 #### Example
 
 ```solidity
 Avltree.UintAVL public uintTree;
 
-uintTree.insert(5, abi.encode(50));
-uintTree.insert(1, abi.encode(10));
-uintTree.insert(2, abi.encode(20));
+uintTree.insert(bytes32(2), 20);
+uintTree.insert(bytes32(1), 10);
+uintTree.insert(bytes32(4), 40);
 
-uintTree.preOrderTraversal(); // [2, 1, 5]
-```
+Traversal.Iterator memory iterator_ = uintTree.last();
 
-### postOrderTraversal
-
-```solidity
-function postOrderTraversal(UintAVL storage tree) internal view returns (uint256[] memory);
-```
-
-```solidity
-function postOrderTraversal(Bytes32AVL storage tree) internal view returns (bytes32[] memory);
-```
-
-```solidity
-function postOrderTraversal(AddressAVL storage tree) internal view returns (address[] memory);
-```
-
-#### Description
-
-This function returns an array of keys in post-order traversal. It first recursively visits the left and right subtrees before processing the current node (root node last). The function can be particularly useful when subtrees need to be processed before their respective parent nodes.
-
-
-#### Time complexity
-
-`O(n)`, where `n` is the number of elements in the tree.
-
-#### Example
-
-```solidity
-Avltree.UintAVL public uintTree;
-
-uintTree.insert(5, abi.encode(50));
-uintTree.insert(1, abi.encode(10));
-uintTree.insert(2, abi.encode(20));
-
-uintTree.postOrderTraversal(); // [1, 5, 2]
+iterator_..value(); // (bytes32(4), bytes32(40))
 ```
 
 ### isCustomComparatorSet
@@ -486,12 +355,16 @@ AvlTree.UintAVL public uintTree;
 
 function _descComparator(
     bytes32 key1_,
-    bytes32 key2_,
-    bytes memory,
-    bytes memory
-) internal pure returns (int8) {
-    if (key1_ > key2_) return -1;
-    if (key1_ < key2_) return 1;
+    bytes32 key2_
+) internal pure returns (int256) {
+    if (key1_ > key2_) {
+        return -1;
+    }
+
+    if (key1_ < key2_) {
+        return 1;
+    }
+
     return 0;
 }
 
@@ -500,4 +373,49 @@ uintTree.isCustomComparatorSet(); // false
 uintTree.setComparator(_descComparator);
 
 uintTree.isCustomComparatorSet(); // true
+```
+
+# 🛤 Traversal
+
+## Introduction
+
+The `Traversal` library allows for in-order traversal of an AVL tree in Solidity. It provides various functions for iterating through the tree in different directions, checking for the existence of the next or previous node, and retrieving node values.
+
+## Implementation
+
+The iterative traversal is possible because each node in the AVL tree maintains a reference to its parent node. This parent reference allows the traversal algorithm to efficiently move up and down the tree structure without the need for recursive calls, which can be both resource-intensive and prone to stack overflow issues in deep trees.
+
+The library also enhances gas efficiency and execution speed by leveraging inline assembly for direct storage access, rather than passing the entire tree to each function. This is achieved by storing the `treeMappingSlot` field in the `Iterator` struct.
+## Example
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.4;
+
+import {AvlTree, Traversal} from "@solarity/solidity-lib/libs/data-structures/AvlTree.sol";
+
+using AvlTree for AvlTree.UintAVL;
+using Traversal for Traversal.Iterator;
+
+Avltree.UintAVL public uintTree;
+
+uintTree.insert(bytes32(2), 20);
+uintTree.insert(bytes32(1), 10);
+uintTree.insert(bytes32(4), 40);
+
+bytes32[] memory keys_ = new bytes32[](uintTree.size());
+bytes32[] memory values_ = new bytes32[](uintTree.size());
+
+uint256 index_;
+
+while (iterator_.isValid()) {
+    (keys_[index_], values_[index_]) = iterator_.value();
+
+    iterator_.next();
+
+    index_++;
+}
+
+// keys_.asUint256Array(): [1, 2, 3]
+// values_.asUint256Array(): [10, 20, 30]
 ```

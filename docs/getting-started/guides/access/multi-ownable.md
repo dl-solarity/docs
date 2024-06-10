@@ -8,8 +8,6 @@ The concept of the Multi Owanable module is not different from the [OpenZeppelin
 
 The `MultiOwnable` contract provides a basic access control mechanism, where a list of owner addresses is granted exclusive access to specific functions. All owners have equal access rights, allowing them to add or remove other owners, including themselves. The one who calls the `__MultiOwnable_init` function (i.e., the contract deployer) will become the initial owner of the contract. This module makes the `onlyOwner` modifier available, which can be applied to functions to restrict their use to the owners.
 
-For the compatibility with protocols like OpenSea where a single owner is required the contract has the `owner` function that returns the first owner in the set. When the primary owner is changed the `OwnershipTransferred` event is emitted.
-
 ## Example
 
 Begin by creating a protected contract by inheriting it from the `MultiOwnable`.
