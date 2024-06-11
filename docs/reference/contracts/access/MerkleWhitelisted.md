@@ -25,14 +25,14 @@ Note: the branch nodes are sorted numerically.
 ### onlyWhitelisted
 
 ```solidity
-modifier onlyWhitelisted(bytes memory data_, bytes32[] calldata merkleProof_)
+modifier onlyWhitelisted(bytes memory data_, bytes32[] memory merkleProof_)
 ```
 
 
 ### onlyWhitelistedUser
 
 ```solidity
-modifier onlyWhitelistedUser(address user_, bytes32[] calldata merkleProof_)
+modifier onlyWhitelistedUser(address user_, bytes32[] memory merkleProof_)
 ```
 
 
@@ -43,7 +43,7 @@ modifier onlyWhitelistedUser(address user_, bytes32[] calldata merkleProof_)
 ```solidity
 function isWhitelisted(
     bytes32 leaf_,
-    bytes32[] calldata merkleProof_
+    bytes32[] memory merkleProof_
 ) public view returns (bool)
 ```
 
@@ -69,7 +69,7 @@ Return values:
 ```solidity
 function isWhitelistedUser(
     address user_,
-    bytes32[] calldata merkleProof_
+    bytes32[] memory merkleProof_
 ) public view returns (bool)
 ```
 
