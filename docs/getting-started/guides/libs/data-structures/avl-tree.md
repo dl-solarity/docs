@@ -117,7 +117,7 @@ AvlTree.UintAVL public uintTree;
 uintTree.insert(bytes32(1), 100);
 uintTree.insert(bytes32(2), 200);
 
-uintTree.treeSize(); // 2
+uintTree.size(); // 2
 ```
 
 ### remove
@@ -152,7 +152,7 @@ uintTree.insert(bytes32(1), 100);
 uintTree.remove(bytes32(2)); // Reverts with "AvlTree: the node doesn't exist"
 uintTree.remove(bytes32(1));
 
-uintTree.treeSize(); // 0
+uintTree.size(); // 0
 ```
 
 ### get
