@@ -67,6 +67,13 @@ Parameters:
 | :------ | :------ | :------------------------------ |
 | amount_ | uint256 | The amount of rewards to claim. |
 
+### claimAll (0xd1058e59)
+
+```solidity
+function claimAll() public stakingStarted
+```
+
+Claims all the available rewards.
 ### withdraw (0x3ccfd60b)
 
 ```solidity
