@@ -38,58 +38,6 @@ modifier onlyWhitelistedUser(address user_, bytes32[] memory merkleProof_)
 
 ## Functions info
 
-### isWhitelisted (0x7ea25896)
-
-```solidity
-function isWhitelisted(
-    bytes32 leaf_,
-    bytes32[] memory merkleProof_
-) public view returns (bool)
-```
-
-The function to check if the leaf belongs to the Merkle tree
-
-
-Parameters:
-
-| Name         | Type      | Description                                     |
-| :----------- | :-------- | :---------------------------------------------- |
-| leaf_        | bytes32   | the leaf to be checked                          |
-| merkleProof_ | bytes32[] | the path from the leaf to the Merkle tree root  |
-
-
-Return values:
-
-| Name | Type | Description                                                  |
-| :--- | :--- | :----------------------------------------------------------- |
-| [0]  | bool | true if the leaf belongs to the Merkle tree, false otherwise |
-
-### isWhitelistedUser (0xa188491c)
-
-```solidity
-function isWhitelistedUser(
-    address user_,
-    bytes32[] memory merkleProof_
-) public view returns (bool)
-```
-
-The function to check if the user belongs to the Merkle tree
-
-
-Parameters:
-
-| Name         | Type      | Description                                     |
-| :----------- | :-------- | :---------------------------------------------- |
-| user_        | address   | the user to be checked                          |
-| merkleProof_ | bytes32[] | the path from the user to the Merkle tree root  |
-
-
-Return values:
-
-| Name | Type | Description                                                  |
-| :--- | :--- | :----------------------------------------------------------- |
-| [0]  | bool | true if the user belongs to the Merkle tree, false otherwise |
-
 ### getMerkleRoot (0x49590657)
 
 ```solidity

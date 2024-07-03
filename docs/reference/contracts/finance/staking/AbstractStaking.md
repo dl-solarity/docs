@@ -70,10 +70,18 @@ Parameters:
 ### claimAll (0xd1058e59)
 
 ```solidity
-function claimAll() public stakingStarted
+function claimAll() public stakingStarted returns (uint256)
 ```
 
 Claims all the available rewards.
+
+
+Return values:
+
+| Name | Type    | Description                             |
+| :--- | :------ | :-------------------------------------- |
+| [0]  | uint256 | The total value of the rewards claimed. |
+
 ### withdraw (0x3ccfd60b)
 
 ```solidity
