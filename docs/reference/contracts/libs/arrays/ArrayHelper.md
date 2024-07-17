@@ -65,6 +65,33 @@ Return values:
 | :----- | :------ | :----------------------------------------------------------------------------- |
 | index_ | uint256 | the index of the found element or the length of the `array` if no such element |
 
+### contains
+
+```solidity
+function contains(
+    uint256[] storage array,
+    uint256 element_
+) internal view returns (bool)
+```
+
+The function that searches for the `element_` and returns whether it is present in the array.
+The time complexity is O(log n)
+
+
+Parameters:
+
+| Name     | Type      | Description             |
+| :------- | :-------- | :---------------------- |
+| array    | uint256[] | the array to search in  |
+| element_ | uint256   | the element             |
+
+
+Return values:
+
+| Name | Type | Description                                    |
+| :--- | :--- | :--------------------------------------------- |
+| [0]  | bool | whether the `element_` is present in the array |
+
 ### getRangeSum
 
 ```solidity
