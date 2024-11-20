@@ -26,7 +26,7 @@ Each node also contains a hash; for an `Empty` type node, it is zero.
 
 For a `Middle` node, it is calculated as follows: `H(H_L || H_R)`, where `H` is the hash function used within the library, `H_L` is the hash of the left node, and `H_R` is the hash of the right node. By default, the hash function is `Keccak-256`, but it can be changed to another, such as the `Poseidon` hash function.
 
-For a `Leaf` node, the hash is calculated like: `H(1 || k || v)`, where `1` acts as a domain separator, `k` is a key that determines where the leaf will be located in the tree, and `v` is a value representing some data.
+For a `Leaf` node, the hash is calculated like: `H(k || v || 1)`, where `1` acts as a domain separator, `k` is a key that determines where the leaf will be located in the tree, and `v` is a value representing some data.
 
 <figure>
     <img src={require("/static/img/docs/sparse-merkle-tree.png").default} alt=""/>
