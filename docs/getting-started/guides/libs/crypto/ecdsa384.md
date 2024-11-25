@@ -64,7 +64,7 @@ The function to verify the ECDSA signature
     <tr>
       <td><code>pubKey</code></td>  
       <td>bytes</td>
-      <td>The full public key of a signer. Equals to <code>bytes(x) + bytes(y)</code>. Note that signatures only from the lower part of the curve are accepted. If your <code>s >= n / 2</code>, change it to <code> s = n - s</code></td>
+      <td>The full public key of a signer. Equals to <code>bytes(x) + bytes(y)</code>. Note that signatures only from the lower part of the curve are accepted. If your <code>s > n / 2</code>, change it to <code>s = n - s</code></td>
     </tr>   
   </tbody>
 </table>
@@ -95,4 +95,4 @@ function verifySECP384r1(
 
 ### Introduction
 
-The `U384` low-level utility library that implements unsigned 384-bit arithmetics. It provides various functions that are used in ECDSA384 library.
+The `U384` low-level utility library that implements unsigned 384-bit arithmetics. It provides various functions that are used in the ECDSA384 library.
