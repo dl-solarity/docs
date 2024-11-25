@@ -17,7 +17,7 @@ const config = {
   ],
 
   title: "Solarity",
-  tagline: "The solidity lib",
+  tagline: "Solidity-Oriented Development Tooling",
   favicon: "img/favicon.png",
 
   // Set the production url of your site here
@@ -46,7 +46,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/dl-solarity/docs/tree/dev/",
+          editUrl: "https://github.com/dl-solarity/docs/",
         },
         theme: {
           customCss: require.resolve("./src/styles/app.scss"),
