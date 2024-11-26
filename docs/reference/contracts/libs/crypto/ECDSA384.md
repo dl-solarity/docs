@@ -76,9 +76,9 @@ The function to verify the ECDSA signature
 
 Parameters:
 
-| Name           | Type                       | Description                                                                                                                                                                                 |
-| :------------- | :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| curveParams_   | struct ECDSA384.Parameters | the 384-bit curve parameters. `lowSmax` is `n / 2`.                                                                                                                                         |
-| hashedMessage_ | bytes                      | the already hashed message to be verified.                                                                                                                                                  |
-| signature_     | bytes                      | the ECDSA signature. Equals to `bytes(r) + bytes(s)`.                                                                                                                                       |
-| pubKey_        | bytes                      | the full public key of a signer. Equals to `bytes(x) + bytes(y)`.  Note that signatures only from the lower part of the curve are accepted. If your `s >= n / 2`, change it to `s = n - s`. |
+| Name           | Type                       | Description                                                                                                                                                                                |
+| :------------- | :------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| curveParams_   | struct ECDSA384.Parameters | the 384-bit curve parameters. `lowSmax` is `n / 2`.                                                                                                                                        |
+| hashedMessage_ | bytes                      | the already hashed message to be verified.                                                                                                                                                 |
+| signature_     | bytes                      | the ECDSA signature. Equals to `bytes(r) + bytes(s)`.                                                                                                                                      |
+| pubKey_        | bytes                      | the full public key of a signer. Equals to `bytes(x) + bytes(y)`.  Note that signatures only from the lower part of the curve are accepted. If your `s > n / 2`, change it to `s = n - s`. |
