@@ -7,7 +7,7 @@
 The library consists of modules and utilities that are built leveraging [Openzeppelin Contracts](https://github.com/OpenZeppelin/openzeppelin-contracts) (4.9.6) and **go far beyond mediocre solidity**.
 
 * Implementation of the [**Contracts Registry**](https://eips.ethereum.org/EIPS/eip-6224) pattern
-* State-of-the-art cryptography primitives (**ECDSA over 384-bit curves**, **RSASSA-PSS**)
+* State-of-the-art cryptography primitives (**ECDSA over 256-bit and 384-bit curves**, **RSASSA-PSS**)
 * Advanced data structures (**Vector**, **DynamicSet**, **PriorityQueue**, **AVLTree**)
 * ZK-friendly [**Sparse Merkle Tree**](https://docs.iden3.io/publications/pdfs/Merkle-Tree.pdf) and [**Incremental Merkle Tree**](https://github.com/runtimeverification/deposit-contract-verification/blob/master/deposit-contract-verification.pdf) implementations
 * Versatile **RBAC** and **MultiOwnable** smart contracts
