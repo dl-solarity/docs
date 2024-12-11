@@ -97,7 +97,7 @@ struct Bytes32SMT {
 }
 ```
 
-Bytes32IMT     *
+Bytes32SMT     *
 ### AddressSMT
 
 ```solidity
