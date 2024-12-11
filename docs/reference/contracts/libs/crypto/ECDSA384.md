@@ -11,9 +11,12 @@ library ECDSA384
 Cryptography module
 
 This library provides functionality for ECDSA verification over any 384-bit curve. Currently,
-this is the most efficient implementation out there, consuming ~9 million gas per call.
+this is the most efficient implementation out there, consuming ~8.1 million gas per call.
 
-The approach is Strauss-Shamir double scalar multiplication with 4 bits of precompute + projective points.
+The approach is Strauss-Shamir double scalar multiplication with 4 bits of precompute + affine coordinates.
+For reference, naive implementation uses ~400 billion gas, which is 48000 times more expensive.
+
+We also tried using projective coordinates, however, the gas consumption rose to ~9 million gas.
 ## Structs info
 
 ### Parameters
