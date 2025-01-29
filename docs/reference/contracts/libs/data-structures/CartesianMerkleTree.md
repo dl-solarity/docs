@@ -36,7 +36,7 @@ uintTreaple.add(100);
 
 uintTreaple.getRoot();
 
-CartesianMerkleTree.Proof memory proof = uintTreaple.getProof(100);
+CartesianMerkleTree.Proof memory proof = uintTreaple.getProof(100, 0);
 
 uintTreaple.getNodeByKey(100);
 
@@ -134,6 +134,7 @@ struct Proof {
 	bytes32 root;
 	bytes32[] siblings;
 	uint256 siblingsLength;
+	uint256 directionBits;
 	bool existence;
 	bytes32 key;
 	bytes32 nonExistenceKey;
@@ -151,6 +152,7 @@ Parameters:
 | root            | bytes32   | The root hash of the Cartesian Merkle tree.                                  |
 | siblings        | bytes32[] | An array of sibling hashes can be used to get the Cartesian Merkle Root.     |
 | siblingsLength  | uint256   | The number of siblings to be used for evidence.                              |
+| directionBits   | uint256   | A path from the root to the node.                                            |
 | existence       | bool      | Indicates the presence (true) or absence (false) of the node.                |
 | key             | bytes32   | The key associated with the node.                                            |
 | nonExistenceKey | bytes32   | The non-existence key of the auxiliary node in case when existence is false. |
