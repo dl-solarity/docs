@@ -5,13 +5,78 @@
 #### License: MIT
 
 ```solidity
-contract DiamondERC721 is DiamondERC721Storage
+contract DiamondERC721 is ADiamondERC721Storage
 ```
 
 The Diamond standard module
 
 This is modified version of OpenZeppelin's ERC721 contract to be used as a Storage contract
 by the Diamond Standard.
+## Errors info
+
+### ApproveToCaller
+
+```solidity
+error ApproveToCaller(address caller)
+```
+
+
+### ApprovalToCurrentOwner
+
+```solidity
+error ApprovalToCurrentOwner(address owner, uint256 tokenId)
+```
+
+
+### ConsecutiveTransfersNotSupported
+
+```solidity
+error ConsecutiveTransfersNotSupported()
+```
+
+
+### InvalidApprover
+
+```solidity
+error InvalidApprover(address approver, address owner)
+```
+
+
+### InvalidSpender
+
+```solidity
+error InvalidSpender(address spender, uint256 tokenId)
+```
+
+
+### NonERC721Receiver
+
+```solidity
+error NonERC721Receiver(address receiver)
+```
+
+
+### ReceiverIsZeroAddress
+
+```solidity
+error ReceiverIsZeroAddress()
+```
+
+
+### TokenAlreadyMinted
+
+```solidity
+error TokenAlreadyMinted(uint256 tokenId)
+```
+
+
+### UnauthorizedAccount
+
+```solidity
+error UnauthorizedAccount(address account)
+```
+
+
 ## Functions info
 
 ### approve (0x095ea7b3)
@@ -45,7 +110,7 @@ Operators can call {transferFrom} or {safeTransferFrom} for any token owned by t
 
 Requirements:
 
-- The `operator` cannot be the caller.
+- The `operator` cannot be the address zero.
 
 Emits an {ApprovalForAll} event.
 ### transferFrom (0x23b872dd)
@@ -60,7 +125,7 @@ function transferFrom(
 
 Transfers `tokenId` token from `from` to `to`.
 
-WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC721
+WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC-721
 or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must
 understand this adds an external call which potentially creates a reentrancy vulnerability.
 
@@ -83,15 +148,17 @@ function safeTransferFrom(
 ```
 
 Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
-are aware of the ERC721 protocol to prevent tokens from being forever locked.
+are aware of the ERC-721 protocol to prevent tokens from being forever locked.
 
 Requirements:
 
 - `from` cannot be the zero address.
 - `to` cannot be the zero address.
 - `tokenId` token must exist and be owned by `from`.
-- If the caller is not `from`, it must have been allowed to move this token by either {approve} or {setApprovalForAll}.
-- If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer.
+- If the caller is not `from`, it must have been allowed to move this token by either {approve} or
+{setApprovalForAll}.
+- If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+a safe transfer.
 
 Emits a {Transfer} event.
 ### safeTransferFrom (0xb88d4fde)
@@ -113,6 +180,7 @@ Requirements:
 - `to` cannot be the zero address.
 - `tokenId` token must exist and be owned by `from`.
 - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.
-- If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer.
+- If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon
+a safe transfer.
 
 Emits a {Transfer} event.

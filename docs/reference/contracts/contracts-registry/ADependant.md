@@ -1,11 +1,11 @@
-# AbstractDependant
+# ADependant
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract AbstractDependant
+abstract contract ADependant
 ```
 
 The ContractsRegistry module
@@ -14,7 +14,16 @@ The contract that must be used as dependencies accepter in the dependency inject
 Upon the injection, the Injector (ContractsRegistry most of the time) will call the `setDependencies()` function.
 The dependant contract will have to pull the required addresses from the supplied ContractsRegistry as a parameter.
 
-The AbstractDependant is fully compatible with proxies courtesy of custom storage slot.
+The ADependant is fully compatible with proxies courtesy of custom storage slot.
+## Errors info
+
+### NotAnInjector
+
+```solidity
+error NotAnInjector(address injector, address caller)
+```
+
+
 ## Modifiers info
 
 ### dependant

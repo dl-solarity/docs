@@ -1,11 +1,11 @@
-# DiamondStorage
+# ADiamondStorage
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract DiamondStorage
+abstract contract ADiamondStorage
 ```
 
 The Diamond standard module
@@ -51,7 +51,7 @@ The struct slot where the storage is
 function facets()
     public
     view
-    returns (DiamondStorage.FacetInfo[] memory facets_)
+    returns (ADiamondStorage.FacetInfo[] memory facets_)
 ```
 
 The function to get all the facets and their selectors
@@ -59,9 +59,9 @@ The function to get all the facets and their selectors
 
 Return values:
 
-| Name    | Type                              | Description            |
-| :------ | :-------------------------------- | :--------------------- |
-| facets_ | struct DiamondStorage.FacetInfo[] | the array of FacetInfo |
+| Name    | Type                               | Description            |
+| :------ | :--------------------------------- | :--------------------- |
+| facets_ | struct ADiamondStorage.FacetInfo[] | the array of FacetInfo |
 
 ### facetFunctionSelectors (0xadfca15e)
 

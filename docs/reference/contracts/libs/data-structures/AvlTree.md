@@ -115,6 +115,36 @@ struct Tree {
 ```
 
 
+## Errors info
+
+### NodeAlreadyExists
+
+```solidity
+error NodeAlreadyExists(bytes32 key)
+```
+
+
+### NodeDoesNotExist
+
+```solidity
+error NodeDoesNotExist(bytes32 key)
+```
+
+
+### KeyIsZero
+
+```solidity
+error KeyIsZero()
+```
+
+
+### TreeNotEmpty
+
+```solidity
+error TreeNotEmpty()
+```
+
+
 ## Functions info
 
 ### setComparator

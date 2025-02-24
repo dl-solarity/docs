@@ -198,6 +198,78 @@ Parameters:
 | auxKey       | bytes32   | The key of the auxiliary node.                                          |
 | auxValue     | bytes32   | The value of the auxiliary node.                                        |
 
+## Errors info
+
+### KeyAlreadyExists
+
+```solidity
+error KeyAlreadyExists(bytes32 key)
+```
+
+
+### LeafDoesNotMatch
+
+```solidity
+error LeafDoesNotMatch(bytes32 currentKey, bytes32 key)
+```
+
+
+### MaxDepthExceedsHardCap
+
+```solidity
+error MaxDepthExceedsHardCap(uint32 maxDepth)
+```
+
+
+### MaxDepthIsZero
+
+```solidity
+error MaxDepthIsZero()
+```
+
+
+### MaxDepthReached
+
+```solidity
+error MaxDepthReached()
+```
+
+
+### NewMaxDepthMustBeLarger
+
+```solidity
+error NewMaxDepthMustBeLarger(uint32 currentDepth, uint32 newDepth)
+```
+
+
+### NodeDoesNotExist
+
+```solidity
+error NodeDoesNotExist(uint256 nodeId)
+```
+
+
+### TreeAlreadyInitialized
+
+```solidity
+error TreeAlreadyInitialized()
+```
+
+
+### TreeNotInitialized
+
+```solidity
+error TreeNotInitialized()
+```
+
+
+### TreeIsNotEmpty
+
+```solidity
+error TreeIsNotEmpty()
+```
+
+
 ## Modifiers info
 
 ### onlyInitialized

@@ -9,6 +9,78 @@ library SetHelper
 ```
 
 A simple library to work with Openzeppelin sets
+## Errors info
+
+### ElementAlreadyExistsAddress
+
+```solidity
+error ElementAlreadyExistsAddress(address element)
+```
+
+
+### ElementAlreadyExistsUint256
+
+```solidity
+error ElementAlreadyExistsUint256(uint256 element)
+```
+
+
+### ElementAlreadyExistsBytes32
+
+```solidity
+error ElementAlreadyExistsBytes32(bytes32 element)
+```
+
+
+### ElementAlreadyExistsBytes
+
+```solidity
+error ElementAlreadyExistsBytes(bytes element)
+```
+
+
+### ElementAlreadyExistsString
+
+```solidity
+error ElementAlreadyExistsString(string element)
+```
+
+
+### NoSuchAddress
+
+```solidity
+error NoSuchAddress(address element)
+```
+
+
+### NoSuchUint256
+
+```solidity
+error NoSuchUint256(uint256 element)
+```
+
+
+### NoSuchBytes32
+
+```solidity
+error NoSuchBytes32(bytes32 element)
+```
+
+
+### NoSuchBytes
+
+```solidity
+error NoSuchBytes(bytes element)
+```
+
+
+### NoSuchString
+
+```solidity
+error NoSuchString(string element)
+```
+
+
 ## Functions info
 
 ### add

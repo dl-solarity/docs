@@ -1,14 +1,14 @@
-# AbstractValueDistributor
+# AValueDistributor
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract AbstractValueDistributor
+abstract contract AValueDistributor
 ```
 
-The AbstractValueDistributor module
+The Staking module
 
 Contract module for distributing value among users based on their shares.
 
@@ -53,6 +53,36 @@ event SharesRemoved(address user, uint256 amount)
 
 ```solidity
 event ValueDistributed(address user, uint256 amount)
+```
+
+
+## Errors info
+
+### AmountIsZero
+
+```solidity
+error AmountIsZero()
+```
+
+
+### InsufficientOwedValue
+
+```solidity
+error InsufficientOwedValue(address account, uint256 balance, uint256 needed)
+```
+
+
+### InsufficientSharesAmount
+
+```solidity
+error InsufficientSharesAmount(address account, uint256 balance, uint256 needed)
+```
+
+
+### UserIsZeroAddress
+
+```solidity
+error UserIsZeroAddress()
 ```
 
 
@@ -108,7 +138,7 @@ Return values:
 ```solidity
 function userDistribution(
     address user_
-) public view returns (AbstractValueDistributor.UserDistribution memory)
+) public view returns (AValueDistributor.UserDistribution memory)
 ```
 
 Returns the distribution details for a specific user.
@@ -123,9 +153,9 @@ Parameters:
 
 Return values:
 
-| Name | Type                                             | Description                                                                      |
-| :--- | :----------------------------------------------- | :------------------------------------------------------------------------------- |
-| [0]  | struct AbstractValueDistributor.UserDistribution | The distribution details including user's shares, cumulative sum and value owed. |
+| Name | Type                                      | Description                                                                      |
+| :--- | :---------------------------------------- | :------------------------------------------------------------------------------- |
+| [0]  | struct AValueDistributor.UserDistribution | The distribution details including user's shares, cumulative sum and value owed. |
 
 ### getOwedValue (0x2d3bac1b)
 

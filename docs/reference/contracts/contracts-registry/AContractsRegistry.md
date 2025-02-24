@@ -1,11 +1,11 @@
-# AbstractContractsRegistry
+# AContractsRegistry
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract AbstractContractsRegistry is Initializable
+abstract contract AContractsRegistry is Initializable
 ```
 
 The ContractsRegistry module
@@ -17,7 +17,7 @@ together with the upgradeability and dependency injection mechanisms.
 
 The ContractsRegistry should be used as the highest level smart contract that is aware of any other
 contract present in the system. The contracts that demand other system's contracts would then inherit
-special `AbstractDependant` contract and override `setDependencies()` function to enable ContractsRegistry
+special `ADependant` contract and override `setDependencies()` function to enable ContractsRegistry
 to inject dependencies into them.
 
 The ContractsRegistry will help with the following use cases:
@@ -26,7 +26,7 @@ The ContractsRegistry will help with the following use cases:
 2) Making the system contracts-interchangeable
 3) Simplifying the contracts management and deployment
 
-The ContractsRegistry acts as a TransparentProxy deployer. One can add proxy-compatible implementations to the registry
+The ContractsRegistry acts as a AdminableProxy deployer. One can add proxy-compatible implementations to the registry
 and deploy proxies to them. Then these proxies can be upgraded easily using the provided interface.
 The ContractsRegistry itself can be deployed behind a proxy as well.
 
@@ -63,6 +63,29 @@ event ProxyContractUpgraded(string name, address newImplementation)
 
 ```solidity
 event ContractRemoved(string name)
+```
+
+
+## Errors info
+
+### NoMappingExists
+
+```solidity
+error NoMappingExists(string contractName)
+```
+
+
+### NotAProxy
+
+```solidity
+error NotAProxy(string contractName, address contractProxy)
+```
+
+
+### ZeroAddressProvided
+
+```solidity
+error ZeroAddressProvided(string contractName)
 ```
 
 

@@ -1,11 +1,11 @@
-# RBAC
+# ARBAC
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract RBAC is IRBAC, Initializable
+abstract contract ARBAC is IRBAC, Initializable
 ```
 
 The Role Based Access Control (RBAC) module
@@ -27,6 +27,22 @@ The RBAC structure is the following:
 (PERMISSION >- RESOURCE) >- ROLE
 
 Where ROLE is assignable to users
+## Errors info
+
+### EmptyRoles
+
+```solidity
+error EmptyRoles()
+```
+
+
+### NoPermissionForResource
+
+```solidity
+error NoPermissionForResource(address account, string permission, string resource)
+```
+
+
 ## Constants info
 
 ### MASTER_ROLE (0xdc224863)

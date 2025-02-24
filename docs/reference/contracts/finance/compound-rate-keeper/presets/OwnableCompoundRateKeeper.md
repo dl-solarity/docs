@@ -5,7 +5,7 @@
 #### License: MIT
 
 ```solidity
-contract OwnableCompoundRateKeeper is AbstractCompoundRateKeeper, OwnableUpgradeable
+contract OwnableCompoundRateKeeper is ACompoundRateKeeper, OwnableUpgradeable
 ```
 
 The Ownable preset of CompoundRateKeeper

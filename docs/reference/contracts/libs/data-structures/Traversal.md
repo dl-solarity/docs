@@ -32,6 +32,15 @@ Parameters:
 | treeMappingSlot | uint256 | The storage slot of the tree mapping.           |
 | currentNode     | uint64  | The index of the current node in the traversal. |
 
+## Errors info
+
+### NoNodesLeft
+
+```solidity
+error NoNodesLeft()
+```
+
+
 ## Functions info
 
 ### isValid

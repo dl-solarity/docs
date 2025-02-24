@@ -94,6 +94,29 @@ struct IMT {
 ```
 
 InnerIMT       *
+## Errors info
+
+### NewHeightMustBeGreater
+
+```solidity
+error NewHeightMustBeGreater(uint256 currentHeight, uint256 newHeight)
+```
+
+
+### TreeIsNotEmpty
+
+```solidity
+error TreeIsNotEmpty()
+```
+
+
+### TreeIsFull
+
+```solidity
+error TreeIsFull()
+```
+
+
 ## Functions info
 
 ### setHeight

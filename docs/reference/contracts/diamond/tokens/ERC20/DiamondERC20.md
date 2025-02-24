@@ -5,13 +5,57 @@
 #### License: MIT
 
 ```solidity
-contract DiamondERC20 is DiamondERC20Storage
+contract DiamondERC20 is ADiamondERC20Storage
 ```
 
 The Diamond standard module
 
 This is modified version of OpenZeppelin's ERC20 contract to be used as a Storage contract
 by the Diamond Standard.
+## Errors info
+
+### ApproverIsZeroAddress
+
+```solidity
+error ApproverIsZeroAddress()
+```
+
+
+### InsufficientAllowance
+
+```solidity
+error InsufficientAllowance(address spender, uint256 allowance, uint256 needed)
+```
+
+
+### InsufficientBalance
+
+```solidity
+error InsufficientBalance(address sender, uint256 balance, uint256 needed)
+```
+
+
+### ReceiverIsZeroAddress
+
+```solidity
+error ReceiverIsZeroAddress()
+```
+
+
+### SenderIsZeroAddress
+
+```solidity
+error SenderIsZeroAddress()
+```
+
+
+### SpenderIsZeroAddress
+
+```solidity
+error SpenderIsZeroAddress()
+```
+
+
 ## Functions info
 
 ### transfer (0xa9059cbb)
@@ -23,7 +67,7 @@ function transfer(
 ) public virtual override returns (bool)
 ```
 
-Moves `amount` tokens from the caller's account to `to`.
+Moves a `value` amount of tokens from the caller's account to `to`.
 
 Returns a boolean value indicating whether the operation succeeded.
 
@@ -37,7 +81,8 @@ function approve(
 ) public virtual override returns (bool)
 ```
 
-Sets `amount` as the allowance of `spender` over the caller's tokens.
+Sets a `value` amount of tokens as the allowance of `spender` over the
+caller's tokens.
 
 Returns a boolean value indicating whether the operation succeeded.
 
@@ -59,8 +104,8 @@ function transferFrom(
 ) public virtual override returns (bool)
 ```
 
-Moves `amount` tokens from `from` to `to` using the
-allowance mechanism. `amount` is then deducted from the caller's
+Moves a `value` amount of tokens from `from` to `to` using the
+allowance mechanism. `value` is then deducted from the caller's
 allowance.
 
 Returns a boolean value indicating whether the operation succeeded.

@@ -1,11 +1,11 @@
-# DiamondOwnableStorage
+# ADiamondOwnableStorage
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract DiamondOwnableStorage is InitializableStorage
+abstract contract ADiamondOwnableStorage is AInitializableStorage
 ```
 
 The Diamond standard module
@@ -19,6 +19,15 @@ This is an Ownable Storage contract with Diamond Standard support
 struct DOStorage {
 	address owner;
 }
+```
+
+
+## Errors info
+
+### CallerNotOwner
+
+```solidity
+error CallerNotOwner(address caller, address owner)
 ```
 
 

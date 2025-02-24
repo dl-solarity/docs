@@ -5,7 +5,7 @@
 #### License: MIT
 
 ```solidity
-contract Diamond is DiamondStorage
+contract Diamond is ADiamondStorage
 ```
 
 The Diamond standard module
@@ -51,6 +51,64 @@ struct Facet {
 
 ```solidity
 event DiamondCut(Diamond.Facet[] facets, address initFacet, bytes initData)
+```
+
+
+## Errors info
+
+### FacetIsZeroAddress
+
+```solidity
+error FacetIsZeroAddress()
+```
+
+
+### InitializationReverted
+
+```solidity
+error InitializationReverted(address initFacet, bytes initData)
+```
+
+
+### NoSelectorsProvided
+
+```solidity
+error NoSelectorsProvided()
+```
+
+
+### NoFacetForSelector
+
+```solidity
+error NoFacetForSelector(bytes4 selector)
+```
+
+
+### SelectorAlreadyAdded
+
+```solidity
+error SelectorAlreadyAdded(address faucet, bytes4 selector)
+```
+
+
+### SelectorFromAnotherFacet
+
+```solidity
+error SelectorFromAnotherFacet(bytes4 selector)
+```
+
+
+### SelectorIsAlreadyInThisFaucet
+
+```solidity
+error SelectorIsAlreadyInThisFaucet(bytes4 selector, address facet)
+```
+
+
+### SelectorNotRegistered
+
+```solidity
+error SelectorNotRegistered(bytes4 selector)
 ```
 
 

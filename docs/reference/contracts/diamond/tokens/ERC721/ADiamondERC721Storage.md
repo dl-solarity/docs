@@ -1,11 +1,11 @@
-# DiamondERC721Storage
+# ADiamondERC721Storage
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract DiamondERC721Storage is InitializableStorage, DiamondERC165, IERC721, IERC721Metadata
+abstract contract ADiamondERC721Storage is AInitializableStorage, DiamondERC165, IERC721, IERC721Metadata
 ```
 
 The Diamond standard module
@@ -31,6 +31,29 @@ struct DERC721Storage {
 ```
 
 
+## Errors info
+
+### IndexOutOfBounds
+
+```solidity
+error IndexOutOfBounds(uint256 index)
+```
+
+
+### NonexistentToken
+
+```solidity
+error NonexistentToken(uint256 tokenId)
+```
+
+
+### OwnerIndexOutOfBounds
+
+```solidity
+error OwnerIndexOutOfBounds(address owner, uint256 index)
+```
+
+
 ## Constants info
 
 ### DIAMOND_ERC721_STORAGE_SLOT (0x596d38a4)
@@ -52,7 +75,7 @@ function supportsInterface(
 
 Returns true if this contract implements the interface defined by
 `interfaceId`. See the corresponding
-https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section]
+https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section]
 to learn more about how these ids are created.
 
 This function call must use less than 30 000 gas.

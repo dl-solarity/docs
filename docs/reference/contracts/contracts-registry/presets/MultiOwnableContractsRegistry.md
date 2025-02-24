@@ -5,7 +5,7 @@
 #### License: MIT
 
 ```solidity
-contract MultiOwnableContractsRegistry is AbstractContractsRegistry, MultiOwnable
+contract MultiOwnableContractsRegistry is AContractsRegistry, AMultiOwnable
 ```
 
 The MultiOwnable preset of ContractsRegistry
@@ -120,7 +120,7 @@ function addProxyContract(
 ) external onlyOwner
 ```
 
-The function to add the proxy contract to the registry (deploys TransparentProxy on top)
+The function to add the proxy contract to the registry (deploys AdminableProxy on top)
 
 
 Parameters:
@@ -140,7 +140,7 @@ function addProxyContractAndCall(
 ) external onlyOwner
 ```
 
-The function to add the proxy contract to the registry with immediate call (deploys TransparentProxy on top)
+The function to add the proxy contract to the registry with immediate call (deploys AdminableProxy on top)
 
 
 Parameters:

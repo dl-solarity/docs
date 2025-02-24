@@ -5,7 +5,7 @@
 #### License: MIT
 
 ```solidity
-contract ProxyBeacon is IBeacon, PermanentOwnable
+contract ProxyBeacon is IBeacon, APermanentOwnable
 ```
 
 The proxies module
@@ -20,12 +20,21 @@ event Upgraded(address implementation)
 ```
 
 
+## Errors info
+
+### NewImplementationNotAContract
+
+```solidity
+error NewImplementationNotAContract(address newImplementation)
+```
+
+
 ## Functions info
 
 ### constructor
 
 ```solidity
-constructor() PermanentOwnable(msg.sender)
+constructor() APermanentOwnable(msg.sender)
 ```
 
 

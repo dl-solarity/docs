@@ -38,6 +38,15 @@ contract Taker {
     }
 }
 ```
+## Errors info
+
+### ConversionFailed
+
+```solidity
+error ConversionFailed()
+```
+
+
 ## Functions info
 
 ### decimals

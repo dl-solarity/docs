@@ -1,22 +1,22 @@
-# TransparentProxyUpgrader
+# AdminableProxyUpgrader
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-contract TransparentProxyUpgrader is PermanentOwnable
+contract AdminableProxyUpgrader is APermanentOwnable
 ```
 
 The proxies module
 
-This is the lightweight helper contract that may be used as a TransparentProxy admin.
+This is the lightweight helper contract that may be used as a AdminableProxy admin.
 ## Functions info
 
 ### constructor
 
 ```solidity
-constructor() PermanentOwnable(msg.sender)
+constructor() APermanentOwnable(msg.sender)
 ```
 
 
@@ -31,6 +31,8 @@ function upgrade(
 ```
 
 The function to upgrade the implementation contract
+
+an attempt to upgrade a non-proxy contract will result in revert
 
 
 Parameters:
@@ -48,6 +50,8 @@ function getImplementation(address what_) public view virtual returns (address)
 ```
 
 The function to get the address of the proxy implementation
+
+an attempt to get implementation from a non-proxy contract will result in revert
 
 
 Parameters:

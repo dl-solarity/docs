@@ -1,17 +1,33 @@
-# DiamondAccessControl
+# ADiamondAccessControl
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract DiamondAccessControl is DiamondAccessControlStorage
+abstract contract ADiamondAccessControl is ADiamondAccessControlStorage
 ```
 
 The Diamond standard module
 
 This is modified version of OpenZeppelin's AccessControl contract to be used as a Storage contract
 by the Diamond Standard.
+## Errors info
+
+### UnauthorizedAccount
+
+```solidity
+error UnauthorizedAccount(address account)
+```
+
+
+### RoleAlreadyGranted
+
+```solidity
+error RoleAlreadyGranted(bytes32 role, address account)
+```
+
+
 ## Functions info
 
 ### grantRole (0x2f2ff15d)
@@ -64,4 +80,4 @@ event.
 
 Requirements:
 
-- the caller must be `account`.
+- the caller must be `callerConfirmation`.

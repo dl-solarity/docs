@@ -1,16 +1,39 @@
-# AbstractStaking
+# AStaking
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract AbstractStaking is AbstractValueDistributor, Initializable
+abstract contract AStaking is AValueDistributor, Initializable
 ```
 
-The AbstractStaking module
+The Staking module
 
 Contract module for staking tokens and earning rewards based on shares.
+## Errors info
+
+### RewardsTokenIsZeroAddress
+
+```solidity
+error RewardsTokenIsZeroAddress()
+```
+
+
+### SharesTokenIsZeroAddress
+
+```solidity
+error SharesTokenIsZeroAddress()
+```
+
+
+### StakingHasNotStarted
+
+```solidity
+error StakingHasNotStarted(uint256 currentTimestamp, uint256 stakingStartTime)
+```
+
+
 ## Modifiers info
 
 ### stakingStarted

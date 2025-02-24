@@ -1,11 +1,11 @@
-# MerkleWhitelisted
+# AMerkleWhitelisted
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract MerkleWhitelisted
+abstract contract AMerkleWhitelisted
 ```
 
 The Whitelist Access Control module
@@ -20,6 +20,22 @@ To validate the whitelist belonging, the tree leaf (the whitelist element) has t
 roots equality. If the roots match, the element belongs to the whitelist.
 
 Note: the branch nodes are sorted numerically.
+## Errors info
+
+### LeafNotWhitelisted
+
+```solidity
+error LeafNotWhitelisted(bytes data)
+```
+
+
+### UserNotWhitelisted
+
+```solidity
+error UserNotWhitelisted(address user)
+```
+
+
 ## Modifiers info
 
 ### onlyWhitelisted

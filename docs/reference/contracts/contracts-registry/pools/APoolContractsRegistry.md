@@ -1,11 +1,11 @@
-# AbstractPoolContractsRegistry
+# APoolContractsRegistry
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract AbstractPoolContractsRegistry is Initializable, AbstractDependant
+abstract contract APoolContractsRegistry is Initializable, ADependant
 ```
 
 The PoolContractsRegistry module
@@ -19,6 +19,29 @@ injection mechanism into the pools.
 The PoolContractsRegistry contract operates by managing ProxyBeacons that point to pools' implementations.
 The factory contract would deploy BeaconProxies that point to these ProxyBeacons, allowing simple and cheap
 upgradeability mechanics.
+## Errors info
+
+### NoMappingExists
+
+```solidity
+error NoMappingExists(string poolName)
+```
+
+
+### NoPoolsToInject
+
+```solidity
+error NoPoolsToInject(string poolName)
+```
+
+
+### ProxyDoesNotExist
+
+```solidity
+error ProxyDoesNotExist(string poolName)
+```
+
+
 ## Functions info
 
 ### setDependencies (0x69130451)
@@ -45,7 +68,7 @@ Parameters:
 function addProxyPool(string memory name_, address poolAddress_) public virtual
 ```
 
-The function to add new pools into the registry. Gets called from PoolFactory
+The function to add new pools into the registry. Gets called from APoolFactory
 
 Proper only factory access control must be added in descending contracts + `_addProxyPool()` should be called inside.
 

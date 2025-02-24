@@ -1,11 +1,11 @@
-# UniswapV2Oracle
+# AUniswapV2Oracle
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract UniswapV2Oracle is Initializable
+abstract contract AUniswapV2Oracle is Initializable
 ```
 
 UniswapV2Oracle module
@@ -27,6 +27,36 @@ struct PairInfo {
 	uint256[] blockTimestamps;
 	uint256 refs;
 }
+```
+
+
+## Errors info
+
+### InvalidPath
+
+```solidity
+error InvalidPath(address tokenIn, uint256 pathLength)
+```
+
+
+### PathAlreadyRegistered
+
+```solidity
+error PathAlreadyRegistered(address tokenIn)
+```
+
+
+### PairDoesNotExist
+
+```solidity
+error PairDoesNotExist(address token1, address token2)
+```
+
+
+### TimeWindowIsZero
+
+```solidity
+error TimeWindowIsZero()
 ```
 
 

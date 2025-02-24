@@ -69,6 +69,15 @@ struct Queue {
 ```
 
 Internal Queue    *
+## Errors info
+
+### QueueIsEmpty
+
+```solidity
+error QueueIsEmpty()
+```
+
+
 ## Functions info
 
 ### add

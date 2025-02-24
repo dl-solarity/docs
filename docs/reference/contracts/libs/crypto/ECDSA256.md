@@ -53,6 +53,15 @@ struct _Inputs {
 ```
 
 
+## Errors info
+
+### LengthIsNot64
+
+```solidity
+error LengthIsNot64()
+```
+
+
 ## Functions info
 
 ### verify

@@ -1,11 +1,11 @@
-# DiamondERC20Storage
+# ADiamondERC20Storage
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract DiamondERC20Storage is InitializableStorage, IERC20, IERC20Metadata
+abstract contract ADiamondERC20Storage is AInitializableStorage, IERC20, IERC20Metadata
 ```
 
 The Diamond standard module
@@ -88,7 +88,7 @@ Return values:
 function totalSupply() public view virtual override returns (uint256)
 ```
 
-Returns the amount of tokens in existence.
+Returns the value of tokens in existence.
 ### balanceOf (0x70a08231)
 
 ```solidity
@@ -97,7 +97,7 @@ function balanceOf(
 ) public view virtual override returns (uint256)
 ```
 
-Returns the amount of tokens owned by `account`.
+Returns the value of tokens owned by `account`.
 ### allowance (0xdd62ed3e)
 
 ```solidity

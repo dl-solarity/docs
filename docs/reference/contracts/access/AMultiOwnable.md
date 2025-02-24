@@ -1,11 +1,11 @@
-# MultiOwnable
+# AMultiOwnable
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract MultiOwnable is IMultiOwnable, Initializable
+abstract contract AMultiOwnable is IMultiOwnable, Initializable
 ```
 
 The MultiOwnable module
@@ -19,6 +19,22 @@ By default, the owner account will be the one that deploys the contract.
 
 This module will make available the modifier `onlyOwner`, which can be applied
 to your functions to restrict their use to the owners.
+## Errors info
+
+### InvalidOwner
+
+```solidity
+error InvalidOwner()
+```
+
+
+### UnauthorizedAccount
+
+```solidity
+error UnauthorizedAccount(address account)
+```
+
+
 ## Modifiers info
 
 ### onlyOwner

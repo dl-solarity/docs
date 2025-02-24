@@ -157,6 +157,64 @@ Parameters:
 | key             | bytes32   | The key associated with the node.                                            |
 | nonExistenceKey | bytes32   | The non-existence key of the auxiliary node in case when existence is false. |
 
+## Errors info
+
+### TreapleNotInitialized
+
+```solidity
+error TreapleNotInitialized()
+```
+
+
+### TreapleAlreadyInitialized
+
+```solidity
+error TreapleAlreadyInitialized()
+```
+
+
+### TreapleNotEmpty
+
+```solidity
+error TreapleNotEmpty()
+```
+
+
+### ZeroDesiredProofSize
+
+```solidity
+error ZeroDesiredProofSize()
+```
+
+
+### ProofSizeTooSmall
+
+```solidity
+error ProofSizeTooSmall(uint256 attemptedIndex, uint256 maxIndex)
+```
+
+
+### ZeroKeyProvided
+
+```solidity
+error ZeroKeyProvided()
+```
+
+
+### KeyAlreadyExists
+
+```solidity
+error KeyAlreadyExists()
+```
+
+
+### NodeDoesNotExist
+
+```solidity
+error NodeDoesNotExist()
+```
+
+
 ## Modifiers info
 
 ### onlyInitialized

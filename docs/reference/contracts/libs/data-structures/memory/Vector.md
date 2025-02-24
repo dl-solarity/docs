@@ -71,6 +71,22 @@ struct Vector {
 ```
 
 InnerVector     *
+## Errors info
+
+### IndexOutOfBounds
+
+```solidity
+error IndexOutOfBounds(uint256 index, uint256 vectorLength)
+```
+
+
+### PopEmptyVector
+
+```solidity
+error PopEmptyVector()
+```
+
+
 ## Functions info
 
 ### newUint

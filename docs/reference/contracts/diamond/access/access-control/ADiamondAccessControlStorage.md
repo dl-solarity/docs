@@ -1,11 +1,11 @@
-# DiamondAccessControlStorage
+# ADiamondAccessControlStorage
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract DiamondAccessControlStorage is IAccessControl, InitializableStorage
+abstract contract ADiamondAccessControlStorage is IAccessControl, AInitializableStorage
 ```
 
 The Diamond standard module
@@ -27,8 +27,17 @@ struct RoleData {
 
 ```solidity
 struct DACStorage {
-	mapping(bytes32 => DiamondAccessControlStorage.RoleData) roles;
+	mapping(bytes32 => ADiamondAccessControlStorage.RoleData) roles;
 }
+```
+
+
+## Errors info
+
+### RoleNotGranted
+
+```solidity
+error RoleNotGranted(bytes32 role, address account)
 ```
 
 
@@ -57,11 +66,7 @@ modifier onlyRole(bytes32 role_)
 ```
 
 Modifier that checks that an account has a specific role. Reverts
-with a standardized message including the required role.
-
-The format of the revert reason is given by the following regular expression:
-
-/^AccessControl: account (0x[0-9a-f]{40}) is missing role (0x[0-9a-f]{64})$/
+with a custom error including the required role.
 ## Functions info
 
 ### hasRole (0x91d14854)

@@ -1,11 +1,11 @@
-# AbstractPoolFactory
+# APoolFactory
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract AbstractPoolFactory is AbstractDependant
+abstract contract APoolFactory is ADependant
 ```
 
 The PoolContractsRegistry module

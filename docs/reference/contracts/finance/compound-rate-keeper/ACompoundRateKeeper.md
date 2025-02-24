@@ -1,11 +1,11 @@
-# AbstractCompoundRateKeeper
+# ACompoundRateKeeper
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract AbstractCompoundRateKeeper is ICompoundRateKeeper, Initializable
+abstract contract ACompoundRateKeeper is ICompoundRateKeeper, Initializable
 ```
 
 The Compound Rate Keeper module
@@ -23,6 +23,29 @@ newRate = curRate * (capitalizationRate\**(secondsPassed / capitalizationPeriod)
 
 The compound rate is calculated with 10\**25 precision.
 The maximal possible compound rate is (type(uint128).max * 10\**25)
+## Errors info
+
+### CapitalizationPeriodIsZero
+
+```solidity
+error CapitalizationPeriodIsZero()
+```
+
+
+### MaxRateIsReached
+
+```solidity
+error MaxRateIsReached()
+```
+
+
+### RateIsLessThanOne
+
+```solidity
+error RateIsLessThanOne(uint256 rate)
+```
+
+
 ## Functions info
 
 ### emergencyUpdateCompoundRate (0x71faedef)

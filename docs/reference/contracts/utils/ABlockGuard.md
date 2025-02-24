@@ -1,11 +1,11 @@
-# BlockGuard
+# ABlockGuard
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract BlockGuard
+abstract contract ABlockGuard
 ```
 
 The BlockGuard module
@@ -26,6 +26,15 @@ contract NotFlashloanable is BlockGuard {
     }
 }
 ```
+## Errors info
+
+### BlockGuardLocked
+
+```solidity
+error BlockGuardLocked(string resource, address key)
+```
+
+
 ## Modifiers info
 
 ### lockBlock

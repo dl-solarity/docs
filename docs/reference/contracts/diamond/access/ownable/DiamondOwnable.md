@@ -5,7 +5,7 @@
 #### License: MIT
 
 ```solidity
-contract DiamondOwnable is DiamondOwnableStorage
+contract DiamondOwnable is ADiamondOwnableStorage
 ```
 
 The Diamond standard module
@@ -18,6 +18,15 @@ by the Diamond Standard.
 
 ```solidity
 event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+```
+
+
+## Errors info
+
+### InvalidOwner
+
+```solidity
+error InvalidOwner()
 ```
 
 

@@ -1,11 +1,11 @@
-# RBACGroupable
+# ARBACGroupable
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract RBACGroupable is IRBACGroupable, RBAC
+abstract contract ARBACGroupable is IRBACGroupable, ARBAC
 ```
 
 The Role Based Access Control (RBAC) module
@@ -20,6 +20,15 @@ The RBAC structure becomes the following:
 ((PERMISSION >- RESOURCE) >- ROLE) >- GROUP
 
 Where ROLE and GROUP are assignable to users
+## Errors info
+
+### EmptyGroups
+
+```solidity
+error EmptyGroups()
+```
+
+
 ## Functions info
 
 ### addUserToGroups (0xfcddfd4a)

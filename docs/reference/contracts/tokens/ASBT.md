@@ -1,11 +1,11 @@
-# SBT
+# ASBT
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract SBT is ISBT, ERC165Upgradeable
+abstract contract ASBT is ISBT, ERC165Upgradeable
 ```
 
 The SBT module
@@ -14,6 +14,29 @@ An abstract lightweight implementation of a Soul Bound Token. Does not comply wi
 Approve and transfer functionality has been removed as it is not needed in SBTs.
 
 The contract is compatible with Metamask and Opensea.
+## Errors info
+
+### ReceiverIsZeroAddress
+
+```solidity
+error ReceiverIsZeroAddress()
+```
+
+
+### TokenAlreadyExists
+
+```solidity
+error TokenAlreadyExists(uint256 tokenId)
+```
+
+
+### TokenDoesNotExist
+
+```solidity
+error TokenDoesNotExist(uint256 tokenId)
+```
+
+
 ## Functions info
 
 ### name (0x06fdde03)

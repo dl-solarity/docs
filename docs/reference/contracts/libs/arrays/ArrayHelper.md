@@ -9,6 +9,15 @@ library ArrayHelper
 ```
 
 A simple library to work with arrays
+## Errors info
+
+### InvalidRange
+
+```solidity
+error InvalidRange(uint256 beginIndex, uint256 endIndex)
+```
+
+
 ## Functions info
 
 ### lowerBound

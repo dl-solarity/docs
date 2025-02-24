@@ -1,11 +1,11 @@
-# Vesting
+# AVesting
 
 ## Overview
 
 #### License: MIT
 
 ```solidity
-abstract contract Vesting is Initializable
+abstract contract AVesting is Initializable
 ```
 
 The Abstract Vesting Contract serves as a robust module
@@ -81,7 +81,7 @@ Struct defining the base schedule parameters.
 
 ```solidity
 struct Schedule {
-	Vesting.BaseSchedule scheduleData;
+	AVesting.BaseSchedule scheduleData;
 	uint256 exponent;
 }
 ```
@@ -151,6 +151,78 @@ Parameters:
 | vestingId | uint256 | The ID of the vesting contract from which funds are withdrawn.  |
 | amount    | uint256 | The amount of funds withdrawn.                                  |
 
+## Errors info
+
+### BeneficiaryIsZeroAddress
+
+```solidity
+error BeneficiaryIsZeroAddress()
+```
+
+
+### ExponentIsZero
+
+```solidity
+error ExponentIsZero()
+```
+
+
+### NothingToWithdraw
+
+```solidity
+error NothingToWithdraw()
+```
+
+
+### StartTimeIsZero
+
+```solidity
+error StartTimeIsZero()
+```
+
+
+### ScheduleInvalidPeriodParameter
+
+```solidity
+error ScheduleInvalidPeriodParameter(uint256 durationInPeriods, uint256 secondsInPeriod)
+```
+
+
+### ScheduleCliffGreaterThanDuration
+
+```solidity
+error ScheduleCliffGreaterThanDuration(uint256 cliffInPeriods, uint256 durationInPeriods)
+```
+
+
+### UnauthorizedAccount
+
+```solidity
+error UnauthorizedAccount(address account)
+```
+
+
+### VestingAmountIsZero
+
+```solidity
+error VestingAmountIsZero()
+```
+
+
+### VestingTokenIsZeroAddress
+
+```solidity
+error VestingTokenIsZeroAddress()
+```
+
+
+### VestingPastDate
+
+```solidity
+error VestingPastDate()
+```
+
+
 ## Constants info
 
 ### LINEAR_EXPONENT (0xfff5197a)
@@ -198,7 +270,7 @@ Parameters:
 ```solidity
 function getSchedule(
     uint256 scheduleId_
-) public view virtual returns (Vesting.Schedule memory)
+) public view virtual returns (AVesting.Schedule memory)
 ```
 
 Retrieves a schedule by ID.
@@ -213,16 +285,16 @@ Parameters:
 
 Return values:
 
-| Name | Type                    | Description      |
-| :--- | :---------------------- | :--------------- |
-| [0]  | struct Vesting.Schedule | Schedule struct. |
+| Name | Type                     | Description      |
+| :--- | :----------------------- | :--------------- |
+| [0]  | struct AVesting.Schedule | Schedule struct. |
 
 ### getVesting (0x615155dd)
 
 ```solidity
 function getVesting(
     uint256 vestingId_
-) public view virtual returns (Vesting.VestingData memory)
+) public view virtual returns (AVesting.VestingData memory)
 ```
 
 Retrieves vesting data by ID.
@@ -237,16 +309,16 @@ Parameters:
 
 Return values:
 
-| Name | Type                       | Description         |
-| :--- | :------------------------- | :------------------ |
-| [0]  | struct Vesting.VestingData | VestingData struct. |
+| Name | Type                        | Description         |
+| :--- | :-------------------------- | :------------------ |
+| [0]  | struct AVesting.VestingData | VestingData struct. |
 
 ### getVestings (0x7a0c6dc0)
 
 ```solidity
 function getVestings(
     address beneficiary_
-) public view virtual returns (Vesting.VestingData[] memory)
+) public view virtual returns (AVesting.VestingData[] memory)
 ```
 
 Retrieves all vesting data for a beneficiary.
@@ -261,9 +333,9 @@ Parameters:
 
 Return values:
 
-| Name | Type                         | Description                     |
-| :--- | :--------------------------- | :------------------------------ |
-| [0]  | struct Vesting.VestingData[] | An array of VestingData struct. |
+| Name | Type                          | Description                     |
+| :--- | :---------------------------- | :------------------------------ |
+| [0]  | struct AVesting.VestingData[] | An array of VestingData struct. |
 
 ### getVestingIds (0xe3e690d5)
 
