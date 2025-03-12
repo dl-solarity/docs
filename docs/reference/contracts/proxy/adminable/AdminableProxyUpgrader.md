@@ -5,7 +5,7 @@
 #### License: MIT
 
 ```solidity
-contract AdminableProxyUpgrader is APermanentOwnable
+contract AdminableProxyUpgrader is Ownable
 ```
 
 The proxies module
@@ -16,7 +16,7 @@ This is the lightweight helper contract that may be used as a AdminableProxy adm
 ### constructor
 
 ```solidity
-constructor() APermanentOwnable(msg.sender)
+constructor(address initialOwner_) Ownable(initialOwner_)
 ```
 
 
