@@ -30,6 +30,19 @@ struct PairInfo {
 ```
 
 
+### AUniswapV2OracleStorage
+
+```solidity
+struct AUniswapV2OracleStorage {
+	IUniswapV2Factory uniswapV2Factory;
+	uint256 timeWindow;
+	EnumerableSet.AddressSet pairs;
+	mapping(address => address[]) paths;
+	mapping(address => AUniswapV2Oracle.PairInfo) pairInfos;
+}
+```
+
+
 ## Errors info
 
 ### InvalidPath
@@ -57,22 +70,6 @@ error PairDoesNotExist(address token1, address token2)
 
 ```solidity
 error TimeWindowIsZero()
-```
-
-
-## State variables info
-
-### uniswapV2Factory (0x59d0f713)
-
-```solidity
-contract IUniswapV2Factory uniswapV2Factory
-```
-
-
-### timeWindow (0xd2f343c7)
-
-```solidity
-uint256 timeWindow
 ```
 
 
@@ -200,3 +197,18 @@ Return values:
 | [0]  | uint256 | the prices0Cumulative of the observation  |
 | [1]  | uint256 | the prices1Cumulative of the observation  |
 | [2]  | uint256 | the timestamp of the observation          |
+
+### getUniswapV2Factory (0x0103982d)
+
+```solidity
+function getUniswapV2Factory() public view returns (IUniswapV2Factory)
+```
+
+Returns the uniswapV2Factory address
+### getTimeWindow (0x5566ca09)
+
+```solidity
+function getTimeWindow() public view returns (uint256)
+```
+
+Returns the timeWindow

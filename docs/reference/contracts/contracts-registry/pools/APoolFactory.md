@@ -17,6 +17,17 @@ The actual `deploy()` function has to be implemented in the descendants of this 
 is made via the BeaconProxy pattern.
 
 Both "create1" and "create2" deployment modes are supported.
+## Structs info
+
+### APoolFactoryStorage
+
+```solidity
+struct APoolFactoryStorage {
+	address contractsRegistry;
+}
+```
+
+
 ## Functions info
 
 ### setDependencies (0x69130451)
@@ -36,3 +47,11 @@ Parameters:
 | Name               | Type    | Description             |
 | :----------------- | :------ | :---------------------- |
 | contractsRegistry_ | address | the dependency registry |
+
+### getContractsRegistry (0xbcb9491c)
+
+```solidity
+function getContractsRegistry() public view returns (address)
+```
+
+Returns the address of the contracts registry

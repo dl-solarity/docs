@@ -33,6 +33,18 @@ struct UserDistribution {
 ```
 
 
+### AValueDistributorStorage
+
+```solidity
+struct AValueDistributorStorage {
+	uint256 totalShares;
+	uint256 cumulativeSum;
+	uint256 updatedAt;
+	mapping(address => AValueDistributor.UserDistribution) userDistributions;
+}
+```
+
+
 ## Events info
 
 ### SharesAdded

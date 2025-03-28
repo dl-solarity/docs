@@ -11,6 +11,20 @@ abstract contract AStaking is AValueDistributor, Initializable
 The Staking module
 
 Contract module for staking tokens and earning rewards based on shares.
+## Structs info
+
+### AStakingStorage
+
+```solidity
+struct AStakingStorage {
+	address sharesToken;
+	address rewardsToken;
+	uint256 rate;
+	uint256 stakingStartTime;
+}
+```
+
+
 ## Errors info
 
 ### RewardsTokenIsZeroAddress

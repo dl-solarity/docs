@@ -5,7 +5,7 @@
 #### License: MIT
 
 ```solidity
-contract OwnableDiamond is Diamond, DiamondOwnable
+contract OwnableDiamond is Diamond, OwnableUpgradeable
 ```
 
 The Diamond standard module

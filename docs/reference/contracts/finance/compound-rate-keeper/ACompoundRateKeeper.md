@@ -23,6 +23,21 @@ newRate = curRate * (capitalizationRate\**(secondsPassed / capitalizationPeriod)
 
 The compound rate is calculated with 10\**25 precision.
 The maximal possible compound rate is (type(uint128).max * 10\**25)
+## Structs info
+
+### ACompoundRateKeeperStorage
+
+```solidity
+struct ACompoundRateKeeperStorage {
+	uint256 capitalizationRate;
+	uint64 capitalizationPeriod;
+	uint64 lastUpdate;
+	bool isMaxRateReached;
+	uint256 currentRate;
+}
+```
+
+
 ## Errors info
 
 ### CapitalizationPeriodIsZero

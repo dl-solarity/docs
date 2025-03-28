@@ -36,6 +36,19 @@ a new `B` contract to a ContractsRegistry and re-inject all the required depende
 is also meant to be compatible with factories.
 
 Users may also fetch all the contracts present in the system as they are now located in a single place.
+## Structs info
+
+### AContractsRegistryStorage
+
+```solidity
+struct AContractsRegistryStorage {
+	AdminableProxyUpgrader proxyUpgrader;
+	mapping(string => address) contracts;
+	mapping(address => bool) isProxy;
+}
+```
+
+
 ## Events info
 
 ### ContractAdded

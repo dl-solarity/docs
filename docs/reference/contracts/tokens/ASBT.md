@@ -14,6 +14,22 @@ An abstract lightweight implementation of a Soul Bound Token. Does not comply wi
 Approve and transfer functionality has been removed as it is not needed in SBTs.
 
 The contract is compatible with Metamask and Opensea.
+## Structs info
+
+### ASBTStorage
+
+```solidity
+struct ASBTStorage {
+	string name;
+	string symbol;
+	mapping(uint256 => address) tokenOwners;
+	mapping(address => EnumerableSet.UintSet) balances;
+	string baseURI;
+	mapping(uint256 => string) tokenURIs;
+}
+```
+
+
 ## Errors info
 
 ### ReceiverIsZeroAddress

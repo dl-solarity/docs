@@ -19,6 +19,19 @@ injection mechanism into the pools.
 The PoolContractsRegistry contract operates by managing ProxyBeacons that point to pools' implementations.
 The factory contract would deploy BeaconProxies that point to these ProxyBeacons, allowing simple and cheap
 upgradeability mechanics.
+## Structs info
+
+### APoolContractsRegistryStorage
+
+```solidity
+struct APoolContractsRegistryStorage {
+	address contractsRegistry;
+	mapping(string => UpgradeableBeacon) beacons;
+	mapping(string => EnumerableSet.AddressSet) pools;
+}
+```
+
+
 ## Errors info
 
 ### NoMappingExists
@@ -170,6 +183,13 @@ Return values:
 | :--- | :------ | :--------------------------------- |
 | [0]  | uint256 | the number of pools with this name |
 
+### getContractsRegistry (0xbcb9491c)
+
+```solidity
+function getContractsRegistry() public view returns (address)
+```
+
+Returns the address of the contracts registry
 ### listPools (0x71dd21c6)
 
 ```solidity

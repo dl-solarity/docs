@@ -101,6 +101,19 @@ struct VestingData {
 ```
 
 Struct defining vesting data for an individual beneficiary.
+### AVestingStorage
+
+```solidity
+struct AVestingStorage {
+	uint256 scheduleId;
+	uint256 vestingId;
+	mapping(uint256 => AVesting.Schedule) schedules;
+	mapping(uint256 => AVesting.VestingData) vestings;
+	mapping(address => EnumerableSet.UintSet) beneficiaryIds;
+}
+```
+
+
 ## Events info
 
 ### ScheduleCreated
@@ -229,22 +242,6 @@ error VestingPastDate()
 
 ```solidity
 uint256 constant LINEAR_EXPONENT = 1
-```
-
-
-## State variables info
-
-### scheduleId (0x28c802cd)
-
-```solidity
-uint256 scheduleId
-```
-
-
-### vestingId (0xd453bec6)
-
-```solidity
-uint256 vestingId
 ```
 
 
@@ -408,3 +405,18 @@ Return values:
 | Name | Type    | Description                                 |
 | :--- | :------ | :------------------------------------------ |
 | [0]  | uint256 | The amount of tokens available to withdraw. |
+
+### getScheduleId (0x0432cd97)
+
+```solidity
+function getScheduleId() public view returns (uint256)
+```
+
+Returns the scheduleId
+### getVestingId (0x7da28117)
+
+```solidity
+function getVestingId() public view returns (uint256)
+```
+
+Returns the vestingId

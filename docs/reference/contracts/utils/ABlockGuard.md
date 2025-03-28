@@ -26,6 +26,17 @@ contract NotFlashloanable is BlockGuard {
     }
 }
 ```
+## Structs info
+
+### ABlockGuardStorage
+
+```solidity
+struct ABlockGuardStorage {
+	mapping(string => mapping(address => uint256)) lockedInBlocks;
+}
+```
+
+
 ## Errors info
 
 ### BlockGuardLocked
