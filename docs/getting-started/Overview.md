@@ -94,10 +94,6 @@ npm install @solarity/solidity-lib
 
 The latest stable version is always in the `master` branch.
 
-### Documentation
-
-Check out the project's [documentation](https://docs.solarity.dev) with broad explanations and usage examples of every contract. Full `natspec` guides are also available in the source code.
-
 ### Contribution
 
 We are open to any mind-blowing ideas! Please take a look at our [contribution guidelines](https://docs.solarity.dev/docs/getting-started/contribution/how-to-contribute) to get involved.
