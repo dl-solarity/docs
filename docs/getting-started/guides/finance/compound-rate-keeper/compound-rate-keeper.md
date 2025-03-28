@@ -93,9 +93,6 @@ The core function containing the rate calculation logic is `getFutureCompoundRat
 To implement and interact with the compound rate keeper, create a contract that inherits from the `ACompoundRateKeeper` contract and initializes all necessary values.
 
 ```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
-
 import "@solarity/solidity-lib/compound-rate-keeper/ACompoundRateKeeper.sol";
 
 contract CompoundRateKeeper is ACompoundRateKeeper {

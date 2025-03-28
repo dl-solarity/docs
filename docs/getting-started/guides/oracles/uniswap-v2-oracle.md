@@ -30,7 +30,7 @@ contract UniswapV2OracleOwnable is AUniswapV2Oracle, OwnableUpgradeable {
         address uniswapV2Factory_,
         uint256 timeWindow_
     ) external initializer {
-        __Ownable_init();
+        __Ownable_init(msg.sender);
         __AUniswapOracleV2_init(uniswapV2Factory_, timeWindow_);
     }
 

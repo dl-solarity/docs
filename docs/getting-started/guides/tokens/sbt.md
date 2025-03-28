@@ -22,8 +22,8 @@ contract MySBT is ASBT, OwnableUpgradeable {
         string memory name_, 
         string memory symbol_
     ) external initializer {
-        __ASBT_init(name_, symbol_);
         __Ownable_init(msg.sender);
+        __ASBT_init(name_, symbol_);
     }
 
     function mint(address to_, uint256 tokenId_) external onlyOwner {

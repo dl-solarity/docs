@@ -389,9 +389,6 @@ The library also enhances gas efficiency and execution speed by leveraging inlin
 ## Example
 
 ```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
-
 import {AvlTree, Traversal} from "@solarity/solidity-lib/libs/data-structures/AvlTree.sol";
 
 using AvlTree for AvlTree.UintAVL;
