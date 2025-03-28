@@ -6,7 +6,7 @@ The Block Guard module facilitates the flash-loan protection mechanism. It restr
 
 ## Implementation
 
-The `BlockGuard` is a simple contract that tracks the latest block in which a particular resource (group of functions) was accessed by a specific address. It provides several modifiers for easy integration.
+The `ABlockGuard` is a simple contract that tracks the latest block in which a particular resource (group of functions) was accessed by a specific address. It provides several modifiers for easy integration.
 
 <table>
   <thead>
@@ -33,12 +33,12 @@ The `BlockGuard` is a simple contract that tracks the latest block in which a pa
 
 ## Example
 
-For instance, to prevent users from depositing and withdrawing assets in the same transaction, we can utilize the `BlockGuard` contract. By inheriting from the `BlockGuard`, we can apply lock modifiers to both `deposit` and `withdraw` functions.
+For instance, to prevent users from depositing and withdrawing assets in the same transaction, we can utilize the `ABlockGuard` contract. By inheriting from the `ABlockGuard`, we can apply lock modifiers to both `deposit` and `withdraw` functions.
 
 ```solidity
-import "@solarity/solidity-lib/utils/BlockGuard.sol";
+import "@solarity/solidity-lib/utils/ABlockGuard.sol";
 
-contract NotFlashloanable is BlockGuard {
+contract NotFlashloanable is ABlockGuard {
      string public constant DEPOSIT_WITHDRAW = "DEPOSIT_WITHDRAW";
      
      function deposit() external lockBlock(DEPOSIT_WITHDRAW, msg.sender) {
@@ -46,7 +46,7 @@ contract NotFlashloanable is BlockGuard {
      }
 
      function withdraw() external checkBlock(DEPOSIT_WITHDRAW, msg.sender) {
-          /**/
+          /* ... */
      }
 }
 ```

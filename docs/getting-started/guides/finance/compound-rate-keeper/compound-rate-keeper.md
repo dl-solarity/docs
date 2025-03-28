@@ -6,7 +6,7 @@ The Compound Rate Keeper module is designed to be employed in lending protocols 
 
 ## Implementation
 
-The  `AbstractCompoundRateKeeper` contract primary objective is to calculate compound interest rates based on two parameters: `capitalizationRate` and `capitalizationPeriod`. The compound interest formula is as follows:
+The `ACompoundRateKeeper` contract primary objective is to calculate compound interest rates based on two parameters: `capitalizationRate` and `capitalizationPeriod`. The compound interest formula is as follows:
 
 <img src={require("/static/img/docs/compound-rate-keeper.png").default} alt=""/>
 
@@ -20,7 +20,7 @@ where:
 
 Note, that the _compoundRate_ is calculated with the **precision** of `10**25`. The **maximum** possible _compoundRate_ is `type(uint128).max * 10**25`.
 
-The `AbstractCompoundRateKeeper` contract defines the calculation of the compound rate and can serve as a base for implementing diverse lending or staking calculations. This contract includes the following public functions:
+The `ACompoundRateKeeper` contract defines the calculation of the compound rate and can serve as a base for implementing diverse lending or staking calculations. This contract includes the following public functions:
 
 <table>
   <thead>
@@ -90,15 +90,15 @@ The core function containing the rate calculation logic is `getFutureCompoundRat
 
 ## Example
 
-To implement and interact with the compound rate keeper, create a contract that inherits from the `AbstractCompoundRateKeeper` contract and initializes all necessary values.
+To implement and interact with the compound rate keeper, create a contract that inherits from the `ACompoundRateKeeper` contract and initializes all necessary values.
 
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "@solarity/solidity-lib/compound-rate-keeper/AbstractCompoundRateKeeper.sol";
+import "@solarity/solidity-lib/compound-rate-keeper/ACompoundRateKeeper.sol";
 
-contract CompoundRateKeeper is AbstractCompoundRateKeeper {
+contract CompoundRateKeeper is ACompoundRateKeeper {
     constructor(uint256 capitalizationRate_, uint64 capitalizationPeriod_) {
         __CompoundRateKeeper_init(capitalizationRate_, capitalizationPeriod_);
     }

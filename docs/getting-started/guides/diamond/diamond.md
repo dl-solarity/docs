@@ -66,15 +66,15 @@ ERC-2535 recommends storing the slot key and function for accessing the storage 
 * This structure facilitates the conversion of upgradeable contracts into diamond-compatible ones.
 * Facets can effortlessly manage multiple storages, allowing for more flexible and powerful contract interactions and data handling.
 
-Additionally, there are cases when you might require an **initializable** facet. To facilitate this, inherit from the `InitializableStorage` contract, which can be imported from our Diamond module. This allows the use of  `initialize` and `onlyInitializing` modifiers, similar to those in standard upgradeable contracts. When you add a new facet through the `diamondCut`, the initialization process is designed to be executed a single time, preventing reinitialization and maintaining the facet's state integrity.
+Additionally, there are cases when you might require an **initializable** facet. To facilitate this, inherit from the `InitializableStorage` contract, which can be imported from our Diamond module. This allows the use of `initializer`, `reinitializer`, and `onlyInitializing` modifiers, similar to those in standard upgradeable contracts. When you add a new facet through the `diamondCut`, the initialization process is designed to be executed a single time, preventing reinitialization and maintaining the facet's state integrity.
 
 #### 4 Presets
 
-It's important to secure the `diamondCut` function in your Diamond. To achieve this, consider using our `OwnableDiamond` preset. This preset inherits the `OwnableDiamondStorage` and uses the `onlyOwner` modifier from it, ensuring that only the owner can manage facets and selectors.
+It's important to secure the `diamondCut` function in your Diamond. To achieve this, consider using our `OwnableDiamond` preset. This preset inherits the OZ's `Ownable` and uses the `onlyOwner` modifier from it, ensuring that only the owner can manage facets and selectors.
 
 #### 5 Predefined facets/storages
 
-If you want your Diamond to behave like an `ERC20`, `ERC721`, or other popular standard, check out our constantly evolving list of predefined facets and storages. It might have what you need, saving you time in development.
+There are several facets implemented in the library to help with development:
 
 <table>
   <thead>
@@ -85,38 +85,22 @@ If you want your Diamond to behave like an `ERC20`, `ERC721`, or other popular s
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/tokens/ERC20">DiamondERC20</a></td>
-      <td>OpenZeppelin ERC20-based Facet</td>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/diamond/utils/DiamondERC165.sol">DiamondERC165</a></td>
+      <td>ERC165 introspection based Facet</td>
     </tr>
     <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/tokens/ERC721">DiamondERC721</a></td>
-      <td>OpenZeppelin ERC721-based Facet</td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/diamond/introspection/DiamondERC165.sol">DiamondERC165</a></td>
-      <td>OpenZeppelin ERC165-based Facet</td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/access/ownable">DiamondOwnable</a></td>
-      <td>OpenZeppelin Ownable-based Facet</td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/tree/master/contracts/diamond/access/access-control">DiamondAccessControl</a></td>
-      <td>OpenZeppelin AccessControl-based Facet</td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/diamond/utils/InitializableStorage.sol">InitializableStorage</a></td>
-      <td>OpenZeppelin Initializable-based Storage</td>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/diamond/utils/AInitializableStorage.sol">AInitializableStorage</a></td>
+      <td>Initializable Storage for multiple facets</td>
     </tr>
   </tbody>
 </table>
 
 ## Example
 
-Imagine we want to create a diamond contract where anyone can deposit tokens, but only the owner can withdraw them. This functionality can be divided into two facets: `DepositFacet` and `WithdrawFacet`. In the `withdraw` function, applying an `onlyOwner` modifier is critical for security. Instead of building this modifier from scratch, we can efficiently inherit it from `OwnableDiamondStorage`. This is enabled by the `OwnableDiamond` preset, which uses `OwnableDiamondStorage` to store information about the diamond's deployer. This way facets can access and utilize each other's storages since they also operate on the same storage space.
+Imagine we want to create a diamond contract where anyone can deposit tokens, but only the owner can withdraw them. This functionality can be divided into two facets: `DepositFacet` and `WithdrawFacet`. In the `withdraw` function, applying an `onlyOwner` modifier is critical for security. Instead of building this modifier from scratch, we can efficiently inherit it from OZ's `OwnableUpgradeable`. This way facets can access and utilize each other's storages since they also operate on the same storage space.
 
 ```solidity
-import "@solarity/solidity-lib/diamond/presets/OwnableDiamond/OwnableDiamond.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
@@ -129,7 +113,7 @@ contract DepositFacet {
     }
 }
 
-contract WithdrawFacet is OwnableDiamondStorage {
+contract WithdrawFacet is OwnableUpgradeable {
     using SafeERC20 for IERC20;
 
     function withdraw(
@@ -192,8 +176,9 @@ function interactWithDiamond(address diamond_, IERC20 token_) external {
 Now consider we want to add a new feature to our Diamond, enabling it to exchange tokens on a DEX such as UniswapV2. To achieve this, we'll implement a separate storage to hold the UniswapV2 router contract address. Additionally, we'll develop a new facet, equipped with a function to swap tokens. This facet will interact with the UniswapV2 router, using the address stored in the new storage to execute token swaps.
 
 ```solidity
-import "@solarity/solidity-lib/diamond/presets/OwnableDiamond/OwnableDiamond.sol";
-import "@solarity/solidity-lib/diamond/utils/InitializableStorage.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+
+import "@solarity/solidity-lib/diamond/utils/AInitializableStorage.sol";
 
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol";
 
@@ -224,8 +209,8 @@ contract UniswapV2Storage {
 
 contract UniswapV2Facet is 
     UniswapV2Storage, 
-    OwnableDiamondStorage, 
-    InitializableStorage 
+    OwnableUpgradeable, 
+    AInitializableStorage 
 {
     function __UniswapV2Facet_init(
         address router_
@@ -304,12 +289,12 @@ function interactWithUpgradedDiamond(address diamond_) external {
 }
 ```
 
-An additional technique you may find useful is the ability to call one facet from another. Since they operate within the same storage space, you can simply make a `delegatecall` to another facet's address. The address of the facet can be obtained using the `facetAddress` function from the diamond loupe, which can be inherited from the `DiamondStorage` contract. Here's an example illustrating the implementation of the `DepositSwapFacet`, which sequentially calls the `DepositFacet` and the `UniswapV2Facet`.
+An additional technique you may find useful is the ability to call one facet from another. Since they operate within the same storage space, you can simply make a `delegatecall` to another facet's address. The address of the facet can be obtained using the `facetAddress` function from the diamond loupe, which can be inherited from the `ADiamondStorage` contract. Here's an example illustrating the implementation of the `DepositSwapFacet`, which sequentially calls the `DepositFacet` and the `UniswapV2Facet`.
 
 ```solidity
-import "@solarity/solidity-lib/diamond/DiamondStorage.sol";
+import "@solarity/solidity-lib/diamond/ADiamondStorage.sol";
 
-contract DepositSwapFacet is DiamondStorage {
+contract DepositSwapFacet is ADiamondStorage {
     function depositAndSwap(
         IERC20 token_, 
         uint256 amount_,

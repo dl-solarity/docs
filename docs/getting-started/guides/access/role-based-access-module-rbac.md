@@ -8,7 +8,7 @@ This module centralizes the setting, maintenance, and adjustment of permissions 
 
 ## Implementation
 
-The `RBAC` contract is a centralized mechanism for managing permissioned access to restricted functions within each contract. The RBAC contract orchestrates four essential components of the system: `Resource`, `Permission`, `Role`,  and `Group` (extension).
+The `ARBAC` contract is a centralized mechanism for managing permissioned access to restricted functions within each contract. The RBAC contract orchestrates four essential components of the system: `Resource`, `Permission`, `Role`,  and `Group` (extension).
 
 The synergy of these entities enables developers to efficiently manage access to various system components within the project.
 
@@ -23,7 +23,7 @@ A `Permission` signifies a specific action (such as create, update, delete) that
 
 For instance, the `deposit` function might be protected using the `CREATE_PERMISSION`, or more specifically, the `DEPOSIT_PERMISSION`.
 
-Furthermore, the `RBAC` module includes a default wildcard symbol `*`, indicating access to all `Permissions`.
+Furthermore, the `ARBAC` module includes a default wildcard symbol `*`, indicating access to all `Permissions`.
 
 **2 Resource**
 
@@ -37,7 +37,7 @@ It is critical to recognize that within the system's entirety, each resource mus
 
 The `Role` entity can be directly assigned to a user, which is either a contract or an EOA, encapsulating multiple `Resources` along with an associated set of `Permissions`. A user may be assigned multiple `Roles`.
 
-The `RBAC` contract comes with a pre-configured `MASTER` role. By default, the `MASTER` role is assigned the wildcard `*` for both `Resources` and `Permissions`, granting full access rights to users with this role. This default setting streamlines the initial deployment of the system by enabling the deployer account to set up the necessary components of the system with ease.
+The `ARBAC` contract comes with a pre-configured `MASTER` role. By default, the `MASTER` role is assigned the wildcard `*` for both `Resources` and `Permissions`, granting full access rights to users with this role. This default setting streamlines the initial deployment of the system by enabling the deployer account to set up the necessary components of the system with ease.
 
 Functions for managing `Roles`:
 
@@ -70,7 +70,7 @@ Functions for managing `Roles`:
 
 #### 4 Group (extension)
 
-To accommodate scenarios where a group of roles needs to be assigned to multiple users, the `RBACGroupable` extension is essential. It extends the `RBAC` module and introduces functionalities for the administration of groups. Furthermore, there exists a default group, which is disabled by default.
+To accommodate scenarios where a group of roles needs to be assigned to multiple users, the `ARBACGroupable` extension is essential. It extends the `ARBAC` module and introduces functionalities for the administration of groups. Furthermore, there exists a default group, which is disabled by default.
 
 If the default group is enabled, it will automatically include every user. The identifier for the default role is an empty string.
 
@@ -109,17 +109,17 @@ Functions for managing `Group`:
 
 ## Example
 
-To set up a system, start by creating the `PermissionManager` contract, which is derived from `RBAC`. In the beginning, no roles are granted; therefore, to facilitate further system configuration, the master role will be assigned to the specified account.
+To set up a system, start by creating the `PermissionManager` contract, which is derived from `ARBAC`. In the beginning, no roles are granted; therefore, to facilitate further system configuration, the master role will be assigned to the specified account.
 
 ```solidity
-import "@solarity/solidity-lib/access-control/RBAC.sol";
+import "@solarity/solidity-lib/access-control/ARBAC.sol";
 import "@solarity/solidity-lib/libs/utils/TypeCaster.sol";
 
-contract PermissionManager is RBAC {
+contract PermissionManager is ARBAC {
     using TypeCaster for string;
 
     function __PermissionManager_init(address master_) external initializer {
-        __RBAC_init();
+        __ARBAC_init();
         _grantRoles(master_, MASTER_ROLE.asSingletonArray());
     }
 }
@@ -127,7 +127,7 @@ contract PermissionManager is RBAC {
 
 Now, let's proceed to create a dependent contract that will employ the `PermissionManager` contract to restrict access to the `deposit` and `withdrawAll` functions, exclusive to users holding the `UPDATE_PERMISSION`.
 
-By convention, the `RestrictedWallet` contract employs a modifier that exemplifies the `UPDATE` permission. When users interact with the contract, and a function necessitates authorization, the `RBAC` module intervenes to verify if the `msg.sender` possess the requisite permissions (namely, update permission) to execute an operation on the `RestrictedWallet` contract. If the conditions are met, they are then authorized to deposit or withdraw funds to and from the wallet.
+By convention, the `RestrictedWallet` contract employs a modifier that exemplifies the `UPDATE` permission. When users interact with the contract, and a function necessitates authorization, the `ARBAC` module intervenes to verify if the `msg.sender` possess the requisite permissions (namely, update permission) to execute an operation on the `RestrictedWallet` contract. If the conditions are met, they are then authorized to deposit or withdraw funds to and from the wallet.
 
 ```solidity
 import "@solarity/solidity-lib/interfaces/access-control/IRBAC.sol";
@@ -213,17 +213,17 @@ function migration() external {
 }
 ```
 
-As we look to scale the system, we may wish to enable users in the default group to utilize the `RestrictedWallet` functionality. The setup remains consistent with the `RBAC` module, but here we inherit from the `RBACGroupable` contract and invoke the `__RBACGroupable_init` function. For a straightforward initial configuration, the master role is assigned to the designated account (for instance, the deployer account).
+As we look to scale the system, we may wish to enable users in the default group to utilize the `RestrictedWallet` functionality. The setup remains consistent with the `ARBAC` module, but here we inherit from the `ARBACGroupable` contract and invoke the `__ARBACGroupable_init` function. For a straightforward initial configuration, the master role is assigned to the designated account (for instance, the deployer account).
 
 ```solidity
-import "@solarity/solidity-lib/access-control/extensions/RBACGroupable.sol";
+import "@solarity/solidity-lib/access-control/extensions/ARBACGroupable.sol";
 import "@solarity/solidity-lib/libs/utils/TypeCaster.sol";
 
-contract GroupPermissionManager is RBACGroupable {
+contract GroupPermissionManager is ARBACGroupable {
     using TypeCaster for string;
 
     function __GroupPermissionManager_init(address master_) external initializer {
-        __RBACGroupable_init();
+        __ARBACGroupable_init();
         _grantRoles(master_, MASTER_ROLE.asSingletonArray());
     }
 }
@@ -286,5 +286,5 @@ function migration() external {
 
 ## Production References
 
-* [q-dev/q-gdk/gdk-contracts](https://gitlab.com/q-dev/q-gdk/gdk-contracts) utilize the `RBACGroupable` extension for DAO operations and enhancing system scalability.
-* [dl-tokene/core-contracts](https://github.com/dl-tokene/core-contracts) employ the `RBAC` module for access management within the system.
+* [q-dev/q-gdk/gdk-contracts](https://gitlab.com/q-dev/q-gdk/gdk-contracts) utilize the `ARBACGroupable` extension for DAO operations and enhancing system scalability.
+* [dl-tokene/core-contracts](https://github.com/dl-tokene/core-contracts) employ the `ARBAC` module for access management within the system.

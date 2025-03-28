@@ -6,7 +6,7 @@ The Staking module is an abstract solution that allows users to stake tokens and
 
 ## Implementation
 
-The module holds two primary contracts: the `AbstractValueDistributor` and the `AbstractStaking`. The first one handles the distribution calculations according to the algorithm that ensures the distribution is proportional to the shares held by each user and takes into account changes in the cumulative sum over time. The formula being used is:
+The module holds two primary contracts: the `AValueDistributor` and the `AStaking`. The first one handles the distribution calculations according to the algorithm that ensures the distribution is proportional to the shares held by each user and takes into account changes in the cumulative sum over time. The formula being used is:
 
 <img src={require("/static/img/docs/staking.png").default} alt=""/>
 
@@ -19,7 +19,7 @@ where:
 
 #### 1 Abstract Value Distributor contract
 
-The `AbstractValueDistributor` contract defines the core logic for distributing value among users based on their shares. This contract can be used as a base contract for implementing various distribution mechanisms, such as token staking, profit sharing, or dividend distribution.
+The `AValueDistributor` contract defines the core logic for distributing value among users based on their shares. This contract can be used as a base contract for implementing various distribution mechanisms, such as token staking, profit sharing, or dividend distribution.
 
 It includes the following public functions:
 
@@ -67,7 +67,7 @@ The core function affecting the distribution calculation is `_getValueToDistribu
 
 #### 2 Abstract Staking contract
 
-The `AbstractStaking` contract inherits from the Abstract Value Distributor contract and adds user-oriented functionality for staking tokens and earning rewards. It allows setting ERC20 tokens as the shares token and the rewards token (which cannot be further changed), as well as setting the rate and the staking start time during the contract initialization using the internal `__AbstractStaking_init` function. All of the initialized values are available using `sharesToken` , `rewardsToken` , `rate` and `stakingStartTime` functions.
+The `AStaking` contract inherits from the Abstract Value Distributor contract and adds user-oriented functionality for staking tokens and earning rewards. It allows setting ERC20 tokens as the shares token and the rewards token (which cannot be further changed), as well as setting the rate and the staking start time during the contract initialization using the internal `__AStaking_init` function. All of the initialized values are available using `sharesToken` , `rewardsToken` , `rate` and `stakingStartTime` functions.
 
 When shares and rewards tokens **are the same**, users may accidentally withdraw other users' shares as a reward if the rewards token balance is improperly handled.
 
@@ -129,19 +129,19 @@ The key functions for staking and claiming rewards:
 
 ## Example
 
-As long as our `AbstractStaking` contract is abstract you need to inherit it as the first step and initialize the needed values in any suitable way. Let's do it in the constructor.
+As long as our `AStaking` contract is abstract you need to inherit it as the first step and initialize the needed values in any suitable way. Let's do it in the constructor.
 
 ```solidity
-import "@solarity/solidity-lib/staking/AbstractStaking.sol";
+import "@solarity/solidity-lib/staking/AStaking.sol";
 
-contract Staking is AbstractStaking {    
+contract Staking is AStaking {    
     constructor(
         address sharesToken_,
         address rewardsToken_,
         uint256 rate_,
         uint256 stakingStartTime_
     ) {
-        __AbstractStaking_init(
+        __AStaking_init(
             sharesToken_, 
             rewardsToken_, 
             rate_, 

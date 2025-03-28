@@ -10,18 +10,19 @@ The Merkle Whitelisted module is an abstract utility used in modules that requir
 
 The Merkle tree enables efficient validation of huge whitelists due to its logarithmic complexity. Whitelist data or user addresses are stored in the leaves, **with only the tree root saved on-chain**. This approach is cost-effective for large lists but incurs overhead for off-chain Merkle Proof generation and membership verification.
 
-The `MerkleWhitelisted` is an abstract contract that implements whitelisting logic using the Merkle Tree data structure. To validate whitelist membership, the leaf (whitelist element) and the corresponding branch (proof) are passed to the validation function to check for matching roots, indicating whitelist membership.
+The `AMerkleWhitelisted` is an abstract contract that implements whitelisting logic using the Merkle Tree data structure. To validate whitelist membership, the leaf (whitelist element) and the corresponding branch (proof) are passed to the validation function to check for matching roots, indicating whitelist membership.
 
 ## Example
 
-Start by creating a utility contract that inherits the functionalities of `MerkleWhitelisted`. The contract includes the `protectedFunctionUser` method that is restricted to whitelisted addresses. Alongside this, the contract has the `setMerkleRoot` method for setting and updating Merkle tree roots, access to which is also restricted by the `PermanentOwnable` contract.
+Start by creating a utility contract that inherits the functionalities of `AMerkleWhitelisted`. The contract includes the `protectedFunctionUser` method that is restricted to whitelisted addresses. Alongside this, the contract has the `setMerkleRoot` method for setting and updating Merkle tree roots, access to which is also restricted by the `Ownable` contract.
 
 ```solidity
-import "@solarity/solidity-lib/access-control/MerkleWhitelisted.sol";
-import "@solarity/solidity-lib/access-control/PermanentOwnable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MerkleProtectedContract is MerkleWhitelisted, PermanentOwnable {
-    constructor() PermanentOwnable(msg.sender) {}
+import "@solarity/solidity-lib/access-control/AMerkleWhitelisted.sol";
+
+contract MerkleProtectedContract is AMerkleWhitelisted, Ownable {
+    constructor() Ownable(msg.sender) {}
 
     function setMerkleRoot(bytes32 merkleRoot_) external onlyOwner {
         _setMerkleRoot(merkleRoot_);
