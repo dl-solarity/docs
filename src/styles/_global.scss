@@ -8,11 +8,14 @@ html {
 }
 
 body,
-span,
 p {
   color: var(--text-primary-light);
 
   @include p-16-regular;
+}
+
+code {
+  @include code
 }
 
 a {

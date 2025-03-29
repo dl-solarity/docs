@@ -1,9 +1,7 @@
 {
-  "name": "solarity-doc",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@solarity/docs",
+  "version": "0.1.0",
   "scripts": {
-    "install": "npx husky install",
     "lint-fix": "npm run lint-js-fix && npm run lint-json-fix",
     "lint-json-fix": "prettier --write \"./**/*.json\"",
     "lint-js-fix": "prettier --write \"./**/*.js\"",
