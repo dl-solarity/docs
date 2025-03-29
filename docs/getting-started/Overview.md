@@ -2,53 +2,101 @@
 
 <img src={require("/static/img/docs/solarity.png").default} alt=""/>
 
-## Solidity Library for Savvies by Distributed Lab
+## Solarity Solidity Library
 
-The library consists of modules and utilities that are built leveraging [Openzeppelin Contracts](https://github.com/OpenZeppelin/openzeppelin-contracts) (4.9.6) and **go far beyond mediocre solidity**.
+Solidity contracts and utilities that **go far beyond mediocre solidity**.
 
-* Implementation of the [**Contracts Registry**](https://eips.ethereum.org/EIPS/eip-6224) pattern
-* State-of-the-art cryptography primitives (**ECDSA over 256-bit and 384-bit curves**, **RSASSA-PSS**)
-* Advanced data structures (**Vector**, **DynamicSet**, **PriorityQueue**, **AVLTree**)
-* ZK-friendly [**Sparse Merkle Tree**](https://docs.iden3.io/publications/pdfs/Merkle-Tree.pdf) and [**Incremental Merkle Tree**](https://github.com/runtimeverification/deposit-contract-verification/blob/master/deposit-contract-verification.pdf) implementations
-* Versatile **RBAC** and **MultiOwnable** smart contracts
-* Enhanced and simplified [**Diamond**](https://eips.ethereum.org/EIPS/eip-2535) pattern
-* Flexible finance instruments (**Staking**, **Vesting**)
-* Novel **ReturnDataProxy** contract
-* Robust UniswapV2 and UniswapV3 oracles
-* Lightweight **SBT** implementation
-* Utilities to ease work with memory, types, ERC20 decimals, arrays, sets, and ZK proofs
+### Contracts
 
-Checkout guides section for detailed explanations with usage examples for each module.
+```ml
+contracts
+├── access
+│   ├── AMerkleWhitelisted — "Whitelists via Merkle proofs"
+│   ├── AMultiOwnable — "Multiple owners with the equal access level"
+│   ├── ARBAC — "A powerful implementation of a true RBAC"
+│   └── extensions
+│       └── ARBACGroupable — "Groupable extension of ARBAC"
+├── contracts—registry
+│   ├── AContractsRegistry — "Reference registry implementation of ERC-6224 pattern"
+│   ├── ADependant — "Reference dependant implementation of ERC-6224 pattern"
+│   └── pools
+│       ├── APoolContractsRegistry — "Adaptation of ERC-6224 for factory-like contracts"
+│       └── APoolFactory — "Factory implementation for a pooled registry"
+├── diamond
+│   ├── ADiamondStorage — "The storage part of ERC-2535 diamond"
+│   ├── Diamond — "Revised ERC-2535 diamond implementation"
+│   └── utils
+│       ├── AInitializableStorage — "Initializable logic for diamond facets"
+│       └── DiamondERC165 — "ERC-165 introspection for diamond facets"
+├── finance
+│   ├── compound—rate—keeper
+│   │   └── ACompoundRateKeeper — "Complex percentage calculator used in lending protocols"
+│   ├── staking
+│   │   ├── AStaking — "Flexible rewards staking implementation"
+│   │   └── AValueDistributor — "Efficient distribution algorithm implementation"
+│   └── vesting
+│       └── AVesting — "Linear and exponential vesting implementation"
+├── libs
+│   ├── arrays
+│   │   ├── ArrayHelper — "Common functions to work with arrays"
+│   │   ├── Paginator — "Return array slices from view function"
+│   │   └── SetHelper — "Array abstraction over sets"
+│   ├── bn
+│   │   └── U512 — "A hyperoptimized uint512 implementation"
+│   ├── crypto
+│   │   ├── ECDSA256 — "ECDSA verification over any 256-bit curves"
+│   │   ├── ECDSA384 — "ECDSA verification over any 384-bit curves"
+│   │   ├── ECDSA512 — "ECDSA verification over any 512-bit curves"
+│   │   └── RSASSAPSS — "RSASSA-PSS verification with MGF1"
+│   ├── data—structures
+│   │   ├── AvlTree — "AVL tree implementation with an iterator traversal"
+│   │   ├── CartesianMerkleTree — "CMT reference implementation"
+│   │   ├── DynamicSet — "Set for strings and bytes"
+│   │   ├── IncrementalMerkleTree — "IMT implementation with flexible tree height"
+│   │   ├── PriorityQueue — "Max queue heap implementation"
+│   │   ├── SparseMerkleTree — "SMT optimized implementation"
+│   │   └── memory
+│   │       └── Vector — "A pushable memory array"
+│   ├── utils
+│   │   ├── DecimalsConverter — "Simplify interaction with ERC-20 decimals"
+│   │   ├── MemoryUtils — "Functions for memory manipulation"
+│   │   ├── ReturnDataProxy — "Bypass extra returndata copy when returning data"
+│   │   └── Typecaster — "Cast between various Solidity types"
+│   └── zkp
+│       ├── Groth16VerifierHelper — "Simplify integration with Groth16 proofs"
+│       └── PlonkVerifierHelper — "Simplify integration with Plonk proofs"
+├── oracles
+│   ├── AUniswapV2Oracle — "Uniswap V2 oracle with custom TWAP"
+│   └── UniswapV3Oracle — "Uniswap V3 oracle with a clean interface"
+├── proxy
+│   └── adminable
+│       ├── AdminableProxy — "A slight modification of a transparent proxy"
+│       └── AdminableProxyUpgrader — "A slight modification of a proxy admin"
+├── tokens
+│   └── ASBT — "A minimal implementation of an SBT"
+├── utils
+│   ├── ABlockGuard — "Protect against flashloans"
+│   └── Globals — "Some commonly used constants"
+├── presets — "Presets for the library contracts"
+├── interfaces — "Interfaces for the library contracts"
+└── mock — "Mocks for testing purposes"
+```
+
+Built with courage and aspiration to perfection.
+
+> The library is designed to work cohesively with [hardhat-zkit](https://github.com/dl-solarity/hardhat-zkit) and [circom-lib](https://github.com/dl-solarity/circom-lib) packages.
 
 ### Installation
 
 ```bash
-$ npm install @solarity/solidity-lib
+npm install @solarity/solidity-lib
 ```
 
 The latest stable version is always in the `master` branch.
 
-### Usage
-
-You will find the smart contracts in the `contracts` directory. Feel free to play around and check the source code, it is rather descriptive.
-
-Once the [npm package](https://www.npmjs.com/package/@solarity/solidity-lib) is installed, one can use the library just like that:
-
-```solidity
-pragma solidity ^0.8.4;
-
-import "@solarity/solidity-lib/contracts-registry/presets/OwnableContractsRegistry.sol";
-
-contract ContractsRegistry is OwnableContractsRegistry {
-    . . .
-}
-```
-
-> It is important to use the library as it is shipped and not copy-paste the code from untrusted sources.
-
 ### Contribution
 
-We are open to contributions to our [solidity-lib](https://github.com/dl-solarity/solidity-lib/tree/master) repository. If you're interested in contributing, please visit the [How to contribute](./contribution/how-to-contribute.md) section.
+We are open to any mind-blowing ideas! Please take a look at our [contribution guidelines](https://docs.solarity.dev/docs/getting-started/contribution/how-to-contribute) to get involved.
 
 ### License
 

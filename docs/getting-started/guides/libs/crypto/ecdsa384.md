@@ -3,7 +3,7 @@
 ## Introduction
 
 This library provides functionality for ECDSA verification over any 384-bit curve. Currently,
-this is the most efficient implementation out there, consuming ~8.025 million gas per call.
+this is the most efficient implementation out there, consuming ~8.9 million gas per call.
 
 The approach is Strauss-Shamir double scalar multiplication with 6 bits of precompute + affine coordinates.
 For reference, naive implementation uses ~400 billion gas, which is 50000 times more expensive.
@@ -94,9 +94,3 @@ function verifySECP384r1(
     return curveParams_.verify(abi.encodePacked(sha256(message_)), signature_, pubKey_);
 }
 ```
-
-## 🖩 U384
-
-### Introduction
-
-The `U384` low-level utility library that implements unsigned 384-bit arithmetics. It provides various functions that are used in the ECDSA384 library.

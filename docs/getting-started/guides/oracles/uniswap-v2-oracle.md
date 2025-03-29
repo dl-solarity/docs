@@ -6,32 +6,32 @@ The Uniswap V2 Oracle module serves as a dynamic tool for token price retrieval.
 
 ## Implementation
 
-The `UniswapV2Oracle` contract uses TWAP for calculating token prices.
+The `AUniswapV2Oracle` contract uses TWAP for calculating token prices.
 
 > Time-Weighted Average Price (TWAP) is an algorithm that averages prices over a specified time period, providing a more stable and manipulation-resistant price metric compared to instant spot prices.
 
 This is achieved through the use of cumulative sums, which are maintained inside the contract for each token pair. The oracle maintains a history of cumulative price data and associated block timestamps for each pair. When calculating the TWAP, the oracle compares the current cumulative price with the cumulative price at the start of the predefined time window, dividing the difference by the length of the time window to obtain an average price that reflects recent market dynamics.
 
-The `UniswapV2Oracle` contract allows users to define and manage token paths, which are essential for price calculation where direct pairings may not be available. For each **input token**, users can set **only one path**, which is a sequence of tokens that leads to the desired **output token**. These paths are crucial for the oracle to navigate through the various token pairs on Uniswap V2 to compute the required prices.
+The `AUniswapV2Oracle` contract allows users to define and manage token paths, which are essential for price calculation where direct pairings may not be available. For each **input token**, users can set **only one path**, which is a sequence of tokens that leads to the desired **output token**. These paths are crucial for the oracle to navigate through the various token pairs on Uniswap V2 to compute the required prices.
 
-Due to Uniswap V2's design limitations, which does not support native historical price observation storage, the `UniswapV2Oracle` contract fulfills this role by necessitating manual updates to its price data. This is accomplished through the `updatePrices` function. Regular execution of this function ensures that the oracle's TWAP calculations are based on the most recent market dynamics, a crucial aspect for reliable price feeds.
+Due to Uniswap V2's design limitations, which does not support native historical price observation storage, the `AUniswapV2Oracle` contract fulfills this role by necessitating manual updates to its price data. This is accomplished through the `updatePrices` function. Regular execution of this function ensures that the oracle's TWAP calculations are based on the most recent market dynamics, a crucial aspect for reliable price feeds.
 
 ## Example
 
-Start by inheriting from the `UniswapV2Oracle` contract and protecting its management methods.
+Start by inheriting from the `AUniswapV2Oracle` contract and protecting its management methods.
 
 ```solidity
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-import "@solarity/solidity-lib/oracles/UniswapV2Oracle.sol";
+import "@solarity/solidity-lib/oracles/AUniswapV2Oracle.sol";
 
-contract UniswapV2OracleOwnable is UniswapV2Oracle, OwnableUpgradeable {
+contract UniswapV2OracleOwnable is AUniswapV2Oracle, OwnableUpgradeable {
     function __UniswapV2OracleOwnable_init(
         address uniswapV2Factory_,
         uint256 timeWindow_
     ) external initializer {
-        __Ownable_init();
-        __OracleV2_init(uniswapV2Factory_, timeWindow_);
+        __Ownable_init(msg.sender);
+        __AUniswapOracleV2_init(uniswapV2Factory_, timeWindow_);
     }
 
     function setTimeWindow(uint256 newTimeWindow_) external onlyOwner {

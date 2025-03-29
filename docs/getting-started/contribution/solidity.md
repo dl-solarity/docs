@@ -575,13 +575,13 @@ All our contracts are under the MIT License. This ensures that they can be freel
 
 #### 6.2 Solidity version
 
-Use Solidity version 0.8.4. Exceptions for specific integrations are possible but must be discussed on a case-by-case basis.
+Use Solidity version 0.8.21. Exceptions for specific integrations are possible but must be discussed on a case-by-case basis.
 
 <Tabs>
 <TabItem value="good" label="Good" default>
 
 ```solidity
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.21;
 ```
 
 </TabItem>

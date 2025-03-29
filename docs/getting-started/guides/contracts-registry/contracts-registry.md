@@ -23,11 +23,11 @@ The Contracts Registry module streamlines the maintenance of large projects by o
 
 #### 1 ContractsRegistry contract
 
-The `ContractsRegistry` is a contract that should be used as the highest level repository that is aware of all other contracts present in the system.
+The `AContractsRegistry` is a contract that should be used as the highest level repository that is aware of all other contracts present in the system.
 
-Behind the scenes, the `ContractRegistry` maintains a mapping of string contract names to their corresponding addresses. The use of string keys, selected by ERC-6224 for their high readability, is favored even though it might not be the most gas-efficient option. Generally, the `ContractRegistry` adds system contracts under the self-deployed **transparent proxies**, gaining the rights to use administrative methods on these proxies, such as `upgradeTo`. It also permits adding pre-deployed contracts, regardless of their proxy status. However, users should set up permissions for these contracts themselves.
+Behind the scenes, the `AContractRegistry` maintains a mapping of string contract names to their corresponding addresses. The use of string keys, selected by ERC-6224 for their high readability, is favored even though it might not be the most gas-efficient option. Generally, the `AContractRegistry` adds system contracts under the self-deployed **transparent proxies**, gaining the rights to use administrative methods on these proxies, such as `upgradeTo`. It also permits adding pre-deployed contracts, regardless of their proxy status. However, users should set up permissions for these contracts themselves.
 
-Functions featured by the `ContractsRegisry`:
+Functions featured by the `AContractsRegistry`:
 
 <table>
   <thead>
@@ -66,13 +66,13 @@ Functions featured by the `ContractsRegisry`:
 
 #### 2 Dependency Injection
 
-The `ContractsRegistry` works together with `Dependant` contracts. Every standalone contract of a protocol must be `Dependant` in order to support the **dependency injection** mechanism. The required dependencies must be set in the overridden `setDependencies` method, not in the `constructor` or `initializer` methods. The `setDependencies` function has the `ContractsRegistry` as a parameter, so the required dependencies can be retrieved from it. Unlike `initializer` methods, the `setDependencies` might be called as much as needs.
+The `AContractsRegistry` works together with `ADependant` contracts. Every standalone contract of a protocol must be `ADependant` in order to support the **dependency injection** mechanism. The required dependencies must be set in the overridden `setDependencies` method, not in the `constructor` or `initializer` methods. The `setDependencies` function has the `ContractsRegistry` as a parameter, so the required dependencies can be retrieved from it. Unlike `initializer` methods, the `setDependencies` might be called as much as needs.
 
 #### 3 PoolRegistry and PoolFactory contracts
 
-To facilitate the deployment and management of pool contracts, the `PoolRegistry` and `PoolFactory` contracts are essential. Both of them are `Dependant` and typically included into the `ContractsRegistry`. These contracts utilize the [Beacon Proxy](https://eips.ethereum.org/EIPS/eip-1967#beacon-contract-address) to enable simultaneous upgrades of pools. Dependency injection for `Dependant` pool contracts is performed by the `PoolFactory` upon initial deployment and by the `PoolRegistry` for existing pools.
+To facilitate the deployment and management of pool contracts, the `APoolRegistry` and `APoolFactory` contracts are essential. Both of them are `ADependant` and typically included into the `AContractsRegistry`. These contracts utilize the [Beacon Proxy](https://eips.ethereum.org/EIPS/eip-1967#beacon-contract-address) to enable simultaneous upgrades of pools. Dependency injection for `ADependant` pool contracts is performed by the `APoolFactory` upon initial deployment and by the `APoolRegistry` for existing pools.
 
-Functions featured by the `PoolRegistry`:
+Functions featured by the `APoolRegistry`:
 
 <table>
   <thead>
@@ -97,7 +97,7 @@ Functions featured by the `PoolRegistry`:
   </tbody>
 </table>
 
-Functions featured by the `PoolFactory`:
+Functions featured by the `APoolFactory`:
 
 <table>
   <thead>
@@ -139,19 +139,19 @@ The Contracts Registry module includes several preset contracts to help you esta
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/presets/OwnableContractsRegistry.sol">OwnableContractsRegistry</a></td>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/presets/contracts-registry/OwnableContractsRegistry.sol">OwnableContractsRegistry</a></td>
       <td>Only the owner can inject dependencies into, add, remove, and upgrade contracts</td>
     </tr>
     <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/presets/MultiOwnableContractsRegistry.sol">MultiOwnableContractsRegistry</a></td>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/presets/contracts-registry/MultiOwnableContractsRegistry.sol">MultiOwnableContractsRegistry</a></td>
       <td>Only multiple owners can inject dependencies into, add, remove, and upgrade contracts</td>
     </tr>
     <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/pools/presets/OwnablePoolContractsRegistry.sol">OwnablePoolContractsRegistry</a></td>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/presets/contracts-registry/pools/AOwnablePoolContractsRegistry.sol">OwnablePoolContractsRegistry</a></td>
       <td>Only the owner can call set pools' implementations and inject dependencies into existing pools</td>
     </tr>
     <tr>
-      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/contracts-registry/pools/presets/MultiOwnablePoolContractsRegistry.sol">MultiOwnablePoolContractsRegistry</a></td>
+      <td><a href="https://github.com/dl-solarity/solidity-lib/blob/master/contracts/presets/contracts-registry/pools/AMultiOwnablePoolContractsRegistry.sol">MultiOwnablePoolContractsRegistry</a></td>
       <td>Only multiple owners can call set pools' implementations and inject dependencies into existing pools</td>
     </tr>
   </tbody>
@@ -164,7 +164,7 @@ To set up a system, start by creating the `ContractsRegistry` contract, which in
 Assume the system has two standalone contracts, named `SystemContract1` and `SystemContract2`, each associated with a unique string identifier. It is recommended to establish constants within the `ContractsRegistry` to signify the contracts it includes, such as `SYSTEM_CONTRACT_1` and `SYSTEM_CONTRACT_2`. Furthermore, it is beneficial to introduce functions that enable the retrieval of contract addresses using these constants. The `ContractsRegistry` is intended to be an upgradeable contract, e.g. `UUPSUpgradeable`, but for the sake of simplicity we leave it as it is.
 
 ```solidity
-import "@solarity/solidity-lib/contracts-registry/presets/OwnableContractsRegistry.sol";
+import "@solarity/solidity-lib/presets/contracts-registry/OwnableContractsRegistry.sol";
 
 contract ContractsRegistry is OwnableContractsRegistry {
     string public constant SYSTEM_CONTRACT_1 = "SYSTEM_CONTRACT_1";
@@ -180,10 +180,10 @@ contract ContractsRegistry is OwnableContractsRegistry {
 }
 ```
 
-Now, let's create system contracts. In this example, `SystemContract1` is designed to work with `SystemContract2` as a dependency. It inherits from `AbstractDependant` to implement the necessary dependency handling. The `setDependencies` function allows `SystemContract1` to retrieve the address of `SystemContract2` from the `ContractsRegistry`. Note that the `dependant` modifier is applied to the `setDependencies` method, ensuring that only the **injector**, typically the `ContractsRegistry`, can call it.
+Now, let's create system contracts. In this example, `SystemContract1` is designed to work with `SystemContract2` as a dependency. It inherits from `ADependant` to implement the necessary dependency handling. The `setDependencies` function allows `SystemContract1` to retrieve the address of `SystemContract2` from the `ContractsRegistry`. Note that the `dependant` modifier is applied to the `setDependencies` method, ensuring that only the **injector**, typically the `ContractsRegistry`, can call it.
 
 ```solidity
-contract SystemContract1 is AbstractDependant {
+contract SystemContract1 is ADependant {
     address public systemContract2;
 
     function setDependencies(
@@ -227,12 +227,12 @@ function migration() external {
 }
 ```
 
-Now we may want our system to support pool contracts. Pool contracts are designed to be deployed multiple times within the same system, each instance operating with the same underlying implementation. `PoolA`, in particular, inherits from both `AbstractDependant` and `Initializable`, illustrating its capabilities for dependency management and one-time initialization. These features ensure that each instance of `PoolA` seamlessly integrates into the system, interacting appropriately with other system components.
+Now we may want our system to support pool contracts. Pool contracts are designed to be deployed multiple times within the same system, each instance operating with the same underlying implementation. `PoolA`, in particular, inherits from both `ADependant` and `Initializable`, illustrating its capabilities for dependency management and one-time initialization. These features ensure that each instance of `PoolA` seamlessly integrates into the system, interacting appropriately with other system components.
 
 ```solidity
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-contract PoolA is AbstractDependant, Initializable {
+contract PoolA is ADependant, Initializable {
     struct Parameters {
         address token1;
         address token2;
@@ -266,9 +266,9 @@ contract PoolA is AbstractDependant, Initializable {
 There is no need to alter the `ContractsRegistry` for each pool addition. Instead, we propose utilizing the specialized `PoolRegistry` contract. Mirroring the approach of `ContractsRegistry`, `PoolRegistry` utilizes string keys, such as `POOL_A`, for pools identification. In order to facilitate the process of registering new pools, the `addProxyPool` function has been overridden. This modification restricts the registration of new pools exclusively to the designated factory.
 
 ```solidity
-import "@solarity/solidity-lib/contracts-registry/pools/presets/OwnablePoolContractsRegistry.sol";
+import "@solarity/solidity-lib/presets/contracts-registry/pools/AOwnablePoolContractsRegistry.sol";
 
-contract PoolRegistry is OwnablePoolContractsRegistry {
+contract PoolRegistry is AOwnablePoolContractsRegistry {
     string public constant POOL_A = "POOL_A";
 
     address public poolFactory;
@@ -279,7 +279,7 @@ contract PoolRegistry is OwnablePoolContractsRegistry {
     }
 
     function __PoolRegistry_init() external {
-        __OwnablePoolContractsRegistry_init();
+        __AOwnablePoolContractsRegistry_init();
     }
 
     function setDependencies(
@@ -304,15 +304,15 @@ The `PoolRegistry` contract typically works in tandem with the `PoolFactory` con
 
 The `PoolFactory` itself contains deployment methods, like `deployPoolA`, each tailored to a specific pool type. The process of setting up a new pool encompasses several steps:
 
-1. Deployment: The initial task of the deployment method is to deploy a new pool. This is accomplished using either the `_deploy` function (for standard CREATE deployments) or the `_deploy2` function (for CREATE2 deployments) from the `AbstractPoolFactory`. By default, these methods deploy beacon proxies, utilizing wrapped pool implementations provided by the `PoolRegistry`.
+1. Deployment: The initial task of the deployment method is to deploy a new pool. This is accomplished using either the `_deploy` function (for standard CREATE deployments) or the `_deploy2` function (for CREATE2 deployments) from the `APoolFactory`. By default, these methods deploy beacon proxies, utilizing wrapped pool implementations provided by the `PoolRegistry`.
 2. Initialization: Following deployment, much like typical upgradeable contracts, the new pool contract undergoes an initialization process.
 3. Dependency Injection: After the pool is initialized, it may need specific dependencies to be fully operational. The `_injectDependencies` method injects dependencies to the pool and transfers injector permissions to the `PoolRegistry`.
 4. Registration: The final phase in the setup process is the registration of the new pool contract in the registry. The `_register` method adds the pool to the `PoolRegistry` using its `addProxyPool` method.
 
 ```solidity
-import "@solarity/solidity-lib/contracts-registry/pools/pool-factory/AbstractPoolFactory.sol";
+import "@solarity/solidity-lib/contracts-registry/pools/APoolFactory.sol";
 
-contract PoolFactory is AbstractPoolFactory {
+contract PoolFactory is APoolFactory {
     address public poolRegistry;
 
     function setDependencies(

@@ -6,7 +6,7 @@ The main concept of the Vesting module is to lock `ERC20` tokens for the predete
 
 ## Implementation
 
-The `Vesting` contract manages vestings and associated schedules for multiple beneficiaries and `ERC20` tokens. 
+The `AVesting` contract manages vestings and associated schedules for multiple beneficiaries and `ERC20` tokens. 
 This contract stands out for its flexibility, offering support for both linear and exponential vesting calculations out of the box.
 Linear vesting has a constant release rate over time (`exponent = 1`), resulting in a linear graph.
 Exponential vesting allows for a more flexible release rate, defined by the exponent.

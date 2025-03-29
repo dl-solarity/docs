@@ -2,20 +2,22 @@
 
 ## Introduction
 
-The concept of the Multi Owanable module is not different from the [OpenZeppelin's Ownable contract](https://docs.openzeppelin.com/contracts/5.x/api/access#Ownable), with the exception that instead of one address as owner, a set of addresses is maintained.
+The concept of the Multi Ownable module is not different from the [OpenZeppelin's Ownable contract](https://docs.openzeppelin.com/contracts/5.x/api/access#Ownable), with the exception that instead of one address as owner, a set of addresses is maintained.
 
 ## Implementation
 
-The `MultiOwnable` contract provides a basic access control mechanism, where a list of owner addresses is granted exclusive access to specific functions. All owners have equal access rights, allowing them to add or remove other owners, including themselves. The one who calls the `__MultiOwnable_init` function (i.e., the contract deployer) will become the initial owner of the contract. This module makes the `onlyOwner` modifier available, which can be applied to functions to restrict their use to the owners.
+The `AMultiOwnable` contract provides a basic access control mechanism, where a list of owner addresses is granted exclusive access to specific functions. All owners have equal access rights, allowing them to add or remove other owners, including themselves. The one who calls the `__AMultiOwnable_init` function (i.e., the contract deployer) will become the initial owner of the contract. This module makes the `onlyOwner` modifier available, which can be applied to functions to restrict their use to the owners.
 
 ## Example
 
-Begin by creating a protected contract by inheriting it from the `MultiOwnable`.
+Begin by creating a protected contract by inheriting it from the `AMultiOwnable`.
 
 ```solidity
-contract MultiOwnableProtectedContract is MultiOwnable {
+import "@solarity/solidity-lib/access-control/AMultiOwnable.sol";
+
+contract MultiOwnableProtectedContract is AMultiOwnable {
     function __MultiOwnableProtectedContract_init() external initializer {
-        __MultiOwnable_init();
+        __AMultiOwnable_init();
     }
 
     function protectedFunction() external onlyOwner { /* ... */ }
