@@ -19,6 +19,17 @@ By default, the owner account will be the one that deploys the contract.
 
 This module will make available the modifier `onlyOwner`, which can be applied
 to your functions to restrict their use to the owners.
+## Structs info
+
+### AMultiOwnableStorage
+
+```solidity
+struct AMultiOwnableStorage {
+	EnumerableSet.AddressSet owners;
+}
+```
+
+
 ## Errors info
 
 ### InvalidOwner

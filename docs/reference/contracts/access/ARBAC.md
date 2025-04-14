@@ -27,6 +27,19 @@ The RBAC structure is the following:
 (PERMISSION >- RESOURCE) >- ROLE
 
 Where ROLE is assignable to users
+## Structs info
+
+### ARBACStorage
+
+```solidity
+struct ARBACStorage {
+	mapping(string => mapping(bool => mapping(string => DynamicSet.StringSet))) rolePermissions;
+	mapping(string => mapping(bool => DynamicSet.StringSet)) roleResources;
+	mapping(address => DynamicSet.StringSet) userRoles;
+}
+```
+
+
 ## Errors info
 
 ### EmptyRoles

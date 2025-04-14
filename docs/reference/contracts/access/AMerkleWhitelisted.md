@@ -20,6 +20,17 @@ To validate the whitelist belonging, the tree leaf (the whitelist element) has t
 roots equality. If the roots match, the element belongs to the whitelist.
 
 Note: the branch nodes are sorted numerically.
+## Structs info
+
+### AMerkleWhitelistedStorage
+
+```solidity
+struct AMerkleWhitelistedStorage {
+	bytes32 merkleRoot;
+}
+```
+
+
 ## Errors info
 
 ### LeafNotWhitelisted

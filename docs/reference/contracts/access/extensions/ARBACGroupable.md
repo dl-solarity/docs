@@ -20,6 +20,19 @@ The RBAC structure becomes the following:
 ((PERMISSION >- RESOURCE) >- ROLE) >- GROUP
 
 Where ROLE and GROUP are assignable to users
+## Structs info
+
+### ARBACGroupableStorage
+
+```solidity
+struct ARBACGroupableStorage {
+	uint256 defaultGroupEnabled;
+	mapping(address => DynamicSet.StringSet) userGroups;
+	mapping(string => DynamicSet.StringSet) groupRoles;
+}
+```
+
+
 ## Errors info
 
 ### EmptyGroups
