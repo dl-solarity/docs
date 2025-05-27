@@ -1,4 +1,4 @@
-# 👨🏻‍💻 RSASSAPSS
+# 𓍯𓂃 RSASSAPSS
 
 ## Introduction
 
@@ -31,7 +31,7 @@ function verifySha256(
     bytes memory s_,
     bytes memory e_,
     bytes memory n_
-) internal view returns (bool)
+) internal view returns (bool);
 ```
 
 #### Description
@@ -47,7 +47,7 @@ function verify(
     bytes memory s_,
     bytes memory e_,
     bytes memory n_
-) internal view returns (bool)
+) internal view returns (bool);
 ```
 
 #### Description
