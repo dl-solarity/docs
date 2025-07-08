@@ -29,12 +29,12 @@ function verify(
     bytes memory hashedMessage_,
     bytes memory signature_,
     bytes memory pubKey_
-) internal view returns (bool)
+) internal view returns (bool);
 ```
 
 #### Description
 
-The function to verify the ECDSA signature
+The function to verify the ECDSA signature.
 
 ##### Parameters:
 
@@ -50,7 +50,7 @@ The function to verify the ECDSA signature
     <tr>
       <td><code>curveParams</code></td>
       <td>struct ECDSA512.Parameters</td>
-      <td>The 512-bit curve parameters. <code>lowSmax</code> is <code>n/2</code></td>
+      <td>The 512-bit curve parameters</td>
     </tr>
     <tr>
       <td><code>hashedMessage</code></td>	  
@@ -85,8 +85,7 @@ function verifyBrainpoolP512r1(
             gx: hex"81aee4bdd82ed9645a21322e9c4c6a9385ed9f70b5d916c1b43b62eef4d0098eff3b1f78e2d0d48d50d1687b93b97d5f7c6d5047406a5e688b352209bcb9f822",
             gy: hex"7dde385d566332ecc0eabfa9cf7822fdf209f70024a57b1aa000c55b881f8111b2dcde494a5f485e5bca4bd88a2763aed1ca2b2fa8f0540678cd1e0f3ad80892",
             p: hex"aadd9db8dbe9c48b3fd4e6ae33c9fc07cb308db3b3c9d20ed6639cca703308717d4d9b009bc66842aecda12ae6a380e62881ff2f2d82c68528aa6056583a48f3",
-            n: hex"aadd9db8dbe9c48b3fd4e6ae33c9fc07cb308db3b3c9d20ed6639cca70330870553e5c414ca92619418661197fac10471db1d381085ddaddb58796829ca90069",
-            lowSmax: hex"556ecedc6df4e2459fea735719e4fe03e59846d9d9e4e9076b31ce65381984382a9f2e20a654930ca0c3308cbfd608238ed8e9c0842eed6edac3cb414e548034"
+            n: hex"aadd9db8dbe9c48b3fd4e6ae33c9fc07cb308db3b3c9d20ed6639cca70330870553e5c414ca92619418661197fac10471db1d381085ddaddb58796829ca90069"
         });
 
     return curveParams_.verify(abi.encodePacked(sha256(message_)), signature_, pubKey_);

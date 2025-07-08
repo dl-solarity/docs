@@ -1,4 +1,4 @@
-# 👨🏻‍💻 RSASSAPSS
+# 𓍯𓂃 RSASSAPSS
 
 ## Introduction
 
@@ -31,7 +31,7 @@ function verifySha256(
     bytes memory s_,
     bytes memory e_,
     bytes memory n_
-) internal view returns (bool)
+) internal view returns (bool);
 ```
 
 #### Description
@@ -47,7 +47,7 @@ function verify(
     bytes memory s_,
     bytes memory e_,
     bytes memory n_
-) internal view returns (bool)
+) internal view returns (bool);
 ```
 
 #### Description
@@ -121,3 +121,16 @@ Verifies RSAPSS-SSA signature with custom parameters.
     </tr>   
   </tbody>
 </table>
+
+#### Example
+
+```solidity
+function verifySha256(
+    bytes calldata message_,
+    bytes calldata s_,
+    bytes calldata e_,
+    bytes calldata n_
+) external view returns (bool) {
+    return message_.verifySha256(s_, e_, n_);
+}
+```

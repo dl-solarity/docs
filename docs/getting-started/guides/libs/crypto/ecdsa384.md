@@ -32,12 +32,12 @@ function verify(
     bytes memory hashedMessage_,
     bytes memory signature_,
     bytes memory pubKey_
-) internal view returns (bool)
+) internal view returns (bool);
 ```
 
 #### Description
 
-The function to verify the ECDSA signature
+The function to verify the ECDSA signature.
 
 ##### Parameters:
 
@@ -53,7 +53,7 @@ The function to verify the ECDSA signature
     <tr>
       <td><code>curveParams</code></td>
       <td>struct ECDSA384.Parameters</td>
-      <td>The 384-bit curve parameters. <code>lowSmax</code> is <code>n/2</code></td>
+      <td>The 384-bit curve parameters</td>
     </tr>
     <tr>
       <td><code>hashedMessage</code></td>	  
@@ -87,8 +87,7 @@ function verifySECP384r1(
         gx: hex"aa87ca22be8b05378eb1c71ef320ad746e1d3b628ba79b9859f741e082542a385502f25dbf55296c3a545e3872760ab7",
         gy: hex"3617de4a96262c6f5d9e98bf9292dc29f8f41dbd289a147ce9da3113b5f0b8c00a60b1ce1d7e819d7a431d7c90ea0e5f",
         p: hex"fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffeffffffff0000000000000000ffffffff",
-        n: hex"ffffffffffffffffffffffffffffffffffffffffffffffffc7634d81f4372ddf581a0db248b0a77aecec196accc52973",
-        lowSmax: hex"7fffffffffffffffffffffffffffffffffffffffffffffffe3b1a6c0fa1b96efac0d06d9245853bd76760cb5666294b9"
+        n: hex"ffffffffffffffffffffffffffffffffffffffffffffffffc7634d81f4372ddf581a0db248b0a77aecec196accc52973"
     });
 
     return curveParams_.verify(abi.encodePacked(sha256(message_)), signature_, pubKey_);
