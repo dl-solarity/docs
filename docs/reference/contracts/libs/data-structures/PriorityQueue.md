@@ -12,6 +12,7 @@ The library that realizes a heap based priority queue.
 
 Courtesy of heap property,
 add() and removeTop() operations are O(log(n)) complex
+remove() operation is O(n) for search + O(log(n)) for removal
 top(), topValue() operations are O(1)
 
 The library might be useful to implement priority withdrawals/purchases, reputation based systems, and similar logic.
@@ -115,6 +116,33 @@ Parameters:
 | Name  | Type                           | Description |
 | :---- | :----------------------------- | :---------- |
 | queue | struct PriorityQueue.UintQueue | self        |
+
+### remove
+
+```solidity
+function remove(
+    PriorityQueue.UintQueue storage queue,
+    uint256 value_
+) internal returns (bool)
+```
+
+The function to remove a specific element from the uint256 queue. O(n) complex for search + O(log(n)) for removal
+In case of duplicate elements, removes the one with the highest priority.
+
+
+Parameters:
+
+| Name   | Type                           | Description                  |
+| :----- | :----------------------------- | :--------------------------- |
+| queue  | struct PriorityQueue.UintQueue | self                         |
+| value_ | uint256                        | the element value to remove  |
+
+
+Return values:
+
+| Name | Type | Description                                            |
+| :--- | :--- | :----------------------------------------------------- |
+| [0]  | bool | true if element was found and removed, false otherwise |
 
 ### topValue
 
@@ -260,6 +288,17 @@ function removeTop(PriorityQueue.Bytes32Queue storage queue) internal
 ```
 
 The function to remove the element with the highest priority. O(log(n)) complex
+### remove
+
+```solidity
+function remove(
+    PriorityQueue.Bytes32Queue storage queue,
+    bytes32 value_
+) internal returns (bool)
+```
+
+The function to remove a specific element from the bytes32 queue. O(n) complex for search + O(log(n)) for removal
+In case of duplicate elements, removes the one with the highest priority.
 ### topValue
 
 ```solidity
@@ -328,6 +367,17 @@ function removeTop(PriorityQueue.AddressQueue storage queue) internal
 ```
 
 The function to remove the element with the highest priority. O(log(n)) complex
+### remove
+
+```solidity
+function remove(
+    PriorityQueue.AddressQueue storage queue,
+    address value_
+) internal returns (bool)
+```
+
+The function to remove a specific element from the address queue. O(n) complex for search + O(log(n)) for removal
+In case of duplicate elements, removes the one with the highest priority.
 ### topValue
 
 ```solidity
