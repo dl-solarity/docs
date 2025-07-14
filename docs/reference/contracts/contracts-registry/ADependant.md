@@ -60,10 +60,10 @@ Parameters:
 ### setInjector (0x8cb941cc)
 
 ```solidity
-function setInjector(address injector_) external
+function setInjector(address injector_) public virtual
 ```
 
-The function is made external to allow for the factories to set the injector to the ContractsRegistry
+The function is made public to allow for the factories to set the injector to the ContractsRegistry
 
 
 Parameters:
