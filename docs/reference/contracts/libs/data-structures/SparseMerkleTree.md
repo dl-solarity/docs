@@ -61,6 +61,8 @@ uintTree.getRoot();
 
 SparseMerkleTree.Proof memory proof = uintTree.getProof(100);
 
+uintTree.verifyProof(proof);
+
 uintTree.getNodeByKey(100);
 
 uintTree.remove(100);
@@ -448,6 +450,34 @@ Return values:
 | :--- | :---------------------------- | :---------------- |
 | [0]  | struct SparseMerkleTree.Proof | SMT proof struct. |
 
+### verifyProof
+
+```solidity
+function verifyProof(
+    SparseMerkleTree.UintSMT storage tree,
+    SparseMerkleTree.Proof memory proof_
+) internal view returns (bool)
+```
+
+The function to verify the proof for inclusion or exclusion of a node in the SMT.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name   | Type                            | Description            |
+| :----- | :------------------------------ | :--------------------- |
+| tree   | struct SparseMerkleTree.UintSMT | self.                  |
+| proof_ | struct SparseMerkleTree.Proof   | The SMT proof struct.  |
+
+
+Return values:
+
+| Name | Type | Description                                  |
+| :--- | :--- | :------------------------------------------- |
+| [0]  | bool | True if the proof is valid, false otherwise. |
+
 ### getRoot
 
 ```solidity
@@ -775,6 +805,34 @@ Return values:
 | :--- | :---------------------------- | :---------------- |
 | [0]  | struct SparseMerkleTree.Proof | SMT proof struct. |
 
+### verifyProof
+
+```solidity
+function verifyProof(
+    SparseMerkleTree.Bytes32SMT storage tree,
+    SparseMerkleTree.Proof memory proof_
+) internal view returns (bool)
+```
+
+The function to verify the proof for inclusion or exclusion of a node in the SMT.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name   | Type                               | Description            |
+| :----- | :--------------------------------- | :--------------------- |
+| tree   | struct SparseMerkleTree.Bytes32SMT | self.                  |
+| proof_ | struct SparseMerkleTree.Proof      | The SMT proof struct.  |
+
+
+Return values:
+
+| Name | Type | Description                                  |
+| :--- | :--- | :------------------------------------------- |
+| [0]  | bool | True if the proof is valid, false otherwise. |
+
 ### getRoot
 
 ```solidity
@@ -1101,6 +1159,34 @@ Return values:
 | Name | Type                          | Description       |
 | :--- | :---------------------------- | :---------------- |
 | [0]  | struct SparseMerkleTree.Proof | SMT proof struct. |
+
+### verifyProof
+
+```solidity
+function verifyProof(
+    SparseMerkleTree.AddressSMT storage tree,
+    SparseMerkleTree.Proof memory proof_
+) internal view returns (bool)
+```
+
+The function to verify the proof for inclusion or exclusion of a node in the SMT.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name   | Type                               | Description            |
+| :----- | :--------------------------------- | :--------------------- |
+| tree   | struct SparseMerkleTree.AddressSMT | self.                  |
+| proof_ | struct SparseMerkleTree.Proof      | The SMT proof struct.  |
+
+
+Return values:
+
+| Name | Type | Description                                  |
+| :--- | :--- | :------------------------------------------- |
+| [0]  | bool | True if the proof is valid, false otherwise. |
 
 ### getRoot
 
