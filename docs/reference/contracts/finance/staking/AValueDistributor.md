@@ -190,3 +190,10 @@ Return values:
 | Name | Type    | Description                       |
 | :--- | :------ | :-------------------------------- |
 | [0]  | uint256 | The total owed value to the user. |
+
+### precision (0xd3b5dc3b)
+
+```solidity
+function precision() public pure virtual returns (uint256)
+```
+
