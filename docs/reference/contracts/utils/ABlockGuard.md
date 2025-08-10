@@ -16,7 +16,7 @@ functions in the same block e.g. via the Multicall.
 ## Usage example:
 
 ```
-contract NotFlashloanable is BlockGuard {
+contract NotFlashloanable is ABlockGuard {
     function deposit(uint256 amount) external lockBlock("DEPOSIT", msg.sender) {
         . . .
     }
