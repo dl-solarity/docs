@@ -14,7 +14,7 @@ Contract module which provides a basic account recovery mechanism as specified i
 You may use this module as a base contract for your own account recovery mechanism.
 
 The Account Recovery module allows to add recovery providers to the account.
-The recovery providers are used to recover the account ownership.
+The recovery providers are used to recover the account access.
 
 For more information please refer to [EIP-7947](https://eips.ethereum.org/EIPS/eip-7947).
 ## Structs info
@@ -59,7 +59,7 @@ error ProviderNotRegistered(address provider)
 function addRecoveryProvider(
     address provider_,
     bytes memory recoveryData_
-) external virtual
+) external payable virtual
 ```
 
 A function to add a new recovery provider.
@@ -69,15 +69,15 @@ SHOULD be access controlled.
 
 Parameters:
 
-| Name         | Type    | Description                                                |
-| :----------- | :------ | :--------------------------------------------------------- |
-| provider     | address | the address of a recovery provider (ZKP verifier) to add.  |
-| recoveryData | bytes   | custom data (commitment) for the recovery provider.        |
+| Name          | Type    | Description                                                |
+| :------------ | :------ | :--------------------------------------------------------- |
+| provider_     | address | the address of a recovery provider (ZKP verifier) to add.  |
+| recoveryData_ | bytes   | custom data (commitment) for the recovery provider.        |
 
 ### removeRecoveryProvider (0xefe4256c)
 
 ```solidity
-function removeRecoveryProvider(address provider_) external virtual
+function removeRecoveryProvider(address provider_) external payable virtual
 ```
 
 A function to remove an existing recovery provider.
@@ -87,30 +87,30 @@ SHOULD be access controlled.
 
 Parameters:
 
-| Name     | Type    | Description                                                    |
-| :------- | :------ | :------------------------------------------------------------- |
-| provider | address | the address of a previously added recovery provider to remove. |
+| Name      | Type    | Description                                                    |
+| :-------- | :------ | :------------------------------------------------------------- |
+| provider_ | address | the address of a previously added recovery provider to remove. |
 
-### recoverOwnership (0x3cfb167d)
+### recoverAccess (0x15494a7d)
 
 ```solidity
-function recoverOwnership(
-    address newOwner,
-    address provider,
-    bytes memory proof
+function recoverAccess(
+    bytes memory subject_,
+    address provider_,
+    bytes memory proof_
 ) external virtual returns (bool)
 ```
 
-A non-view function to recover ownership of a smart account.
+A non-view function to recover access of a smart account.
 
 
 Parameters:
 
-| Name     | Type    | Description                                               |
-| :------- | :------ | :-------------------------------------------------------- |
-| newOwner | address | the address of a new owner.                               |
-| provider | address | the address of a recovery provider.                       |
-| proof    | bytes   | an encoded proof of recovery (ZKP/ZKAI, signature, etc).  |
+| Name      | Type    | Description                                                              |
+| :-------- | :------ | :----------------------------------------------------------------------- |
+| subject_  | bytes   | the recovery subject (encoded owner address, access control role, etc).  |
+| provider_ | address | the address of a recovery provider.                                      |
+| proof_    | bytes   | an encoded proof of recovery (ZKP/ZKAI, signature, etc).                 |
 
 
 Return values:
