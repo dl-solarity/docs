@@ -11,7 +11,7 @@ library CartesianMerkleTree
 Cartesian Merkle Tree Module
 
 A magnificent ZK-friendly data structure based on a Binary Search Tree + Heap + Merkle Tree. Short names: CMT, Treaple.
-Possesses deterministic and idemponent properties. Can be used as a substitute for a Sparse Merkle Tree (SMT).
+Possesses deterministic and idempotent properties. Can be used as a substitute for a Sparse Merkle Tree (SMT).
 
 Gas usage for adding and removing 1,000 elements to a CMT with the keccak256 and poseidon hash functions is detailed below:
 
@@ -37,6 +37,8 @@ uintTreaple.add(100);
 uintTreaple.getRoot();
 
 CartesianMerkleTree.Proof memory proof = uintTreaple.getProof(100, 0);
+
+uintTreaple.verifyProof(proof);
 
 uintTreaple.getNodeByKey(100);
 
@@ -369,6 +371,34 @@ Return values:
 | :--- | :------------------------------- | :---------------- |
 | [0]  | struct CartesianMerkleTree.Proof | CMT proof struct. |
 
+### verifyProof
+
+```solidity
+function verifyProof(
+    CartesianMerkleTree.UintCMT storage treaple,
+    CartesianMerkleTree.Proof memory proof_
+) internal view returns (bool)
+```
+
+The function to verify the proof for inclusion or exclusion of a node in the CMT.
+Complexity is O(log(n)), where n is the max depth of the treaple.
+
+
+
+Parameters:
+
+| Name    | Type                               | Description            |
+| :------ | :--------------------------------- | :--------------------- |
+| treaple | struct CartesianMerkleTree.UintCMT | self.                  |
+| proof_  | struct CartesianMerkleTree.Proof   | The CMT proof struct.  |
+
+
+Return values:
+
+| Name | Type | Description                                  |
+| :--- | :--- | :------------------------------------------- |
+| [0]  | bool | True if the proof is valid, false otherwise. |
+
 ### getRoot
 
 ```solidity
@@ -669,6 +699,34 @@ Return values:
 | :--- | :------------------------------- | :---------------- |
 | [0]  | struct CartesianMerkleTree.Proof | CMT proof struct. |
 
+### verifyProof
+
+```solidity
+function verifyProof(
+    CartesianMerkleTree.Bytes32CMT storage treaple,
+    CartesianMerkleTree.Proof memory proof_
+) internal view returns (bool)
+```
+
+The function to verify the proof for inclusion or exclusion of a node in the CMT.
+Complexity is O(log(n)), where n is the max depth of the treaple.
+
+
+
+Parameters:
+
+| Name    | Type                                  | Description            |
+| :------ | :------------------------------------ | :--------------------- |
+| treaple | struct CartesianMerkleTree.Bytes32CMT | self.                  |
+| proof_  | struct CartesianMerkleTree.Proof      | The CMT proof struct.  |
+
+
+Return values:
+
+| Name | Type | Description                                  |
+| :--- | :--- | :------------------------------------------- |
+| [0]  | bool | True if the proof is valid, false otherwise. |
+
 ### getRoot
 
 ```solidity
@@ -968,6 +1026,34 @@ Return values:
 | Name | Type                             | Description       |
 | :--- | :------------------------------- | :---------------- |
 | [0]  | struct CartesianMerkleTree.Proof | CMT proof struct. |
+
+### verifyProof
+
+```solidity
+function verifyProof(
+    CartesianMerkleTree.AddressCMT storage treaple,
+    CartesianMerkleTree.Proof memory proof_
+) internal view returns (bool)
+```
+
+The function to verify the proof for inclusion or exclusion of a node in the CMT.
+Complexity is O(log(n)), where n is the max depth of the treaple.
+
+
+
+Parameters:
+
+| Name    | Type                                  | Description            |
+| :------ | :------------------------------------ | :--------------------- |
+| treaple | struct CartesianMerkleTree.AddressCMT | self.                  |
+| proof_  | struct CartesianMerkleTree.Proof      | The CMT proof struct.  |
+
+
+Return values:
+
+| Name | Type | Description                                  |
+| :--- | :--- | :------------------------------------------- |
+| [0]  | bool | True if the proof is valid, false otherwise. |
 
 ### getRoot
 

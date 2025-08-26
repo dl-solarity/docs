@@ -210,6 +210,38 @@ Return values:
 | :--- | :------ | :-------------------------------- |
 | [0]  | bytes32 | The root hash of the Merkle tree. |
 
+### verifyProof
+
+```solidity
+function verifyProof(
+    IncrementalMerkleTree.UintIMT storage tree,
+    bytes32[] memory siblings_,
+    uint256 directionBits_,
+    bytes32 leaf_
+) internal view returns (bool)
+```
+
+The function to verify a proof of a leaf's existence in the uint256 tree.
+Complexity is O(log(n)), where n is the number of elements in the tree.
+
+
+
+Parameters:
+
+| Name           | Type                                 | Description                      |
+| :------------- | :----------------------------------- | :------------------------------- |
+| tree           | struct IncrementalMerkleTree.UintIMT | self.                            |
+| siblings_      | bytes32[]                            | The siblings of the leaf.        |
+| directionBits_ | uint256                              | The direction bits of the leaf.  |
+| leaf_          | bytes32                              | The leaf.                        |
+
+
+Return values:
+
+| Name | Type | Description                                  |
+| :--- | :--- | :------------------------------------------- |
+| [0]  | bool | True if the proof is valid, false otherwise. |
+
 ### height
 
 ```solidity
@@ -347,6 +379,38 @@ function root(
 The function to return the root hash of the bytes32 tree.
 Complexity is O(log(n) + h), where n is the number of elements in the tree and
 h is the height of the tree.
+### verifyProof
+
+```solidity
+function verifyProof(
+    IncrementalMerkleTree.Bytes32IMT storage tree,
+    bytes32[] memory siblings_,
+    uint256 directionBits_,
+    bytes32 leaf_
+) internal view returns (bool)
+```
+
+The function to verify a proof of a leaf's existence in the bytes32 tree.
+Complexity is O(log(n)), where n is the number of elements in the tree.
+
+
+
+Parameters:
+
+| Name           | Type                                    | Description                      |
+| :------------- | :-------------------------------------- | :------------------------------- |
+| tree           | struct IncrementalMerkleTree.Bytes32IMT | self.                            |
+| siblings_      | bytes32[]                               | The siblings of the leaf.        |
+| directionBits_ | uint256                                 | The direction bits of the leaf.  |
+| leaf_          | bytes32                                 | The leaf.                        |
+
+
+Return values:
+
+| Name | Type | Description                                  |
+| :--- | :--- | :------------------------------------------- |
+| [0]  | bool | True if the proof is valid, false otherwise. |
+
 ### height
 
 ```solidity
@@ -454,6 +518,38 @@ function root(
 The function to return the root hash of the address tree.
 Complexity is O(log(n) + h), where n is the number of elements in the tree and
 h is the height of the tree.
+### verifyProof
+
+```solidity
+function verifyProof(
+    IncrementalMerkleTree.AddressIMT storage tree,
+    bytes32[] memory siblings_,
+    uint256 directionBits_,
+    bytes32 leaf_
+) internal view returns (bool)
+```
+
+The function to verify a proof of a leaf's existence in the address tree.
+Complexity is O(log(n)), where n is the number of elements in the tree.
+
+
+
+Parameters:
+
+| Name           | Type                                    | Description                      |
+| :------------- | :-------------------------------------- | :------------------------------- |
+| tree           | struct IncrementalMerkleTree.AddressIMT | self.                            |
+| siblings_      | bytes32[]                               | The siblings of the leaf.        |
+| directionBits_ | uint256                                 | The direction bits of the leaf.  |
+| leaf_          | bytes32                                 | The leaf.                        |
+
+
+Return values:
+
+| Name | Type | Description                                  |
+| :--- | :--- | :------------------------------------------- |
+| [0]  | bool | True if the proof is valid, false otherwise. |
+
 ### height
 
 ```solidity
