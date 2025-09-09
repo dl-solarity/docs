@@ -833,6 +833,36 @@ Return values:
 | :--- | :--- | :------------------------------------------- |
 | [0]  | bool | True if the proof is valid, false otherwise. |
 
+### processProof
+
+```solidity
+function processProof(
+    function(bytes32, bytes32) view returns (bytes32) hash2_,
+    function(bytes32, bytes32, bytes32) view returns (bytes32) hash3_,
+    SparseMerkleTree.Proof memory proof_
+) internal view returns (bytes32)
+```
+
+The function to process the proof for inclusion or exclusion of a node in the SMT.
+Complexity is O(log(n)), where n is the max depth of the tree.
+
+
+
+Parameters:
+
+| Name   | Type                                                      | Description                                      |
+| :----- | :-------------------------------------------------------- | :----------------------------------------------- |
+| hash2_ | function (bytes32,bytes32) view returns (bytes32)         | The hash function that accepts two arguments.    |
+| hash3_ | function (bytes32,bytes32,bytes32) view returns (bytes32) | The hash function that accepts three arguments.  |
+| proof_ | struct SparseMerkleTree.Proof                             | The SMT proof struct.                            |
+
+
+Return values:
+
+| Name | Type    | Description                              |
+| :--- | :------ | :--------------------------------------- |
+| [0]  | bytes32 | The calculated root hash from the proof. |
+
 ### getRoot
 
 ```solidity

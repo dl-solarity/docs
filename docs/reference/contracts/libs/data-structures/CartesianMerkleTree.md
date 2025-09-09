@@ -727,6 +727,34 @@ Return values:
 | :--- | :--- | :------------------------------------------- |
 | [0]  | bool | True if the proof is valid, false otherwise. |
 
+### processProof
+
+```solidity
+function processProof(
+    function(bytes32, bytes32, bytes32) view returns (bytes32) hash3_,
+    CartesianMerkleTree.Proof memory proof_
+) internal view returns (bytes32)
+```
+
+The function to process the proof for inclusion or exclusion of a node in the CMT.
+Complexity is O(log(n)), where n is the max depth of the treaple.
+
+
+
+Parameters:
+
+| Name   | Type                                                      | Description                                      |
+| :----- | :-------------------------------------------------------- | :----------------------------------------------- |
+| hash3_ | function (bytes32,bytes32,bytes32) view returns (bytes32) | The hash function that accepts three arguments.  |
+| proof_ | struct CartesianMerkleTree.Proof                          | The CMT proof struct.                            |
+
+
+Return values:
+
+| Name | Type    | Description                              |
+| :--- | :------ | :--------------------------------------- |
+| [0]  | bytes32 | The calculated root hash from the proof. |
+
 ### getRoot
 
 ```solidity

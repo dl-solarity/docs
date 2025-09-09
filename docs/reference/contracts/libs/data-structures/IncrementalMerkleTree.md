@@ -217,7 +217,8 @@ function verifyProof(
     IncrementalMerkleTree.UintIMT storage tree,
     bytes32[] memory siblings_,
     uint256 directionBits_,
-    bytes32 leaf_
+    bytes32 leaf_,
+    bytes32 root_
 ) internal view returns (bool)
 ```
 
@@ -228,12 +229,13 @@ Complexity is O(log(n)), where n is the number of elements in the tree.
 
 Parameters:
 
-| Name           | Type                                 | Description                      |
-| :------------- | :----------------------------------- | :------------------------------- |
-| tree           | struct IncrementalMerkleTree.UintIMT | self.                            |
-| siblings_      | bytes32[]                            | The siblings of the leaf.        |
-| directionBits_ | uint256                              | The direction bits of the leaf.  |
-| leaf_          | bytes32                              | The leaf.                        |
+| Name           | Type                                 | Description                                   |
+| :------------- | :----------------------------------- | :-------------------------------------------- |
+| tree           | struct IncrementalMerkleTree.UintIMT | self.                                         |
+| siblings_      | bytes32[]                            | The siblings of the leaf.                     |
+| directionBits_ | uint256                              | The direction bits of the leaf.               |
+| leaf_          | bytes32                              | The leaf.                                     |
+| root_          | bytes32                              | The root hash of the tree to verify against.  |
 
 
 Return values:
@@ -386,7 +388,8 @@ function verifyProof(
     IncrementalMerkleTree.Bytes32IMT storage tree,
     bytes32[] memory siblings_,
     uint256 directionBits_,
-    bytes32 leaf_
+    bytes32 leaf_,
+    bytes32 root_
 ) internal view returns (bool)
 ```
 
@@ -397,12 +400,13 @@ Complexity is O(log(n)), where n is the number of elements in the tree.
 
 Parameters:
 
-| Name           | Type                                    | Description                      |
-| :------------- | :-------------------------------------- | :------------------------------- |
-| tree           | struct IncrementalMerkleTree.Bytes32IMT | self.                            |
-| siblings_      | bytes32[]                               | The siblings of the leaf.        |
-| directionBits_ | uint256                                 | The direction bits of the leaf.  |
-| leaf_          | bytes32                                 | The leaf.                        |
+| Name           | Type                                    | Description                                   |
+| :------------- | :-------------------------------------- | :-------------------------------------------- |
+| tree           | struct IncrementalMerkleTree.Bytes32IMT | self.                                         |
+| siblings_      | bytes32[]                               | The siblings of the leaf.                     |
+| directionBits_ | uint256                                 | The direction bits of the leaf.               |
+| leaf_          | bytes32                                 | The leaf.                                     |
+| root_          | bytes32                                 | The root hash of the tree to verify against.  |
 
 
 Return values:
@@ -410,6 +414,38 @@ Return values:
 | Name | Type | Description                                  |
 | :--- | :--- | :------------------------------------------- |
 | [0]  | bool | True if the proof is valid, false otherwise. |
+
+### processProof
+
+```solidity
+function processProof(
+    function(bytes32, bytes32) view returns (bytes32) hash2_,
+    bytes32[] memory siblings_,
+    uint256 directionBits_,
+    bytes32 leaf_
+) internal view returns (bytes32)
+```
+
+The function to process the proof for inclusion or exclusion of a leaf in the tree.
+Complexity is O(log(n)), where n is the number of elements in the tree.
+
+
+
+Parameters:
+
+| Name           | Type                                              | Description                                    |
+| :------------- | :------------------------------------------------ | :--------------------------------------------- |
+| hash2_         | function (bytes32,bytes32) view returns (bytes32) | The hash function that accepts two arguments.  |
+| siblings_      | bytes32[]                                         | The siblings of the leaf.                      |
+| directionBits_ | uint256                                           | The direction bits of the leaf.                |
+| leaf_          | bytes32                                           | The leaf.                                      |
+
+
+Return values:
+
+| Name | Type    | Description                              |
+| :--- | :------ | :--------------------------------------- |
+| [0]  | bytes32 | The calculated root hash from the proof. |
 
 ### height
 
@@ -525,7 +561,8 @@ function verifyProof(
     IncrementalMerkleTree.AddressIMT storage tree,
     bytes32[] memory siblings_,
     uint256 directionBits_,
-    bytes32 leaf_
+    bytes32 leaf_,
+    bytes32 root_
 ) internal view returns (bool)
 ```
 
@@ -536,12 +573,13 @@ Complexity is O(log(n)), where n is the number of elements in the tree.
 
 Parameters:
 
-| Name           | Type                                    | Description                      |
-| :------------- | :-------------------------------------- | :------------------------------- |
-| tree           | struct IncrementalMerkleTree.AddressIMT | self.                            |
-| siblings_      | bytes32[]                               | The siblings of the leaf.        |
-| directionBits_ | uint256                                 | The direction bits of the leaf.  |
-| leaf_          | bytes32                                 | The leaf.                        |
+| Name           | Type                                    | Description                                   |
+| :------------- | :-------------------------------------- | :-------------------------------------------- |
+| tree           | struct IncrementalMerkleTree.AddressIMT | self.                                         |
+| siblings_      | bytes32[]                               | The siblings of the leaf.                     |
+| directionBits_ | uint256                                 | The direction bits of the leaf.               |
+| leaf_          | bytes32                                 | The leaf.                                     |
+| root_          | bytes32                                 | The root hash of the tree to verify against.  |
 
 
 Return values:
