@@ -95,6 +95,28 @@ Return values:
 | :--- | :------ | :----------------- |
 | [0]  | bytes32 | The transaction ID |
 
+### calculateWTxId
+
+```solidity
+function calculateWTxId(bytes calldata data_) internal pure returns (bytes32)
+```
+
+Calculate witness transaction ID (hash with witness data)
+
+
+Parameters:
+
+| Name  | Type  | Description               |
+| :---- | :---- | :------------------------ |
+| data_ | bytes | The raw transaction data  |
+
+
+Return values:
+
+| Name | Type    | Description                |
+| :--- | :------ | :------------------------- |
+| [0]  | bytes32 | The witness transaction ID |
+
 ### parseTransaction
 
 ```solidity
@@ -124,7 +146,7 @@ Return values:
 
 ```solidity
 function formatTransaction(
-    TxParser.Transaction calldata tx_,
+    TxParser.Transaction memory tx_,
     bool withWitness_
 ) internal pure returns (bytes memory)
 ```
