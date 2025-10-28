@@ -11,7 +11,7 @@ library DecimalsConverter
 This library is used to convert numbers that use token's N decimals to M decimals.
 Comes extremely handy with standardizing the business logic that is intended to work with many different ERC20 tokens
 that have different precision (decimals). One can perform calculations with 18 decimals only and resort to conversion
-only when the payouts (or interactions) with the actual tokes have to be made.
+only when the payouts (or interactions) with the actual tokens have to be made.
 
 The best usage scenario involves accepting and calculating values with 18 decimals throughout the project, despite the tokens decimals.
 
