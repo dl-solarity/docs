@@ -19,7 +19,7 @@ function copy(
 ) internal view returns (bytes memory destination_)
 ```
 
-Copies the contents of the source bytes to the destination bytes. strings can be casted
+Copies the contents of the source bytes to the destination bytes. Strings can be cast
 to bytes in order to use this function.
 
 

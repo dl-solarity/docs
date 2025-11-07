@@ -94,14 +94,14 @@ Parameters:
 
 | Name  | Type      | Description        |
 | :---- | :-------- | :----------------- |
-| from_ | uint256[] | the bytes32 array  |
+| from_ | uint256[] | the uint256 array  |
 
 
 Return values:
 
-| Name   | Type      | Description           |
-| :----- | :-------- | :-------------------- |
-| array_ | bytes32[] | the list of addresses |
+| Name   | Type      | Description       |
+| :----- | :-------- | :---------------- |
+| array_ | bytes32[] | the bytes32 array |
 
 ### asBytes32Array
 
