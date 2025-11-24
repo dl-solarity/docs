@@ -13,6 +13,13 @@ The Diamond standard module
 The Ownable preset of Diamond proxy
 ## Functions info
 
+### __OwnableDiamond_init (0x3948bfaf)
+
+```solidity
+function __OwnableDiamond_init() public initializer
+```
+
+
 ### diamondCut (0xe57e69c6)
 
 ```solidity

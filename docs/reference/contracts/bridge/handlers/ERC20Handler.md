@@ -97,10 +97,11 @@ Parameters:
 | batcher_       | contract IBatcher | the batcher contract coordinating batched executions.  |
 | redeemDetails_ | bytes             | encoded data defining the redeem operation.            |
 
-### getOperationHash (0x24977a20)
+### getOperationHash (0xfd0532cf)
 
 ```solidity
 function getOperationHash(
+    IBridge bridge_,
     string calldata network_,
     bytes calldata redeemDetails_
 ) external view virtual returns (bytes32)
@@ -111,10 +112,11 @@ A function to compute a redeem operation hash used for signing.
 
 Parameters:
 
-| Name           | Type   | Description                        |
-| :------------- | :----- | :--------------------------------- |
-| network_       | string | the network name.                  |
-| redeemDetails_ | bytes  | encoded redeem operation details.  |
+| Name           | Type             | Description                        |
+| :------------- | :--------------- | :--------------------------------- |
+| bridge_        | contract IBridge | the bridge contract.               |
+| network_       | string           | the network name.                  |
+| redeemDetails_ | bytes            | encoded redeem operation details.  |
 
 
 Return values:

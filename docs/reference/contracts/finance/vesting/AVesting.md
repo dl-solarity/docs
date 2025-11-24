@@ -194,6 +194,13 @@ error StartTimeIsZero()
 ```
 
 
+### InvalidScheduleId
+
+```solidity
+error InvalidScheduleId(uint256 scheduleId)
+```
+
+
 ### ScheduleInvalidPeriodParameter
 
 ```solidity
